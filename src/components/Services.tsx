@@ -1,105 +1,123 @@
-import { Activity, Dumbbell, Users, Coffee, Zap, Baby, Weight, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { photo } from '../photos';
 
 interface Service {
-  icon: LucideIcon;
   title: string;
   description: string;
-  link: string | null;
+  image: string;
+  link: string;
+  /** Benoemt waar je heen gaat: vier kaarten wijzen naar dezelfde pagina. */
+  linkLabel: string;
 }
 
 const services: Service[] = [
   {
-    icon: Activity,
     title: 'Cardio',
-    description: 'Verbeter je conditie en uithoudingsvermogen met state-of-the-art cardio apparatuur.',
+    description: 'Loopbanden, stairmaster en fietsen, met een schema dat bij je conditie past.',
+    image: photo.cardioLoopband,
     link: '/personal-training',
+    linkLabel: 'Naar personal training',
   },
   {
-    icon: Dumbbell,
-    title: 'Traditionele Krachttraining',
-    description: 'Bouw spierkracht op met professionele begeleiding en bewezen methoden.',
+    title: 'Krachttraining',
+    description: 'Opbouwen met vrije gewichten en machines, techniek eerst.',
+    image: photo.deadlift,
     link: '/personal-training',
+    linkLabel: 'Naar personal training',
   },
   {
-    icon: Users,
     title: 'Small Group Training',
-    description: 'Train in een hechte groep met persoonlijke aandacht voor optimale resultaten.',
+    description: 'Acht mensen, één trainer. Groepsenergie zonder in te leveren op aandacht.',
+    image: photo.highFive,
     link: '/groepstrainingen/small-group',
+    linkLabel: 'Naar small group',
   },
   {
-    icon: Coffee,
-    title: 'Ontspanning',
-    description: 'Relax na je workout in onze sauna of aan de sportbar.',
-    link: '/contact',
-  },
-  {
-    icon: Zap,
     title: 'Bootcamp',
-    description: 'Intensieve outdoor training voor wie grenzen wil verleggen.',
+    description: 'Buiten trainen op het terrein achter de studio, weer of geen weer.',
+    image: photo.farmerswalk,
     link: '/groepstrainingen/bootcamp',
+    linkLabel: 'Naar bootcamp',
   },
   {
-    icon: Baby,
+    title: 'Vrije gewichten',
+    description: 'Complete dumbbell- en schijvensectie voor functionele kracht.',
+    image: photo.dumbbellrek,
+    link: '/personal-training',
+    linkLabel: 'Naar personal training',
+  },
+  {
     title: 'Kids Fitness & Bootcamp',
-    description: "Speciaal afgestemde programma's om kinderen actief en gezond te houden.",
+    description: 'Bewegen leren op een manier die kinderen leuk blijven vinden.',
+    image: photo.lunge2,
     link: '/groepstrainingen/kids',
+    linkLabel: 'Naar kids fitness',
   },
   {
-    icon: Weight,
-    title: 'Vrije Gewichttraining',
-    description: 'Ontwikkel functionele kracht met onze complete vrije gewichten sectie.',
+    title: 'Meten, wegen & schema',
+    description: 'Metingen op vaste momenten, zodat je vooruitgang zichtbaar wordt.',
+    image: photo.coaching,
     link: '/personal-training',
+    linkLabel: 'Naar personal training',
   },
   {
-    icon: ClipboardList,
-    title: 'Meten, Wegen & Schema',
-    description: "Professionele metingen en gepersonaliseerde trainingsschema's voor jouw doelen.",
-    link: '/personal-training',
+    title: 'Sauna & sportbar',
+    description: 'Even blijven hangen na je training. Herstel telt net zo hard mee.',
+    image: photo.koeling,
+    link: '/contact',
+    linkLabel: 'Naar contact',
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 md:py-36 bg-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-            Sportaanbod
-          </span>
-          <h2 className="font-display text-5xl md:text-6xl text-white leading-tight mb-6">
-            Alles wat je nodig hebt
-            <br />
-            om je doelen te bereiken
-          </h2>
-          <div className="h-1 w-16 bg-[#7AC943] mx-auto" />
+    <section id="services" className="py-20 md:py-28 bg-paper-dim border-y border-hairline">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+        <div className="max-w-2xl mb-14">
+          <span className="eyebrow">Sportaanbod</span>
+          <h2 className="display-lg mt-6 text-ink">Wat je hier kunt doen</h2>
+          <p className="mt-4 text-ink-soft leading-relaxed">
+            Klik op een onderdeel voor de details, de tijden en wat het kost.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            const content = (
-              <div className="flex flex-col h-full">
-                <div className="mb-5 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#7AC943]/10 text-[#7AC943] group-hover:bg-[#7AC943] group-hover:text-white transition-all duration-300">
-                  <Icon size={26} />
-                </div>
-                <h3 className="font-display text-xl text-white mb-3 tracking-wide">{service.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed flex-1">{service.description}</p>
-                <span className="inline-block mt-4 text-[#7AC943] text-sm font-semibold group-hover:translate-x-1 transition-transform duration-200">
-                  Meer info →
+          {services.map((service) => (
+            <Link
+              key={service.title}
+              to={service.link}
+              className="group flex flex-col bg-paper border border-hairline hover:border-ink transition-colors duration-200 rounded-md overflow-hidden"
+            >
+              <div className="aspect-[4/5] overflow-hidden">
+                <img
+                  src={service.image}
+                  alt=""
+                  loading="lazy"
+                  className="photo transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+
+              <div className="flex flex-col flex-1 p-5">
+                <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone flex-1">
+                  {service.description}
+                </p>
+
+                {/* Altijd zichtbaar, dus ook duidelijk zonder muis */}
+                <span className="mono inline-flex items-center gap-1.5 mt-4 text-[0.6875rem] uppercase tracking-[0.12em] text-moss">
+                  {service.linkLabel}
+                  <ArrowRight
+                    size={13}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </span>
               </div>
-            );
-
-            const classes = "group relative bg-zinc-800/50 backdrop-blur-sm rounded-2xl p-7 border border-zinc-700/50 hover:border-[#7AC943]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#7AC943]/10 hover:-translate-y-1";
-
-            return service.link ? (
-              <Link key={i} to={service.link} className={classes}>{content}</Link>
-            ) : (
-              <div key={i} className={classes}>{content}</div>
-            );
-          })}
+            </Link>
+          ))}
         </div>
       </div>
     </section>

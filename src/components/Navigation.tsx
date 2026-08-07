@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from './Logo';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -16,7 +17,7 @@ export default function Navigation() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -26,75 +27,65 @@ export default function Navigation() {
   }, [location]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-zinc-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center flex-shrink-0">
-            <img
-              src="/logo-white.svg"
-              alt="Body by Marcel"
-              className="h-14 w-auto"
-            />
+    <nav
+      className={`sticky top-0 z-50 bg-paper border-b transition-shadow duration-200 ${
+        isScrolled ? 'border-hairline shadow-[0_1px_12px_rgba(26,26,23,0.06)]' : 'border-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+        <div className="flex items-center justify-between h-[4.5rem]">
+          <Link to="/" className="flex-shrink-0" aria-label="Body by Marcel, naar de homepage">
+            <Logo tone="ink" size="1.6rem" />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-7">
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className={`text-sm font-semibold transition-colors duration-200 ${
+                aria-current={location.pathname === item.href ? 'page' : undefined}
+                className={`text-[0.9375rem] transition-colors duration-150 pb-1 border-b-2 ${
                   location.pathname === item.href
-                    ? 'text-[#7AC943]'
-                    : 'text-white/90 hover:text-[#7AC943]'
+                    ? 'text-ink font-semibold border-lime'
+                    : 'text-stone hover:text-ink border-transparent'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <Link
-              to="/proefdag"
-              className="bg-[#7AC943] hover:bg-[#6BB835] text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 hover:scale-105 shadow-md"
-            >
+            <Link to="/proefdag" className="btn btn-lime !py-2.5 !px-5 !text-sm">
               Proefdag
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobiel */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden text-white p-2 hover:text-[#7AC943] transition-colors"
-            aria-label="Menu"
+            className="md:hidden text-ink p-2 -mr-2"
+            aria-expanded={isMobileOpen}
+            aria-label={isMobileOpen ? 'Menu sluiten' : 'Menu openen'}
           >
-            {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
+            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileOpen && (
-          <div className="md:hidden bg-zinc-900 border-t border-zinc-800 pb-6">
-            <div className="flex flex-col gap-1 pt-4 px-2">
+          <div className="md:hidden border-t border-hairline py-2 pb-5">
+            <div className="flex flex-col">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${
-                    location.pathname === item.href
-                      ? 'text-[#7AC943] bg-[#7AC943]/10'
-                      : 'text-white/90 hover:text-[#7AC943] hover:bg-zinc-800'
+                  className={`py-3.5 text-[0.9375rem] border-b border-hairline ${
+                    location.pathname === item.href ? 'text-ink font-semibold' : 'text-stone'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link
-                to="/proefdag"
-                className="mt-2 mx-4 bg-[#7AC943] hover:bg-[#6BB835] text-white py-3 rounded-lg font-semibold text-center transition-all duration-200"
-              >
-                Gratis Proefdag
+              <Link to="/proefdag" className="btn btn-lime justify-center mt-5">
+                Plan je proefdag
               </Link>
             </div>
           </div>

@@ -1,14 +1,8 @@
 import { UserCheck, Target, TrendingUp, Clock, Users, BarChart3, MapPin } from 'lucide-react';
 import TrainingDetailPage from './TrainingDetailPage';
+import { gallery as galleries } from '../../photos';
 
-const gallery = [
-  'https://images.unsplash.com/photo-1682531024803-376c7dfd7975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1750698545009-679820502908?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1758875570127-b6ff35e42436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1605720789771-a7fb8ab19d04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1758274526108-49b7e3fc05aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1772764768073-c95db4f77864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-];
+const gallery = [...galleries.smallGroup];
 
 export default function SmallGroup() {
   return (
@@ -48,16 +42,17 @@ export default function SmallGroup() {
       ]}
       ctaTitle="Klaar om te starten?"
       extraContent={
-        <section className="py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-zinc-900 rounded-2xl p-8 md:p-12 text-center">
-              <div className="w-16 h-16 bg-[#7AC943] rounded-full mx-auto mb-6 flex items-center justify-center font-display text-white text-2xl">S</div>
-              <blockquote className="text-xl md:text-2xl text-white/85 italic mb-6">
-                "Sinds ik met small group training ben begonnen voel ik me fitter dan ooit!
-                De begeleiding is top en de groep motiveert me om elke keer weer mijn best te doen."
+        <section className="pb-20 md:pb-24">
+          <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-8">
+            <figure className="border-l-2 border-lime pl-6 md:pl-8">
+              <blockquote className="display-md text-ink leading-snug">
+                Sinds ik met small group training ben begonnen voel ik me fitter dan ooit. De
+                begeleiding is goed en de groep zorgt dat ik elke week weer kom opdagen.
               </blockquote>
-              <div className="text-[#7AC943] font-semibold text-sm">— Sarah, lid sinds 2023</div>
-            </div>
+              <figcaption className="mono mt-4 text-[0.6875rem] uppercase tracking-[0.14em] text-stone">
+                Sarah, lid sinds 2023
+              </figcaption>
+            </figure>
           </div>
         </section>
       }

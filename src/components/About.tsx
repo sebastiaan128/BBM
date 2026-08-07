@@ -1,58 +1,68 @@
+import { photo } from '../photos';
+
 export default function About() {
   return (
-    <section className="py-24 md:py-36 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-14 lg:gap-24 items-center">
-          {/* Image */}
-          <div className="relative">
-            <div className="aspect-[4/5] relative rounded-3xl overflow-hidden shadow-2xl">
+    <section className="py-20 md:py-28 bg-paper">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+        <div className="grid lg:grid-cols-[0.9fr_1fr] gap-12 lg:gap-20 items-start">
+          {/* Eén foto met de groene lijn. Een tweede, overlappende foto erbij
+              botste met het kader: twee accenten om dezelfde hoek. */}
+          <div className="photo-accent lg:mr-4">
+            <div className="aspect-[3/4]">
               <img
-                src="https://images.unsplash.com/photo-1544972917-3529b113a469?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="Marcel - Personal Trainer"
-                className="w-full h-full object-cover"
+                src={photo.trainerPortret}
+                alt="Trainer in de krachthal van Body by Marcel"
+                className="photo"
               />
             </div>
-            <div className="absolute -bottom-5 -right-5 w-28 h-28 bg-[#7AC943] rounded-2xl -z-10" />
           </div>
 
-          {/* Content */}
-          <div>
-            <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              Over Body by Marcel
-            </span>
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6 leading-tight">
-              Persoonlijke aandacht,
-              <br />
-              professionele begeleiding
-            </h2>
-            <div className="h-1 w-16 bg-[#7AC943] mb-8" />
+          {/* Tekst */}
+          <div className="lg:pt-4">
+            <span className="eyebrow">Over de studio</span>
 
-            <div className="space-y-5 text-zinc-600 leading-relaxed">
+            <h2 className="display-lg mt-6 text-ink">
+              Je bent hier
+              <br />
+              geen abonneenummer
+            </h2>
+
+            <div className="mt-8 space-y-5 text-ink-soft leading-relaxed">
               <p>
-                Met een achtergrond in <strong className="text-zinc-900">Taekwon-do</strong> en jarenlange ervaring
-                in de fitnessindustrie, begrijp ik als geen ander het belang van balans. Balans tussen
-                kracht en rust, tussen intensiteit en herstel, tussen training en voeding.
+                Met een achtergrond in <strong className="text-ink font-semibold">Taekwon-do</strong> en
+                jarenlange ervaring in de fitnessindustrie weet ik hoeveel er van balans afhangt.
+                Balans tussen kracht en rust, tussen intensiteit en herstel, tussen training en
+                voeding.
               </p>
               <p>
-                Bij Body by Marcel draait alles om jou. Of je nu aan je eerste fitness reis begint,
-                een specifiek doel voor ogen hebt, of gewoon in vorm wilt blijven – ik begeleid je
-                met persoonlijke aandacht en een op maat gemaakt programma.
+                Bij Body by Marcel draait alles om jou. Of je nu net begint, een specifiek doel voor
+                ogen hebt of gewoon in vorm wilt blijven, je traint met een programma dat op jou is
+                afgestemd, en met iemand die je vooruitgang bijhoudt.
               </p>
               <p>
-                Welkom in een <strong className="text-zinc-900">gemeenschap</strong> waar iedereen zich
-                thuis voelt, waar hard werken hand in hand gaat met een warme sfeer, en waar jouw
-                gezondheid en welzijn centraal staan.
+                Het resultaat is een club waar hard werken samengaat met een warme sfeer, en waar
+                iedereen zich thuis voelt.
               </p>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-6">
-              {['Taekwon-do expertise', 'Persoonlijke begeleiding', 'Holistische aanpak'].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 bg-[#7AC943] rounded-full flex-shrink-0" />
-                  <span className="text-zinc-700 font-medium text-sm">{item}</span>
+            {/* Feiten, geen decoratie */}
+            <dl className="mt-10 border-t border-hairline">
+              {[
+                { k: 'Achtergrond', v: 'Taekwon-do, jarenlange ervaring als trainer' },
+                { k: 'Aanpak', v: 'Training, voeding en herstel als één geheel' },
+                { k: 'Groepsgrootte', v: 'Nooit meer dan acht per les' },
+              ].map((row) => (
+                <div
+                  key={row.k}
+                  className="grid sm:grid-cols-[10rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline"
+                >
+                  <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
+                    {row.k}
+                  </dt>
+                  <dd className="text-[0.9375rem] text-ink">{row.v}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
       </div>

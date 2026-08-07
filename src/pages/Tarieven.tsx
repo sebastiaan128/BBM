@@ -1,288 +1,244 @@
 import { Link } from 'react-router-dom';
-import { Check, Users, User, Baby, Building2, Ticket, Clock, CreditCard, Calendar } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
+import PageHero from '../components/PageHero';
+import { photo } from '../photos';
 
-const personalTrainingPrices = [
-  { name: 'Losse Sessie', price: '€65', period: 'per sessie', description: 'Flexibel en vrijblijvend', badge: null, highlighted: false },
-  { name: '5 Sessies Pakket', price: '€315', period: '€63 per sessie', description: 'Bespaar €10', badge: 'Bespaar €10', highlighted: false },
-  { name: '10 Sessies Pakket', price: '€600', period: '€60 per sessie', description: 'Bespaar €50', badge: 'POPULAIR', highlighted: true },
-  { name: '20 Sessies Pakket', price: '€1140', period: '€57 per sessie', description: 'Beste prijs - Bespaar €160', badge: 'BESTE DEAL', highlighted: false },
-];
+interface Row {
+  name: string;
+  price: string;
+  unit: string;
+  note: string;
+  best?: boolean;
+}
 
-const groepsTrainingPrices = [
-  { name: 'Losse Les', price: '€25', period: 'per les', description: 'Probeer vrijblijvend', features: ['Alle groepslessen', 'Maximaal 8 personen', 'Flexibel inschrijven'], highlighted: false },
-  { name: 'Strippenkaart 10 Lessen', price: '€220', period: '€22 per les', description: 'Populairste keuze', features: ['Alle groepslessen', '3 maanden geldig', 'Bespaar €30'], highlighted: true },
-  { name: 'Strippenkaart 20 Lessen', price: '€400', period: '€20 per les', description: 'Beste waarde', features: ['Alle groepslessen', '6 maanden geldig', 'Bespaar €100'], highlighted: false },
-];
+interface PriceTable {
+  id: string;
+  title: string;
+  intro: string;
+  rows: Row[];
+}
 
-const comboPacks = [
-  { name: 'Starter Combi', price: '€280', save: 'Bespaar €30', includes: ['5 Personal Training sessies', '10 Groepslessen strippenkaart'], description: 'Perfect om te starten met een mix van personal training en groepslessen', highlighted: false },
-  { name: 'Performance Combi', price: '€750', save: 'Bespaar €70', includes: ['10 Personal Training sessies', '20 Groepslessen strippenkaart'], description: 'Ideaal voor wie het beste van beide werelden wil', highlighted: true },
-  { name: 'Premium Combi', price: '€1400', save: 'Bespaar €140', includes: ['20 Personal Training sessies', '20 Groepslessen strippenkaart'], description: 'Maximum flexibiliteit en resultaat', highlighted: false },
-];
-
-const specialPrices = [
+const tables: PriceTable[] = [
   {
-    category: 'Kids Fitness (8-16 jaar)', icon: Baby, color: 'bg-blue-500',
-    options: [
-      { name: 'Losse Les', price: '€18', description: 'Speciaal jeugdtarief' },
-      { name: 'Strippenkaart 10 Lessen', price: '€160', description: '€16 per les - Bespaar €20' },
+    id: 'personal-training',
+    title: 'Personal training',
+    intro: 'Eén op één, zestig minuten per sessie. Hoe meer sessies, hoe lager het tarief.',
+    rows: [
+      { name: 'Losse sessie', price: '€65', unit: 'per sessie', note: 'Flexibel en vrijblijvend' },
+      { name: '5 sessies', price: '€315', unit: '€63 per sessie', note: 'Je bespaart €10' },
+      { name: '10 sessies', price: '€600', unit: '€60 per sessie', note: 'Je bespaart €50', best: true },
+      { name: '20 sessies', price: '€1140', unit: '€57 per sessie', note: 'Je bespaart €160' },
     ],
   },
   {
-    category: 'Duo Personal Training', icon: Users, color: 'bg-purple-500',
-    options: [
-      { name: 'Losse Sessie (per persoon)', price: '€45', description: 'Train samen, motiveer elkaar' },
-      { name: '10 Sessies Pakket (per persoon)', price: '€400', description: '€40 per sessie - Bespaar €50' },
+    id: 'groepstraining',
+    title: 'Groepstraining',
+    intro: 'Small group, bootcamp, tabata en circuit. Maximaal acht personen per les.',
+    rows: [
+      { name: 'Losse les', price: '€25', unit: 'per les', note: 'Alle groepslessen' },
+      { name: 'Strippenkaart 10 lessen', price: '€220', unit: '€22 per les', note: '3 maanden geldig, je bespaart €30', best: true },
+      { name: 'Strippenkaart 20 lessen', price: '€400', unit: '€20 per les', note: '6 maanden geldig, je bespaart €100' },
     ],
   },
   {
-    category: 'Small Group (3-4 personen)', icon: Users, color: 'bg-orange-500',
-    options: [
-      { name: 'Losse Sessie (per persoon)', price: '€35', description: 'Kleine groep, grote resultaten' },
-      { name: '10 Sessies Pakket (per persoon)', price: '€320', description: '€32 per sessie - Bespaar €30' },
+    id: 'combi',
+    title: 'Combinaties',
+    intro: 'Personal training naast je groepslessen, in één pakket.',
+    rows: [
+      { name: 'Starter, 5 PT en 10 groepslessen', price: '€280', unit: 'eenmalig', note: 'Je bespaart €30' },
+      { name: 'Performance, 10 PT en 20 groepslessen', price: '€750', unit: 'eenmalig', note: 'Je bespaart €70', best: true },
+      { name: 'Premium, 20 PT en 20 groepslessen', price: '€1400', unit: 'eenmalig', note: 'Je bespaart €140' },
     ],
   },
   {
-    category: 'Bedrijfstraining', icon: Building2, color: 'bg-teal-500',
-    options: [
-      { name: 'Vanaf 5 personen', price: 'Op aanvraag', description: 'Maatwerk voor jouw team' },
-      { name: 'Structureel contract', price: 'Op aanvraag', description: 'Vaste wekelijkse training' },
+    id: 'overig',
+    title: 'Kids, duo en bedrijven',
+    intro: 'Aangepaste tarieven voor jeugd, samen trainen en teams.',
+    rows: [
+      { name: 'Kids fitness (8–16 jaar), losse les', price: '€18', unit: 'per les', note: 'Jeugdtarief' },
+      { name: 'Kids fitness, 10 lessen', price: '€160', unit: '€16 per les', note: 'Je bespaart €20' },
+      { name: 'Duo personal training, losse sessie', price: '€45', unit: 'per persoon', note: 'Samen trainen, samen betalen' },
+      { name: 'Duo personal training, 10 sessies', price: '€400', unit: '€40 per sessie p.p.', note: 'Je bespaart €50' },
+      { name: 'Small group PT (3–4 personen), losse sessie', price: '€35', unit: 'per persoon', note: 'Kleine groep, eigen schema' },
+      { name: 'Small group PT, 10 sessies', price: '€320', unit: '€32 per sessie p.p.', note: 'Je bespaart €30' },
+      { name: 'Bedrijfstraining vanaf 5 personen', price: 'Op aanvraag', unit: '', note: 'Maatwerk voor uw team' },
+      { name: 'Bedrijfstraining, vast contract', price: 'Op aanvraag', unit: '', note: 'Wekelijks op een vast moment' },
     ],
   },
 ];
+
+const included = [
+  'Uitgebreide intake en doelanalyse',
+  'Persoonlijk trainingsschema',
+  'Voedings- en leefstijladvies',
+  'Voortgangsmetingen op vaste momenten',
+  'Vragen tussendoor via WhatsApp',
+  'Sessies inplannen wanneer het jou uitkomt',
+];
+
+const practical = [
+  {
+    title: 'Betalen',
+    text: 'Contant, pin, iDEAL of overschrijving. Strippenkaarten en pakketten betaal je vooraf.',
+  },
+  {
+    title: 'Geldigheid',
+    text: 'Strippenkaart van 10 lessen is 3 maanden geldig, die van 20 lessen 6 maanden.',
+  },
+  {
+    title: 'Afmelden',
+    text: 'Tot 24 uur van tevoren kosteloos. Daarna gaat de les van je kaart af.',
+  },
+];
+
+function PriceRows({ table }: { table: PriceTable }) {
+  return (
+    <section id={table.id} className="scroll-mt-24">
+      <h2 className="display-lg text-ink">{table.title}</h2>
+      <p className="mt-3 text-ink-soft leading-relaxed max-w-xl">{table.intro}</p>
+
+      <table className="w-full mt-8 text-left border-collapse">
+        <caption className="sr-only">Tarieven {table.title}</caption>
+        <thead>
+          <tr className="border-b border-ink">
+            <th scope="col" className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone font-medium pb-2.5">
+              Pakket
+            </th>
+            <th scope="col" className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone font-medium pb-2.5 text-right w-28">
+              Prijs
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row) => (
+            <tr key={row.name} className="border-b border-hairline align-top">
+              <th scope="row" className="py-4 pr-4 font-normal">
+                <span className="font-semibold text-ink text-[0.9375rem]">
+                  {row.name}
+                  {row.best && (
+                    <span className="mono ml-2.5 align-middle text-[0.625rem] uppercase tracking-[0.1em] bg-lime text-ink px-1.5 py-0.5">
+                      Meest gekozen
+                    </span>
+                  )}
+                </span>
+                <span className="block mt-0.5 text-sm text-stone">{row.note}</span>
+              </th>
+              <td className="py-4 text-right">
+                <span className="mono text-lg text-ink whitespace-nowrap">{row.price}</span>
+                {row.unit && <span className="mono block text-[0.6875rem] text-stone mt-0.5">{row.unit}</span>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
 
 export default function Tarieven() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center bg-zinc-900">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1772206605293-3fadeaa944e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-            alt="Tarieven"
-            className="w-full h-full object-cover opacity-40"
-          />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-          <span className="inline-block px-4 py-2 bg-[#7AC943]/20 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-            Transparante Prijzen
-          </span>
-          <h1 className="font-display text-6xl md:text-8xl text-white mb-6">Tarieven</h1>
-          <div className="h-1 w-24 bg-[#7AC943] mx-auto mb-8" />
-          <p className="text-xl text-white/85 max-w-3xl mx-auto">
-            Geen verrassingen, geen verborgen kosten. Kies het pakket dat bij jou past.
+    <div className="bg-paper">
+      <PageHero
+        eyebrow="Tarieven"
+        title="Alles op een rij, zonder kleine lettertjes"
+        intro="Geen inschrijfgeld en geen opzegtermijn. Je betaalt per les, per strippenkaart of per pakket."
+        image={photo.schijven}
+        imageAlt="Halterschijven in het rek in de studio"
+      >
+        <Link to="/proefdag" className="btn btn-lime">
+          Eerst een gratis proefles
+        </Link>
+      </PageHero>
+
+      {/* Sprongnavigatie. Bewust geen filter: alle tarieven blijven staan,
+          deze knoppen scrollen alleen naar de juiste tabel. */}
+      <nav aria-label="Spring naar een tarievengroep" className="border-b border-hairline bg-paper-dim">
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-8 py-5">
+          <p className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone mb-3">
+            Spring naar
           </p>
-        </div>
-      </section>
-
-      {/* Personal Training */}
-      <section className="py-24 md:py-36 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              <User size={16} />
-              Personal Training
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6">Personal Training Tarieven</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto mb-6" />
-            <p className="text-xl text-zinc-500 max-w-3xl mx-auto">1-op-1 begeleiding. Hoe meer je traint, hoe meer je bespaart.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {personalTrainingPrices.map((item, i) => (
-              <div key={i} className={`relative bg-white rounded-2xl p-6 transition-all duration-300 ${item.highlighted ? 'shadow-2xl scale-105 border-4 border-[#7AC943]' : 'shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
-                {item.badge && (
-                  <div className={`absolute top-0 right-0 px-4 py-1.5 rounded-bl-xl rounded-tr-xl text-xs font-bold ${item.highlighted ? 'bg-[#7AC943] text-white' : 'bg-zinc-900 text-white'}`}>
-                    {item.badge}
-                  </div>
-                )}
-                <Ticket size={28} className="text-[#7AC943] mb-4" />
-                <h3 className="font-display text-xl text-zinc-900 mb-2 tracking-wide">{item.name}</h3>
-                <div className="font-display text-4xl text-zinc-900 mb-1">{item.price}</div>
-                <p className="text-sm text-[#7AC943] font-semibold mb-2">{item.period}</p>
-                <p className="text-zinc-400 text-xs">{item.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="bg-zinc-50 rounded-2xl p-8">
-            <h3 className="text-lg font-semibold text-zinc-900 mb-5 text-center">Wat krijg je bij Personal Training?</h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-              {['Uitgebreide intake & doelanalyse', 'Persoonlijk trainingsplan', 'Voedings- en lifestyle advies', 'Continue voortgangsbewaking', 'WhatsApp support', 'Flexibele planning'].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <Check size={18} className="text-[#7AC943] flex-shrink-0" />
-                  <span className="text-zinc-600 text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Groepstraining */}
-      <section className="py-24 md:py-36 bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              <Users size={16} />
-              Groepstraining
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6">Groepstraining Tarieven</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto mb-6" />
-            <p className="text-xl text-zinc-500 max-w-3xl mx-auto">Small Group, Bootcamp, Tabata, Circuit - maximaal 8 personen per groep.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {groepsTrainingPrices.map((item, i) => (
-              <div key={i} className={`relative bg-white rounded-2xl p-8 transition-all duration-300 ${item.highlighted ? 'shadow-2xl scale-105 border-4 border-[#7AC943]' : 'shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
-                {item.highlighted && (
-                  <div className="absolute top-0 right-0 bg-[#7AC943] text-white px-5 py-2 rounded-bl-xl rounded-tr-xl text-sm font-bold">POPULAIR</div>
-                )}
-                <h3 className="font-display text-2xl text-zinc-900 mb-4 tracking-wide">{item.name}</h3>
-                <div className="font-display text-5xl text-zinc-900 mb-1">{item.price}</div>
-                <p className="text-[#7AC943] font-semibold mb-3 text-sm">{item.period}</p>
-                <p className="text-zinc-500 mb-6 text-sm">{item.description}</p>
-                <ul className="space-y-2.5">
-                  {item.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-3">
-                      <Check size={16} className="text-[#7AC943] flex-shrink-0" />
-                      <span className="text-zinc-600 text-sm">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="flex flex-wrap gap-2">
+            {tables.map((t) => (
+              <a
+                key={t.id}
+                href={`#${t.id}`}
+                className="group inline-flex items-center gap-2 border border-hairline bg-paper px-3.5 py-2 text-[0.8125rem] font-medium text-ink hover:border-ink hover:text-moss transition-colors duration-150"
+              >
+                {t.title}
+                <ArrowDown
+                  size={13}
+                  className="text-stone group-hover:text-moss group-hover:translate-y-0.5 transition-all duration-200"
+                  aria-hidden="true"
+                />
+              </a>
             ))}
           </div>
         </div>
+      </nav>
+
+      {/* Tabellen */}
+      <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-8 py-20 md:py-24 space-y-20">
+        {tables.map((t) => (
+          <PriceRows key={t.id} table={t} />
+        ))}
+      </div>
+
+      {/* Inbegrepen */}
+      <section className="py-16 bg-paper-dim border-y border-hairline">
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-8">
+          <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-5">
+            Bij elk personal-trainingtraject inbegrepen
+          </h2>
+          <ul className="grid sm:grid-cols-2 gap-x-10 border-t border-ink">
+            {included.map((item) => (
+              <li key={item} className="py-3.5 border-b border-hairline text-[0.9375rem] text-ink-soft">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      {/* Combo Pakketten */}
-      <section className="py-24 md:py-36 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              <Ticket size={16} />
-              Combo Deals
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6">Combo Pakketten</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto mb-6" />
-            <p className="text-xl text-zinc-500 max-w-3xl mx-auto">Combineer personal training en groepslessen voor maximaal resultaat.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {comboPacks.map((pack, i) => (
-              <div key={i} className={`relative bg-white rounded-2xl p-8 transition-all duration-300 ${pack.highlighted ? 'shadow-2xl scale-105 border-4 border-[#7AC943]' : 'shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
-                {pack.highlighted && (
-                  <div className="absolute top-0 right-0 bg-[#7AC943] text-white px-5 py-2 rounded-bl-xl rounded-tr-xl text-sm font-bold">BESTE DEAL</div>
-                )}
-                <h3 className="font-display text-2xl text-zinc-900 mb-4 tracking-wide">{pack.name}</h3>
-                <div className="font-display text-5xl text-zinc-900 mb-1">{pack.price}</div>
-                <p className="text-[#7AC943] font-semibold mb-5 text-sm">{pack.save}</p>
-                <div className="mb-5">
-                  <div className="text-xs font-semibold text-zinc-400 mb-3 uppercase tracking-wider">Dit pakket bevat:</div>
-                  <ul className="space-y-2.5">
-                    {pack.includes.map((item, j) => (
-                      <li key={j} className="flex items-center gap-3">
-                        <Check size={16} className="text-[#7AC943] flex-shrink-0" />
-                        <span className="text-zinc-600 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="text-zinc-400 text-xs">{pack.description}</p>
+      {/* Praktisch */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-8">
+          <h2 className="display-lg text-ink mb-10">Goed om te weten</h2>
+          <div className="grid md:grid-cols-3 gap-x-10">
+            {practical.map((item) => (
+              <div key={item.title} className="border-t-2 border-ink pt-4">
+                <h3 className="display-md text-ink">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{item.text}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Speciale Tarieven */}
-      <section className="py-24 md:py-36 bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6">Speciale Tarieven</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto mb-6" />
-            <p className="text-xl text-zinc-500 max-w-3xl mx-auto">Kids fitness, duo training, small group en bedrijfstraining.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {specialPrices.map((special, i) => {
-              const Icon = special.icon;
-              return (
-                <div key={i} className="bg-white rounded-2xl p-8 shadow-lg">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-14 h-14 ${special.color} rounded-xl flex items-center justify-center`}>
-                      <Icon size={26} className="text-white" />
-                    </div>
-                    <h3 className="font-display text-2xl text-zinc-900 tracking-wide">{special.category}</h3>
-                  </div>
-                  <div className="space-y-4">
-                    {special.options.map((opt, j) => (
-                      <div key={j} className="flex items-start justify-between gap-4 pb-4 border-b border-zinc-100 last:border-0">
-                        <div className="flex-1">
-                          <div className="font-semibold text-zinc-900 text-sm mb-0.5">{opt.name}</div>
-                          <div className="text-xs text-zinc-400">{opt.description}</div>
-                        </div>
-                        <div className="font-display text-2xl text-[#7AC943] whitespace-nowrap">{opt.price}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Praktische Info */}
-      <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-4xl md:text-5xl text-zinc-900 mb-6">Praktische Informatie</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              { icon: CreditCard, title: 'Betaalmethoden', text: 'Contant, Pin, iDEAL of bankoverschrijving. Strippenkaarten en pakketten vooraf te betalen.' },
-              { icon: Calendar, title: 'Geldigheid', text: 'Strippenkaarten 10 lessen: 3 maanden geldig. Strippenkaarten 20 lessen: 6 maanden geldig.' },
-              { icon: Clock, title: 'Annulering', text: 'Tot 24 uur van tevoren gratis annuleren. Daarna wordt de les in mindering gebracht.' },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[#7AC943]/10 rounded-2xl mb-4">
-                    <Icon size={28} className="text-[#7AC943]" />
-                  </div>
-                  <h3 className="font-display text-xl text-zinc-900 mb-3 tracking-wide">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{item.text}</p>
-                </div>
-              );
-            })}
-          </div>
-          <div className="bg-zinc-50 rounded-2xl p-8">
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">💡</div>
-              <div>
-                <h3 className="text-lg font-semibold text-zinc-900 mb-2">Niet zeker welk pakket bij jou past?</h3>
-                <p className="text-zinc-500 mb-4 text-sm">
-                  Geen probleem! Begin met een losse les of gratis proefdag, en we helpen je het beste pakket te kiezen.
-                </p>
-                <Link to="/proefdag" className="inline-block bg-[#7AC943] hover:bg-[#6BB835] text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200">
-                  Boek gratis proefles
-                </Link>
-              </div>
+          <div className="mt-14 border border-hairline p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 justify-between">
+            <div className="max-w-lg">
+              <h3 className="display-md text-ink">Niet zeker wat bij je past?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone">
+                Begin met een losse les of een gratis proefdag. Daarna kiezen we samen het pakket dat
+                aansluit bij hoe vaak je echt gaat trainen.
+              </p>
             </div>
+            <Link to="/proefdag" className="btn btn-primary flex-shrink-0">
+              Boek een gratis proefles
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 md:py-36 bg-[#7AC943]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-display text-5xl md:text-6xl text-white mb-6">Klaar om te beginnen?</h2>
-          <p className="text-xl text-white/85 mb-10 max-w-2xl mx-auto">
-            Neem contact op voor vragen over tarieven of boek direct je eerste training.
+      {/* Afsluiter */}
+      <section className="bg-ink text-paper py-20 md:py-24">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="display-lg">Klaar om te beginnen?</h2>
+          <p className="mt-6 text-paper/65 leading-relaxed max-w-xl mx-auto">
+            Boek je eerste training, of stel eerst je vraag. Beide kan.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/proefdag" className="inline-block bg-white hover:bg-zinc-100 text-[#7AC943] px-10 py-4 rounded-xl text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg">
+          <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link to="/proefdag" className="btn btn-lime justify-center">
               Boek je eerste training
             </Link>
-            <Link to="/contact" className="inline-block bg-zinc-900 hover:bg-zinc-800 text-white px-10 py-4 rounded-xl text-lg font-semibold transition-all duration-200">
+            <Link to="/contact" className="btn btn-outline-light justify-center">
               Neem contact op
             </Link>
           </div>

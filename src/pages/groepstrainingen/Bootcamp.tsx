@@ -1,14 +1,8 @@
 import { Cloud, Flame, Users, Clock, MapPin, BarChart3, Calendar } from 'lucide-react';
 import TrainingDetailPage from './TrainingDetailPage';
+import { gallery as galleries } from '../../photos';
 
-const gallery = [
-  'https://images.unsplash.com/photo-1767211808976-4317c37e77c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1605720789771-a7fb8ab19d04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1758274526108-49b7e3fc05aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1772764768073-c95db4f77864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1758875570127-b6ff35e42436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1657289174053-fc19f9fd9aab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-];
+const gallery = [...galleries.bootcamp];
 
 export default function Bootcamp() {
   return (
@@ -24,7 +18,7 @@ export default function Bootcamp() {
             en natuurlijke elementen maken je sterker, sneller en mentaal weerbaarder.
           </p>
           <p>
-            Van sprints en burpees tot tire flips en battle ropes – elke bootcamp is uniek en uitdagend.
+            Van sprints en burpees tot tire flips en battle ropes, elke bootcamp is uniek en uitdagend.
             De groep motiveert elkaar om grenzen te verleggen, terwijl onze coaches zorgen dat je veilig
             en effectief traint.
           </p>
@@ -35,7 +29,7 @@ export default function Bootcamp() {
         </>
       }
       features={[
-        { icon: Cloud, title: 'Altijd buiten', description: 'Regen, wind of zon – we trainen in alle weersomstandigheden. Dat maakt je mentaal sterker.' },
+        { icon: Cloud, title: 'Altijd buiten', description: 'Regen, wind of zon, we trainen in alle weersomstandigheden. Dat maakt je mentaal sterker.' },
         { icon: Flame, title: 'Functionele oefeningen', description: 'Geen machines, wel bewegingen die je in het dagelijks leven gebruikt. Praktisch en effectief.' },
         { icon: Users, title: 'Teamspirit', description: 'Samen train je harder. De groep motiveert en pusht elkaar naar nieuwe prestaties.' },
       ]}

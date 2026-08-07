@@ -1,0 +1,9 @@
+# Deze site is een single-page app: de routes bestaan alleen in de browser.
+# Zonder deze regel geeft de server een 404 zodra iemand /tarieven of
+# /groepstrainingen/bootcamp rechtstreeks opent of de pagina ververst.
+#
+# Werkt op Netlify en Cloudflare Pages. Andere hosting:
+#   Vercel  - regelt dit zelf voor Vite-projecten, geen actie nodig
+#   Apache  - .htaccess met FallbackResource /index.html
+#   nginx   - location / { try_files $uri $uri/ /index.html; }
+/*  /index.html  200

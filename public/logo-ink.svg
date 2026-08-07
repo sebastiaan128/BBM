@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" width="400" height="150">
+  <!-- BBM, gecentreerd boven het woordmerk -->
+  <text x="200" y="66" font-family="Times New Roman, Times, Tinos, serif" font-size="72" font-weight="bold"
+        fill="#7AC943" text-anchor="middle" letter-spacing="1.5">BBM</text>
+
+  <!-- BODY BY MARCEL -->
+  <text x="200" y="100" font-family="Times New Roman, Times, Tinos, serif" font-size="33" font-weight="normal"
+        fill="#131513" text-anchor="middle" letter-spacing="3.6">BODY BY MARCEL</text>
+
+  <!-- Streepjes naast de onderregel -->
+  <line x1="44" y1="118" x2="106" y2="118" stroke="#E2E4E0" stroke-width="1.2" opacity="1"/>
+  <line x1="294" y1="118" x2="356" y2="118" stroke="#E2E4E0" stroke-width="1.2" opacity="1"/>
+
+  <text x="200" y="122" font-family="Times New Roman, Times, Tinos, serif" font-size="15" font-weight="normal"
+        fill="#6E726C" text-anchor="middle" letter-spacing="0.9">Fitness &amp; Personal Training</text>
+</svg>

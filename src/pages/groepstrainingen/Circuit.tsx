@@ -1,14 +1,8 @@
 import { RotateCcw, Dumbbell, Heart, Clock, Users, BarChart3, MapPin } from 'lucide-react';
 import TrainingDetailPage from './TrainingDetailPage';
+import { gallery as galleries } from '../../photos';
 
-const gallery = [
-  'https://images.unsplash.com/photo-1758875570127-b6ff35e42436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1605720789771-a7fb8ab19d04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1772764768073-c95db4f77864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1657289174053-fc19f9fd9aab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1767211808976-4317c37e77c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1758274526108-49b7e3fc05aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-];
+const gallery = [...galleries.circuit];
 
 export default function Circuit() {
   return (
@@ -20,8 +14,8 @@ export default function Circuit() {
         <>
           <p>
             Circuit Training bij Body by Marcel is een dynamische trainingsformat waarbij je door
-            meerdere stations roteert. Elk station heeft een andere oefening – kracht, cardio, core
-            of mobiliteit – zodat je in één sessie je hele lichaam traint.
+            meerdere stations roteert. Elk station heeft een andere oefening, van kracht en cardio tot core
+            en mobiliteit, zodat je in één sessie je hele lichaam traint.
           </p>
           <p>
             De afwisseling houdt je geest scherp en je lichaam uitgedaagd. Geen twee circuits zijn
@@ -38,7 +32,7 @@ export default function Circuit() {
       features={[
         { icon: RotateCcw, title: 'Wisselende stations', description: 'Meerdere stations per sessie zorgen voor afwisseling en een complete full-body workout zonder verveling.' },
         { icon: Dumbbell, title: 'Kracht & cardio', description: 'Combinatie van krachttraining en cardiovasculaire oefeningen voor optimale resultaten en conditie.' },
-        { icon: Heart, title: 'Volledig lichaam', description: 'Van boven- tot onderlichaam, core tot schouders – circuit training traint alles in één sessie.' },
+        { icon: Heart, title: 'Volledig lichaam', description: 'Van boven- tot onderlichaam, core tot schouders, circuit training traint alles in één sessie.' },
       ]}
       gallery={gallery}
       practicalInfo={[

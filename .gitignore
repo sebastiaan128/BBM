@@ -54,3 +54,6 @@ Thumbs.db
 *.key
 *.p12
 *.pfx
+
+# Originele fotoset (niet publiceren - staat lokaal, 681MB)
+fotos-origineel/

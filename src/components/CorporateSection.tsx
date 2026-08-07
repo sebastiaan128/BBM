@@ -1,70 +1,63 @@
-import { Building2, TrendingDown, Users, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { photo } from '../photos';
 
 const features = [
-  { icon: Building2, title: 'Bedrijfstraining', description: 'Op maat gemaakte groepslessen voor uw team' },
-  { icon: TrendingDown, title: 'Lager ziekteverzuim', description: 'Investeer in de gezondheid van uw medewerkers' },
-  { icon: Users, title: 'Teambuilding', description: 'Versterk de onderlinge band door samen te sporten' },
-  { icon: Award, title: 'Betere prestaties', description: 'Fittere medewerkers zijn productiever en gemotiveerder' },
+  { title: 'Bedrijfstraining', description: 'Groepslessen op een vast moment in de week, afgestemd op uw team.' },
+  { title: 'Lager verzuim', description: 'Medewerkers die bewegen melden zich minder vaak ziek.' },
+  { title: 'Teambuilding', description: 'Samen trainen doet meer voor de onderlinge band dan een uitje.' },
+  { title: 'Scherpere dagen', description: 'Fittere mensen houden hun energie langer vast.' },
 ];
 
 export default function CorporateSection() {
   return (
-    <section className="py-24 md:py-36 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-14 lg:gap-24 items-center">
-          {/* Content */}
+    <section className="py-20 md:py-28 bg-paper">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              Voor bedrijven
-            </span>
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 leading-tight mb-6">
-              Investeer in
+            <span className="eyebrow">Voor bedrijven</span>
+
+            <h2 className="display-lg mt-6 text-ink">
+              Zet uw team
               <br />
-              uw team
+              in beweging
             </h2>
-            <div className="h-1 w-16 bg-[#7AC943] mb-8" />
-            <p className="text-lg text-zinc-600 mb-10 leading-relaxed">
-              Gezonde en fitte medewerkers zijn productiever, gemotiveerder en minder vaak ziek.
-              Body by Marcel biedt bedrijven op maat gemaakte fitnessprogramma's die perfect
-              aansluiten bij de behoeften van uw organisatie.
+
+            <p className="mt-7 text-lg leading-relaxed text-ink-soft">
+              Body by Marcel verzorgt bedrijfstrainingen voor teams uit Elst en omgeving. U kiest het
+              moment, wij zorgen voor een programma waar iedereen op zijn eigen niveau in meekan.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-5 mb-10">
-              {features.map((feature, i) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-12 h-12 bg-[#7AC943]/10 rounded-xl flex items-center justify-center text-[#7AC943] flex-shrink-0">
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-zinc-900 mb-1 text-sm">{feature.title}</h3>
-                      <p className="text-sm text-zinc-500">{feature.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <dl className="mt-10 grid sm:grid-cols-2 gap-x-8">
+              {features.map((feature) => (
+                <div key={feature.title} className="py-4 border-t border-hairline">
+                  <dt className="font-semibold text-ink text-[0.9375rem]">{feature.title}</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-stone">{feature.description}</dd>
+                </div>
+              ))}
+            </dl>
 
-            <Link
-              to="/contact"
-              className="inline-block bg-zinc-900 hover:bg-zinc-800 text-white px-8 py-3.5 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
-            >
-              Vraag offerte aan
+            <Link to="/contact" className="btn btn-primary mt-10">
+              Vraag een offerte aan
             </Link>
           </div>
 
-          {/* Image */}
-          <div className="relative">
-            <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="aspect-[3/4] overflow-hidden rounded-md">
               <img
-                src="https://images.unsplash.com/photo-1750698544794-bf1cd7038f92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="Corporate fitness training"
-                className="w-full h-full object-cover"
+                src={photo.duoHalters}
+                alt="Twee collega's trainen samen met halters"
+                loading="lazy"
+                className="photo"
               />
             </div>
-            <div className="absolute -top-5 -left-5 w-28 h-28 bg-[#7AC943] rounded-2xl -z-10" />
+            <div className="aspect-[3/4] overflow-hidden rounded-md mt-10">
+              <img
+                src={photo.duoHalters2}
+                alt="Collega's trainen samen in de studio"
+                loading="lazy"
+                className="photo"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,138 +1,165 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, Award, Calendar } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import PageHero from '../../components/PageHero';
+import { photo } from '../../photos';
+import { schedule, todayIndex } from '../../rooster';
 
 const trainingTypes = [
-  { id: 'small-group', title: 'Small Group Training', description: 'Maximaal 8 personen. Persoonlijke begeleiding in een kleine groep.', image: 'https://images.unsplash.com/photo-1682531024803-376c7dfd7975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'bootcamp', title: 'Bootcamp', description: 'Buiten trainen in weer en wind. Functioneel en intensief.', image: 'https://images.unsplash.com/photo-1767211808976-4317c37e77c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'tabata', title: 'Tabata', description: 'Korte, explosieve intervallen. Maximaal resultaat in minimale tijd.', image: 'https://images.unsplash.com/photo-1657289174053-fc19f9fd9aab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'circuit', title: 'Circuit Training', description: 'Wisselende stations, totale body workout. Nooit saai.', image: 'https://images.unsplash.com/photo-1758875570127-b6ff35e42436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'kids', title: 'Kids Fitness & Bootcamp', description: 'Kracht en conditie voor jongeren van 8-16 jaar.', image: 'https://images.unsplash.com/photo-1641708594063-46b5bbe83e40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'corporate', title: 'Bedrijfstraining', description: 'Groepstraining speciaal voor bedrijven en teams.', image: 'https://images.unsplash.com/photo-1593234270323-0414ec1574e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
+  {
+    id: 'small-group',
+    title: 'Small Group Training',
+    description: 'Maximaal acht personen, dus je krijgt nog steeds correctie op je techniek.',
+    image: photo.cardioDuo,
+  },
+  {
+    id: 'bootcamp',
+    title: 'Bootcamp',
+    description: 'Buiten op het terrein, met je eigen gewicht en wat er verder voorhanden is.',
+    image: photo.farmerswalk,
+  },
+  {
+    id: 'tabata',
+    title: 'Tabata',
+    description: 'Korte, explosieve intervallen. Twintig seconden aan, tien seconden uit.',
+    image: photo.opdrukken,
+  },
+  {
+    id: 'circuit',
+    title: 'Circuit Training',
+    description: 'Vaste ronde langs de stations, hele lichaam in één les.',
+    image: photo.kabelPull,
+  },
+  {
+    id: 'kids',
+    title: 'Kids Fitness & Bootcamp',
+    description: 'Voor 8 tot 16 jaar. Bewegen leren zonder dat het op school lijkt.',
+    image: photo.lunge2,
+  },
+  {
+    id: 'corporate',
+    title: 'Bedrijfstraining',
+    description: 'Een vast moment in de week voor uw team, op maat samengesteld.',
+    image: photo.duoHalters,
+  },
 ];
 
-const weekSchedule = [
-  { day: 'Maandag', classes: [{ name: 'Small Group', time: '07:00' }, { name: 'Circuit', time: '18:00' }, { name: 'Bootcamp', time: '19:30' }] },
-  { day: 'Dinsdag', classes: [{ name: 'Tabata', time: '06:30' }, { name: 'Small Group', time: '17:00' }] },
-  { day: 'Woensdag', classes: [{ name: 'Circuit', time: '07:00' }, { name: 'Kids Fitness', time: '16:00' }, { name: 'Bootcamp', time: '18:30' }] },
-  { day: 'Donderdag', classes: [{ name: 'Small Group', time: '06:00' }, { name: 'Tabata', time: '18:00' }] },
-  { day: 'Vrijdag', classes: [{ name: 'Circuit', time: '07:00' }, { name: 'Small Group', time: '17:30' }] },
-  { day: 'Zaterdag', classes: [{ name: 'Bootcamp', time: '09:00' }, { name: 'Kids Bootcamp', time: '10:30' }] },
+const principles = [
+  { k: 'Groepsgrootte', v: 'Nooit meer dan acht mensen per les' },
+  { k: 'Begeleiding', v: 'Een trainer die je naam en je schema kent' },
+  { k: 'Niveau', v: 'Elke oefening heeft een lichtere en zwaardere variant' },
+  { k: 'Rooster', v: 'Vroeg in de ochtend, eind van de middag en zaterdag' },
 ];
 
 export default function GroepstrainingenOverview() {
-  const today = new Date().getDay();
-  const currentDayIndex = today === 0 ? 6 : today - 1;
+  const currentDayIndex = todayIndex();
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1772764768073-c95db4f77864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-            alt="Group training"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight">
-              Groepstrainingen bij Body by Marcel
-            </h1>
-            <div className="h-1 w-24 bg-[#7AC943] mb-8" />
-            <p className="text-xl md:text-2xl text-white/85 mb-12 max-w-2xl">
-              Samen trainen, samen groeien. Ontdek onze groepslessen voor elk niveau.
-            </p>
-            <Link to="/groepstrainingen/rooster" className="inline-block bg-[#7AC943] hover:bg-[#6BB835] text-white px-10 py-4 rounded-xl text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg">
-              Bekijk het rooster
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="bg-paper">
+      <PageHero
+        eyebrow="Groepstrainingen"
+        title="Samen trainen, zonder in de massa te verdwijnen"
+        intro="Zes vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een."
+        image={photo.duoMedicijnbal}
+        imageAlt="Twee deelnemers trainen samen met een medicijnbal"
+      >
+        <Link to="/groepstrainingen/rooster" className="btn btn-lime">
+          Bekijk het rooster
+        </Link>
+        <Link to="/proefdag" className="btn btn-outline">
+          Gratis proefles
+        </Link>
+      </PageHero>
 
-      {/* Intro */}
-      <section className="py-24 md:py-36 bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-14 lg:gap-24 items-center">
+      {/* Aanpak */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+          <div className="grid lg:grid-cols-[1fr_0.85fr] gap-12 lg:gap-20 items-center">
             <div>
-              <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-                Onze Filosofie
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl text-zinc-900 mb-6 leading-tight">
-                Samen sterker,
+              <span className="eyebrow">De aanpak</span>
+              <h2 className="display-lg mt-6 text-ink">
+                Kwaliteit boven
                 <br />
-                persoonlijk begeleid
+                aantallen
               </h2>
-              <div className="h-1 w-16 bg-[#7AC943] mb-6" />
-              <div className="space-y-4 text-zinc-500 leading-relaxed mb-8">
+              <div className="mt-7 space-y-4 text-lg leading-relaxed text-ink-soft">
                 <p>
-                  Bij Body by Marcel draait groepstraining niet om massa, maar om kwaliteit. Onze kleine groepen
-                  garanderen persoonlijke aandacht van professionele coaches, terwijl je geniet van de energie
-                  en motivatie van je trainingspartners.
+                  Groepstraining hoeft niet te betekenen dat je een nummer bent. Door de groepen klein
+                  te houden blijft er ruimte om je houding te corrigeren en de oefening aan te passen
+                  aan wat jij op dat moment aankunt.
                 </p>
                 <p>
-                  Of je nu beginner bent of gevorderd, elke training wordt aangepast aan jouw niveau en doelen.
-                  Dat is de BBM-aanpak: professioneel, persoonlijk en geschikt voor iedereen.
+                  Beginner of gevorderd: je doet dezelfde les mee, op jouw niveau.
                 </p>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Users, text: 'Kleine groepen (max 8)' },
-                  { icon: Target, text: 'Persoonlijke begeleiding' },
-                  { icon: Award, text: 'Alle niveaus welkom' },
-                  { icon: Calendar, text: 'Flexibel rooster' },
-                ].map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-[#7AC943]/10 rounded-lg flex items-center justify-center">
-                        <Icon size={18} className="text-[#7AC943]" />
-                      </div>
-                      <span className="font-semibold text-zinc-700 text-sm">{item.text}</span>
-                    </div>
-                  );
-                })}
-              </div>
+
+              <dl className="mt-10 border-t border-hairline">
+                {principles.map((row) => (
+                  <div
+                    key={row.k}
+                    className="grid sm:grid-cols-[10rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline"
+                  >
+                    <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
+                      {row.k}
+                    </dt>
+                    <dd className="text-[0.9375rem] text-ink">{row.v}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+
+            <div className="photo-accent photo-accent-left">
+              <div className="aspect-[4/5]">
                 <img
-                  src="https://images.unsplash.com/photo-1750698545009-679820502908?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
-                  alt="Trainer with group"
-                  className="w-full h-full object-cover"
+                  src={photo.highFive}
+                  alt="Deelnemer en trainer geven elkaar een high five"
+                  loading="lazy"
+                  className="photo"
                 />
               </div>
-              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-[#7AC943] rounded-2xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Training Types Grid */}
-      <section className="py-24 md:py-36 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-5xl md:text-6xl text-zinc-900 mb-6">Kies jouw training</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto" />
+      {/* Kies je training */}
+      <section className="py-20 md:py-24 bg-paper-dim border-y border-hairline">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+          <div className="max-w-2xl mb-12">
+            <h2 className="display-lg text-ink">Kies je training</h2>
+            <p className="mt-4 text-ink-soft leading-relaxed">
+              Klik op een training voor de details, het niveau en de tijden.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {trainingTypes.map((t) => (
               <Link
                 key={t.id}
                 to={`/groepstrainingen/${t.id}`}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="group flex flex-col bg-paper border border-hairline hover:border-ink transition-colors duration-200 rounded-md overflow-hidden"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={t.image} alt={t.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={t.image}
+                    alt=""
+                    loading="lazy"
+                    className="photo transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl text-zinc-900 mb-3 tracking-wide">{t.title}</h3>
-                  <p className="text-zinc-500 mb-4 leading-relaxed text-sm">{t.description}</p>
-                  <div className="flex items-center text-[#7AC943] font-semibold gap-2 group-hover:gap-3 transition-all text-sm">
-                    <span>Meer info</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
+
+                <div className="flex flex-col flex-1 p-5">
+                  <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150">
+                    {t.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-stone flex-1">{t.description}</p>
+                  <span className="mono inline-flex items-center gap-1.5 mt-4 text-[0.6875rem] uppercase tracking-[0.12em] text-moss">
+                    Bekijk {t.title.toLowerCase()}
+                    <ArrowRight
+                      size={13}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
                 </div>
               </Link>
             ))}
@@ -140,71 +167,73 @@ export default function GroepstrainingenOverview() {
         </div>
       </section>
 
-      {/* Photo Strip */}
-      <section className="py-14 bg-zinc-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              'https://images.unsplash.com/photo-1772764768073-c95db4f77864?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-              'https://images.unsplash.com/photo-1605720789771-a7fb8ab19d04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-              'https://images.unsplash.com/photo-1681439474763-e961dc9c652f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-              'https://images.unsplash.com/photo-1758274526108-49b7e3fc05aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-            ].map((src, i) => (
-              <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden">
-                <img src={src} alt={`Action ${i + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+      {/* Deze week */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-8">
+          <h2 className="display-lg text-ink mb-10">Deze week</h2>
+
+          <div className="border-t border-ink">
+            {schedule.map((day, i) => (
+              <div
+                key={day.day}
+                className={`grid sm:grid-cols-[9rem_1fr] gap-2 sm:gap-6 py-4 border-b border-hairline ${
+                  i === currentDayIndex ? 'bg-lime/10 -mx-3 px-3' : ''
+                }`}
+              >
+                <h3 className="flex items-center gap-2 font-semibold text-ink">
+                  {i === currentDayIndex && (
+                    <span className="w-1.5 h-1.5 bg-lime" aria-hidden="true" />
+                  )}
+                  {day.day}
+                  {i === currentDayIndex && <span className="sr-only">(vandaag)</span>}
+                </h3>
+                <ul className="flex flex-wrap gap-x-6 gap-y-1.5">
+                  {day.classes.map((cls) => (
+                    <li key={cls.short} className="text-[0.9375rem] text-ink-soft">
+                      <span className="mono text-stone mr-2">{cls.time}</span>
+                      {cls.short}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
+
+          <Link
+            to="/groepstrainingen/rooster"
+            className="group inline-flex items-center gap-2 mt-8 mono text-[0.6875rem] uppercase tracking-[0.14em] text-moss underline underline-offset-4 decoration-1"
+          >
+            Volledig rooster
+            <ArrowRight
+              size={13}
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </Link>
         </div>
       </section>
 
-      {/* Schedule Preview */}
-      <section className="py-24 md:py-36 bg-zinc-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-4xl md:text-5xl text-zinc-900 mb-6">Deze week</h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto" />
+      {/* Beeldstrook */}
+      <section className="grid grid-cols-2 md:grid-cols-4">
+        {[photo.studioHal, photo.opdrukken2, photo.schoudersHalters, photo.matten].map((src) => (
+          <div key={src} className="aspect-[4/3] overflow-hidden">
+            <img src={src} alt="" loading="lazy" className="photo" />
           </div>
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            {weekSchedule.map((day, i) => (
-              <div key={i} className={`border-b border-zinc-100 last:border-0 ${i === currentDayIndex ? 'bg-[#7AC943]/5' : ''}`}>
-                <div className="p-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      {i === currentDayIndex && <div className="w-2 h-2 bg-[#7AC943] rounded-full" />}
-                      <h3 className="font-display text-xl text-zinc-900 tracking-wide">{day.day}</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {day.classes.map((cls, j) => (
-                        <div key={j} className="px-4 py-2 bg-zinc-100 rounded-lg text-sm">
-                          <span className="font-semibold text-zinc-900">{cls.name}</span>
-                          <span className="text-zinc-500 ml-2">{cls.time}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/groepstrainingen/rooster" className="inline-flex items-center gap-2 text-[#7AC943] font-semibold hover:gap-3 transition-all text-sm">
-              <span>Volledig rooster bekijken</span>
-              <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
+        ))}
       </section>
 
-      {/* CTA */}
-      <section className="py-24 md:py-36 bg-[#7AC943]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-display text-5xl md:text-6xl text-white mb-6">
-            Eerste groepstraining gratis!
+      {/* Afsluiter */}
+      <section className="bg-ink text-paper py-20 md:py-24">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="display-lg">
+            Je eerste groepsles
             <br />
-            Plan je proefles.
+            is gratis
           </h2>
-          <Link to="/proefdag" className="inline-block bg-white hover:bg-zinc-100 text-[#7AC943] px-10 py-4 rounded-xl text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg">
+          <p className="mt-6 text-paper/65 leading-relaxed">
+            Kom een keer meedoen en kijk of het klikt. Geen abonnement, geen verplichtingen.
+          </p>
+          <Link to="/proefdag" className="btn btn-lime mt-9">
             Proefles boeken
           </Link>
         </div>

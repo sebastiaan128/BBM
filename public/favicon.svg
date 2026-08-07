@@ -1,12 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <text
-    x="50"
-    y="72"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="52"
-    font-weight="bold"
-    fill="#7AC943"
-    text-anchor="middle"
-    letter-spacing="1"
-  >BBM</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <text x="32" y="44" font-family="Times New Roman, Times, serif" font-size="38"
+        font-weight="bold" fill="#7AC943" text-anchor="middle"
+        textLength="62" lengthAdjust="spacingAndGlyphs">BBM</text>
 </svg>

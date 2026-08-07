@@ -1,102 +1,98 @@
-import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const details = [
+  {
+    label: 'Locatie',
+    lines: ['Rijksstraatweg 125', '3921 AD Elst (U)'],
+    href: 'https://maps.google.com/?q=Rijksstraatweg+125+Elst+Utrecht',
+    linkText: 'Op de kaart',
+  },
+  { label: 'Telefoon', lines: ['06-42059446'], href: 'tel:0642059446', linkText: 'Bel ons' },
+  {
+    label: 'E-mail',
+    lines: ['info@bodybymarcel.nl'],
+    href: 'mailto:info@bodybymarcel.nl',
+    linkText: 'Stuur een mail',
+  },
+];
+
+/* Zondag gesloten, gelijk aan het rooster en de proefdagkalender. */
+const openingHours = [
+  { day: 'Maandag t/m vrijdag', hours: '06:00 – 21:00' },
+  { day: 'Zaterdag', hours: '08:00 – 16:00' },
+  { day: 'Zondag', hours: 'Gesloten' },
+];
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 md:py-36 bg-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-            Contact
-          </span>
-          <h2 className="font-display text-5xl md:text-6xl text-white mb-6">
-            Klaar om te starten?
-          </h2>
-          <div className="h-1 w-16 bg-[#7AC943] mx-auto mb-6" />
-          <p className="text-xl text-white/65 max-w-2xl mx-auto mb-8">
-            Neem contact op voor een vrijblijvend kennismakingsgesprek
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block bg-[#7AC943] hover:bg-[#6BB835] text-white px-10 py-4 rounded-xl text-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-2xl"
-          >
-            Naar contactformulier
-          </Link>
-        </div>
+    <section id="contact" className="py-20 md:py-28 bg-paper">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
+          <div>
+            <span className="eyebrow">Contact</span>
+            <h2 className="display-lg mt-6 text-ink">
+              Kom een keer
+              <br />
+              kijken
+            </h2>
+            <p className="mt-7 text-lg leading-relaxed text-ink-soft">
+              De studio staat aan de Rijksstraatweg in Elst, met gratis parkeren voor de deur. Bel
+              even of boek een proefdag, dan zorgen we dat er iemand voor je klaarstaat.
+            </p>
 
-        <div className="grid md:grid-cols-2 gap-14 lg:gap-20">
-          {/* Info */}
-          <div className="space-y-7">
-            {[
-              { icon: MapPin, title: 'Locatie', content: 'Rijksstraatweg 125\n3921AD Elst\nUtrecht, Nederland' },
-              { icon: Phone, title: 'Telefoon', href: 'tel:0642059446', content: '06-42059446' },
-              { icon: Mail, title: 'Email', href: 'mailto:info@bodybymarcel.nl', content: 'info@bodybymarcel.nl' },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-[#7AC943]/10 rounded-xl flex items-center justify-center text-[#7AC943] flex-shrink-0">
-                    <Icon size={22} />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-white mb-1.5">{item.title}</h3>
-                    {item.href ? (
-                      <a href={item.href} className="text-white/65 hover:text-[#7AC943] transition-colors whitespace-pre-line text-sm">
-                        {item.content}
-                      </a>
-                    ) : (
-                      <p className="text-white/65 whitespace-pre-line text-sm">{item.content}</p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Social */}
-            <div className="pt-4">
-              <h3 className="text-base font-semibold text-white mb-4">Volg ons</h3>
-              <div className="flex gap-3">
-                {[
-                  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-                  { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-                ].map((s, i) => {
-                  const Icon = s.icon;
-                  return (
+            <dl className="mt-10 border-t border-hairline">
+              {details.map((item) => (
+                <div
+                  key={item.label}
+                  className="grid sm:grid-cols-[7rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline"
+                >
+                  <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
+                    {item.label}
+                  </dt>
+                  <dd>
+                    {item.lines.map((line) => (
+                      <p key={line} className="text-[0.9375rem] text-ink">
+                        {line}
+                      </p>
+                    ))}
                     <a
-                      key={i}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="w-12 h-12 bg-[#7AC943]/10 hover:bg-[#7AC943] rounded-xl flex items-center justify-center text-[#7AC943] hover:text-white transition-all duration-200"
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="inline-block mt-1.5 mono text-[0.6875rem] uppercase tracking-[0.14em] text-moss underline underline-offset-4 decoration-1 hover:decoration-2"
                     >
-                      <Icon size={18} />
+                      {item.linkText}
                     </a>
-                  );
-                })}
-              </div>
-            </div>
+                  </dd>
+                </div>
+              ))}
 
-            {/* Opening hours */}
-            <div className="bg-zinc-800/50 rounded-2xl p-6 border border-zinc-700/50">
-              <h3 className="text-base font-semibold text-white mb-4">Openingstijden</h3>
-              <div className="space-y-2.5 text-sm">
-                {[
-                  { day: 'Maandag - Vrijdag', hours: '06:00 - 22:00' },
-                  { day: 'Zaterdag', hours: '08:00 - 20:00' },
-                  { day: 'Zondag', hours: '10:00 - 18:00' },
-                ].map((row, i) => (
-                  <div key={i} className="flex justify-between">
-                    <span className="text-white/60">{row.day}</span>
-                    <span className="text-white font-semibold">{row.hours}</span>
-                  </div>
-                ))}
+              <div className="grid sm:grid-cols-[7rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline">
+                <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
+                  Open
+                </dt>
+                <dd className="space-y-1">
+                  {openingHours.map((row) => (
+                    <p key={row.day} className="flex justify-between gap-4 text-[0.9375rem] max-w-xs">
+                      <span className="text-ink-soft">{row.day}</span>
+                      <span className="mono text-ink">{row.hours}</span>
+                    </p>
+                  ))}
+                </dd>
               </div>
+            </dl>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link to="/proefdag" className="btn btn-lime">
+                Plan je proefdag
+              </Link>
+              <Link to="/contact" className="btn btn-outline">
+                Naar het contactformulier
+              </Link>
             </div>
           </div>
 
-          {/* Map */}
-          <div className="h-[500px] md:h-full min-h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="aspect-[4/3] lg:aspect-[4/5] border border-hairline bg-mist">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.3597920090741!2d5.503261184825531!3d51.983427245326475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c651494090b197%3A0x1c69d179c91fc018!2sBody%20by%20Marcel!5e0!3m2!1snl!2snl!4v1774468241137!5m2!1snl!2snl"
               width="100%"
@@ -105,7 +101,7 @@ export default function ContactSection() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Body by Marcel Locatie"
+              title="Locatie van Body by Marcel op Google Maps"
             />
           </div>
         </div>

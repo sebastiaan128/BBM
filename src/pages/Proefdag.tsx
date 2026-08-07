@@ -1,96 +1,133 @@
 import { useState } from 'react';
 import BookingCalendar from '../components/BookingCalendar';
-import { Activity, Users, Award } from 'lucide-react';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
+import { photo } from '../photos';
 
 const timeSlots = ['09:00', '10:00', '11:00', '14:00', '16:00', '17:00', '19:00'];
 
+/* De proefdag is een echte volgorde, dus de nummering betekent iets. */
 const expectations = [
-  { icon: Activity, title: 'Rondleiding', description: 'Een complete tour door onze faciliteiten' },
-  { icon: Users, title: 'Proeftraining', description: 'Ervaar een volledige training onder begeleiding' },
-  { icon: Award, title: 'Persoonlijk advies', description: 'Bespreek je doelen met onze experts' },
+  { step: '01', title: 'Rondleiding', description: 'Je ziet de studio, de krachthal en het buitenterrein.' },
+  { step: '02', title: 'Proeftraining', description: 'Een volledige training mee, onder begeleiding en op jouw niveau.' },
+  { step: '03', title: 'Advies', description: 'Na afloop bespreken we je doelen en wat daar het beste bij past.' },
 ];
 
 export default function Proefdag() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [formData, setFormData] = useState({ naam: '', email: '', telefoon: '', opmerkingen: '' });
+  const [isBooked, setIsBooked] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Bedankt voor je aanmelding! We nemen zo snel mogelijk contact met je op.');
+    setIsBooked(true);
   };
 
+  const fields = [
+    { id: 'naam', label: 'Naam', type: 'text', placeholder: 'Je volledige naam', required: true },
+    { id: 'email', label: 'E-mail', type: 'email', placeholder: 'jij@voorbeeld.nl', required: true },
+    { id: 'telefoon', label: 'Telefoonnummer', type: 'tel', placeholder: '06-12345678', required: true },
+  ];
+
   return (
-    <div className="min-h-screen bg-zinc-50">
-      {/* Hero */}
-      <section className="relative bg-zinc-900 py-28 md:py-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] rounded-full text-sm font-semibold mb-6">
-              Gratis Proefdag
-            </span>
-            <h1 className="font-display text-5xl md:text-7xl text-white mb-6 leading-tight">
-              Plan jouw gratis proefdag
-            </h1>
-            <div className="h-1 w-24 bg-[#7AC943] mb-6" />
-            <p className="text-xl text-white/75 max-w-2xl">
-              Ervaar Body by Marcel vrijblijvend. Kies een datum en tijd die jou uitkomt.
-            </p>
+    <div className="bg-paper">
+      {/* Kop */}
+      <header className="bg-paper border-b border-hairline">
+        <div className="grid lg:grid-cols-[1fr_0.8fr]">
+          <div className="flex items-center px-6 sm:px-10 lg:px-14 xl:px-20 py-16 lg:py-20">
+            <div className="max-w-lg">
+              <span className="eyebrow">Gratis proefdag</span>
+              <h1 className="display-lg mt-6 text-ink">Kom een dag meedraaien</h1>
+              <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+                Kies een datum en tijd die je uitkomt. Je zit nergens aan vast, en de proefdag kost je
+                niets.
+              </p>
+            </div>
           </div>
+          <div className="relative min-h-[14rem] lg:min-h-0">
+            <img
+              src={photo.kettlebellDaglicht}
+              alt="Training in de studio bij daglicht"
+              className="photo absolute inset-0"
+            />
+          </div>
+        </div>
+      </header>
+
+      {/* Stappen */}
+      <section className="py-16 bg-paper-dim border-b border-hairline">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8">
+          <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-8">
+            Hoe de dag eruitziet
+          </h2>
+          <ol className="grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {expectations.map((item) => (
+              <li key={item.step} className="border-t-2 border-ink pt-4">
+                <span className="mono text-xs text-moss">{item.step}</span>
+                <h3 className="display-md text-ink mt-1.5">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{item.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* Booking */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Calendar */}
+      {/* Reserveren */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            {/* Datum en tijd */}
             <div className="space-y-6">
-              <BookingCalendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+              <div>
+                <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-3">
+                  Stap 1. Kies een datum
+                </h2>
+                <BookingCalendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+              </div>
 
               {selectedDate && (
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-zinc-100">
-                  <h3 className="font-display text-xl text-zinc-900 mb-3 tracking-wide">
-                    Kies een tijdstip
-                  </h3>
-                  <p className="text-sm text-zinc-500 mb-4">
-                    {format(selectedDate, 'EEEE d MMMM yyyy', { locale: nl })}
-                  </p>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                    {timeSlots.map((time) => (
-                      <button
-                        key={time}
-                        onClick={() => setSelectedTime(time)}
-                        className={`py-3 px-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                          selectedTime === time
-                            ? 'bg-[#7AC943] text-white shadow-lg scale-105'
-                            : 'bg-white border-2 border-[#7AC943] text-[#7AC943] hover:bg-[#7AC943]/10'
-                        }`}
-                      >
-                        {time}
-                      </button>
-                    ))}
+                <div>
+                  <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-3">
+                    Stap 2. Kies een tijd
+                  </h2>
+                  <div className="border border-hairline p-5 sm:p-6">
+                    <p className="text-sm text-ink-soft mb-4 first-letter:uppercase">
+                      {format(selectedDate, 'EEEE d MMMM yyyy', { locale: nl })}
+                    </p>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                      {timeSlots.map((time) => (
+                        <button
+                          key={time}
+                          onClick={() => setSelectedTime(time)}
+                          aria-pressed={selectedTime === time}
+                          className={`mono py-2.5 text-sm border transition-colors duration-150 ${
+                            selectedTime === time
+                              ? 'bg-ink text-paper border-ink'
+                              : 'border-hairline text-ink hover:border-ink'
+                          }`}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Form */}
-            <div>
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-zinc-100 sticky top-24">
-                <h3 className="font-display text-2xl text-zinc-900 mb-6 tracking-wide">Jouw gegevens</h3>
+            {/* Gegevens */}
+            <div className="lg:sticky lg:top-24">
+              <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-3">
+                Stap 3. Je gegevens
+              </h2>
 
+              <div className="border border-hairline p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {[
-                    { id: 'naam', label: 'Naam *', type: 'text', placeholder: 'Volledige naam', required: true },
-                    { id: 'email', label: 'E-mail *', type: 'email', placeholder: 'jouw@email.nl', required: true },
-                    { id: 'telefoon', label: 'Telefoonnummer *', type: 'tel', placeholder: '06-12345678', required: true },
-                  ].map((field) => (
+                  {fields.map((field) => (
                     <div key={field.id}>
-                      <label htmlFor={field.id} className="block text-sm font-semibold text-zinc-700 mb-2">
-                        {field.label}
+                      <label htmlFor={field.id} className="label">
+                        {field.label} <span aria-hidden="true">*</span>
                       </label>
                       <input
                         type={field.type}
@@ -98,86 +135,75 @@ export default function Proefdag() {
                         required={field.required}
                         value={formData[field.id as keyof typeof formData]}
                         onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border-2 border-zinc-200 focus:border-[#7AC943] focus:ring-4 focus:ring-[#7AC943]/10 outline-none transition-all text-sm"
+                        className="field"
                         placeholder={field.placeholder}
                       />
                     </div>
                   ))}
 
                   <div>
-                    <label htmlFor="opmerkingen" className="block text-sm font-semibold text-zinc-700 mb-2">
-                      Opmerkingen (optioneel)
+                    <label htmlFor="opmerkingen" className="label">
+                      Opmerkingen
                     </label>
                     <textarea
                       id="opmerkingen"
                       rows={4}
                       value={formData.opmerkingen}
                       onChange={(e) => setFormData({ ...formData, opmerkingen: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-zinc-200 focus:border-[#7AC943] focus:ring-4 focus:ring-[#7AC943]/10 outline-none transition-all resize-none text-sm"
-                      placeholder="Vertel ons iets over je fitnessdoelen..."
+                      className="field"
+                      placeholder="Waar wil je aan werken? Zijn er blessures om rekening mee te houden?"
                     />
                   </div>
 
-                  {selectedDate && selectedTime && (
-                    <div className="bg-[#7AC943]/10 rounded-xl p-4 border border-[#7AC943]/20">
-                      <p className="text-sm font-semibold text-zinc-900 mb-1">Gekozen tijdstip:</p>
-                      <p className="text-[#7AC943] font-bold text-sm">
-                        {format(selectedDate, 'EEEE d MMMM yyyy', { locale: nl })} om {selectedTime}
+                  <div
+                    className={`border p-4 ${
+                      selectedDate && selectedTime ? 'border-moss bg-lime/10' : 'border-hairline'
+                    }`}
+                  >
+                    <p className="mono text-[0.625rem] uppercase tracking-[0.14em] text-stone">
+                      Gekozen moment
+                    </p>
+                    <p className="mt-1 text-[0.9375rem] text-ink first-letter:uppercase">
+                      {selectedDate && selectedTime
+                        ? `${format(selectedDate, 'EEEE d MMMM yyyy', { locale: nl })} om ${selectedTime}`
+                        : 'Kies hiernaast eerst een datum en tijd'}
+                    </p>
+                  </div>
+
+                  <div aria-live="polite">
+                    {isBooked && (
+                      <p className="text-sm text-ink border border-moss bg-lime/10 p-4">
+                        <strong className="font-semibold">Aanvraag ontvangen.</strong> We bellen je
+                        binnen 24 uur om de proefdag te bevestigen.
                       </p>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   <button
                     type="submit"
-                    disabled={!selectedDate || !selectedTime}
-                    className={`w-full py-4 rounded-xl font-semibold text-base transition-all duration-200 ${
-                      selectedDate && selectedTime
-                        ? 'bg-[#7AC943] hover:bg-[#6BB835] text-white hover:scale-105 shadow-lg'
-                        : 'bg-zinc-200 text-zinc-400 cursor-not-allowed'
+                    disabled={!selectedDate || !selectedTime || isBooked}
+                    className={`btn w-full justify-center ${
+                      selectedDate && selectedTime && !isBooked
+                        ? 'btn-primary'
+                        : 'bg-hairline text-stone cursor-not-allowed'
                     }`}
                   >
-                    Proefdag reserveren
+                    {isBooked ? 'Aanvraag verstuurd' : 'Proefdag reserveren'}
                   </button>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Expectations */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-4xl md:text-5xl text-zinc-900 mb-4">
-              Wat kun je verwachten?
-            </h2>
-            <div className="h-1 w-16 bg-[#7AC943] mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {expectations.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[#7AC943]/10 rounded-2xl mb-5">
-                    <Icon size={34} className="text-[#7AC943]" />
-                  </div>
-                  <h3 className="font-display text-2xl text-zinc-900 mb-2 tracking-wide">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm">{item.description}</p>
-                </div>
-              );
-            })}
-          </div>
-          <div className="mt-14 text-center bg-zinc-50 rounded-2xl p-8">
-            <p className="text-zinc-500 text-sm mb-2">
-              <strong className="text-zinc-800">Rijksstraatweg 125, 3921AD Elst (U)</strong>
-            </p>
-            <p className="text-zinc-500 text-sm">
-              Vragen? Bel ons op{' '}
-              <a href="tel:0642059446" className="text-[#7AC943] font-semibold hover:underline">
-                06-42059446
-              </a>
-            </p>
+              <p className="mt-5 text-sm text-stone leading-relaxed">
+                Liever even bellen? Dat kan op{' '}
+                <a
+                  href="tel:0642059446"
+                  className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2"
+                >
+                  06-42059446
+                </a>
+                . We zitten aan de Rijksstraatweg 125 in Elst.
+              </p>
+            </div>
           </div>
         </div>
       </section>

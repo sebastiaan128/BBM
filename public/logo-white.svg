@@ -1,40 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" width="400" height="180">
-  <!-- BBM -->
-  <text
-    x="200" y="72"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="64"
-    font-weight="bold"
-    fill="#7AC943"
-    text-anchor="middle"
-    letter-spacing="4"
-  >BBM</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" width="400" height="150">
+  <!-- BBM, gecentreerd boven het woordmerk -->
+  <text x="200" y="66" font-family="Times New Roman, Times, Tinos, serif" font-size="72" font-weight="bold"
+        fill="#7AC943" text-anchor="middle" letter-spacing="1.5">BBM</text>
 
   <!-- BODY BY MARCEL -->
-  <text
-    x="200" y="108"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="22"
-    font-weight="bold"
-    fill="#ffffff"
-    text-anchor="middle"
-    letter-spacing="8"
-  >BODY BY MARCEL</text>
+  <text x="200" y="100" font-family="Times New Roman, Times, Tinos, serif" font-size="33" font-weight="normal"
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="3.6">BODY BY MARCEL</text>
 
-  <!-- Left line -->
-  <line x1="34" y1="134" x2="118" y2="134" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
-  <!-- Right line -->
-  <line x1="282" y1="134" x2="366" y2="134" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <!-- Streepjes naast de onderregel -->
+  <line x1="44" y1="118" x2="106" y2="118" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+  <line x1="294" y1="118" x2="356" y2="118" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
 
-  <!-- Fitness & Personal Training -->
-  <text
-    x="200" y="138"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="13"
-    font-weight="normal"
-    fill="#ffffff"
-    text-anchor="middle"
-    letter-spacing="2"
-    opacity="0.75"
-  >Fitness &amp; Personal Training</text>
+  <text x="200" y="122" font-family="Times New Roman, Times, Tinos, serif" font-size="15" font-weight="normal"
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="0.9">Fitness &amp; Personal Training</text>
 </svg>

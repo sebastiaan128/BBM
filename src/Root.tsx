@@ -13,7 +13,7 @@ function ScrollToTop() {
 
 export default function Root() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-paper">
       <ScrollToTop />
       <Navigation />
       <main>

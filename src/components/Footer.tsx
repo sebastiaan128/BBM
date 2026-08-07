@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
+import Logo from './Logo';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -7,56 +8,54 @@ const quickLinks = [
   { label: 'Personal Training', href: '/personal-training' },
   { label: 'Tarieven', href: '/tarieven' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Proefdag', href: '/proefdag' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-zinc-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
+    <footer className="bg-ink text-paper border-t-2 border-lime">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8 py-16">
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr] gap-12 mb-14">
+          {/* Merk */}
           <div>
-            <div className="mb-5">
-              <img
-                src="/logo-white.svg"
-                alt="Body by Marcel"
-                className="h-16 w-auto"
-              />
-            </div>
-            <p className="text-zinc-400 text-sm leading-relaxed mb-6">
-              Persoonlijke fitness & training in het hart van Elst, Utrecht. Waar balans tussen kracht, rust en voeding centraal staat.
+            <Logo tone="light" size="2.25rem" className="!items-start" />
+            <p className="mt-5 text-paper/60 text-sm leading-relaxed max-w-xs">
+              Fitness en personal training in het hart van Elst, Utrecht. Kracht, rust en voeding in
+              balans.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2 mt-6">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-zinc-800 hover:bg-[#7AC943] rounded-lg flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200"
-                aria-label="Instagram"
+                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150"
+                aria-label="Body by Marcel op Instagram"
               >
-                <Instagram size={18} />
+                <Instagram size={17} />
               </a>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-zinc-800 hover:bg-[#7AC943] rounded-lg flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200"
-                aria-label="Facebook"
+                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150"
+                aria-label="Body by Marcel op Facebook"
               >
-                <Facebook size={18} />
+                <Facebook size={17} />
               </a>
             </div>
           </div>
 
-          {/* Links */}
+          {/* Navigatie */}
           <div>
-            <h3 className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Navigatie</h3>
-            <ul className="space-y-3">
+            <h2 className="mono text-[0.625rem] uppercase tracking-[0.18em] text-paper/40 mb-5">
+              Navigatie
+            </h2>
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-zinc-400 hover:text-[#7AC943] transition-colors text-sm"
+                    className="text-paper/75 hover:text-lime transition-colors duration-150 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -67,36 +66,52 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Contact</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin size={16} className="text-[#7AC943] mt-1 flex-shrink-0" />
-                <p className="text-zinc-400 text-sm">Rijksstraatweg 125<br />3921AD Elst, Utrecht</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone size={16} className="text-[#7AC943] flex-shrink-0" />
-                <a href="tel:0642059446" className="text-zinc-400 hover:text-[#7AC943] transition-colors text-sm">
+            <h2 className="mono text-[0.625rem] uppercase tracking-[0.18em] text-paper/40 mb-5">
+              Contact
+            </h2>
+            <address className="not-italic space-y-4 text-sm">
+              <p className="text-paper/75 leading-relaxed">
+                Rijksstraatweg 125
+                <br />
+                3921 AD Elst, Utrecht
+              </p>
+              <p>
+                <a
+                  href="tel:0642059446"
+                  className="mono text-paper/75 hover:text-lime transition-colors duration-150"
+                >
                   06-42059446
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail size={16} className="text-[#7AC943] flex-shrink-0" />
-                <a href="mailto:info@bodybymarcel.nl" className="text-zinc-400 hover:text-[#7AC943] transition-colors text-sm">
+              </p>
+              <p>
+                <a
+                  href="mailto:info@bodybymarcel.nl"
+                  className="text-paper/75 hover:text-lime transition-colors duration-150"
+                >
                   info@bodybymarcel.nl
                 </a>
-              </div>
-            </div>
+              </p>
+            </address>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-zinc-600 text-sm">
-            © {new Date().getFullYear()} Body by Marcel. Alle rechten voorbehouden.
+        <div className="pt-7 border-t border-ink-soft flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <p className="mono text-xs text-paper/55">
+            © {new Date().getFullYear()} Body by Marcel
           </p>
-          <div className="flex gap-6 text-sm">
-            <Link to="/contact" className="text-zinc-600 hover:text-[#7AC943] transition-colors">Privacybeleid</Link>
-            <Link to="/contact" className="text-zinc-600 hover:text-[#7AC943] transition-colors">Algemene voorwaarden</Link>
-          </div>
+          {/* TODO: hier horen een echt privacybeleid en echte algemene
+              voorwaarden te staan. Tot die pagina's er zijn geen link, want
+              een link met dat label die naar het contactformulier gaat is
+              misleidend. */}
+          <p className="text-xs text-paper/55">
+            Vragen over je gegevens?{' '}
+            <Link
+              to="/contact"
+              className="text-paper underline underline-offset-4 decoration-1 hover:text-lime transition-colors"
+            >
+              Neem contact op
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
