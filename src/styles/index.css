@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Tinos:wght@400;700&display=swap');
+/* De lettertypes worden in index.html geladen, met preconnect ervoor. Een
+   @import hier zou een tweede, geketende blokkerende request opleveren. */
 @import 'tailwindcss';
 
 @theme {
@@ -32,6 +33,15 @@
      hoeken van een standaardsjabloon. */
   --radius-sm: 4px;
   --radius-md: 10px;
+
+  /* ── Beweging ───────────────────────────────────────────────────
+     Eén curve en drie snelheden voor de hele site. Snel voor kleur op
+     hover, basis voor alles wat van vorm verandert, traag voor beeld
+     dat binnenkomt. In JSX: `ease-smooth` + `duration-150|250|400`. */
+  --ease-smooth: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 400ms;
 }
 
 * {
@@ -73,6 +83,36 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  /* Alles wat normaal binnenkomt staat hier meteen goed. Zonder deze regels
+     blijft de begintoestand hangen zodra de transitie wordt uitgezet. De
+     foto houdt wel zijn voorbeeldje als achtergrond: dat is geen beweging,
+     alleen iets te zien hebben zolang het beeld nog niet binnen is. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .photo {
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+/* ── Binnenkomen bij scrollen ─────────────────────────────────────
+   De begintoestand; Root.tsx zet .is-revealed zodra het element in beeld
+   komt. Zie useScrollReveal: valt terug op direct tonen als er geen
+   IntersectionObserver is. */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-slow) var(--ease-smooth),
+    transform var(--dur-slow) var(--ease-smooth);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
 }
 
 /* ── Koppen ───────────────────────────────────────────────────────
@@ -143,7 +183,15 @@ body {
   font-size: 0.9375rem;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  transition: background-color var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth), border-color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-smooth);
+}
+
+/* Op mobiel bestaat hover niet, dus zonder ingedrukte staat voelt een tik
+   dood aan. Eén pixel is genoeg om aan te komen. */
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn-primary {
@@ -202,7 +250,7 @@ body {
   background: #fff;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-sm);
-  transition: border-color 0.15s ease;
+  transition: border-color var(--dur-fast) var(--ease-smooth);
 }
 
 .field::placeholder {
@@ -237,11 +285,37 @@ textarea.field {
   background: var(--color-paper);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
-  transition: border-color 0.18s ease, background-color 0.18s ease;
+  transition: border-color var(--dur-base) var(--ease-smooth),
+    background-color var(--dur-base) var(--ease-smooth);
 }
 
 .card:hover {
   border-color: var(--color-ink);
+}
+
+/* ── Vensters ─────────────────────────────────────────────────────
+   Een venster dat er in één beeld staat voelt als een sprong. Sluiten
+   gaat wel direct: daar wil je niet op wachten. */
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.overlay {
+  animation: overlay-in var(--dur-base) var(--ease-smooth) both;
+}
+
+.dialog-panel {
+  animation: dialog-in var(--dur-base) var(--ease-smooth) both;
 }
 
 /* De fotoset is bijna volledig staand (2:3). Waar een vak breder is dan de
@@ -253,7 +327,37 @@ textarea.field {
   height: 100%;
   object-fit: cover;
   object-position: center 32%;
-  background: var(--color-mist);
+
+  /* Zolang de foto onderweg is staat het voorbeeldje van 20px hier als
+     achtergrond (gezet door Photo.tsx). Dezelfde uitsnede als de foto zelf,
+     zodat het beeld niet verspringt op het moment dat het scherp wordt. */
+  background-size: cover;
+  background-position: center 32%;
+  background-color: var(--color-mist);
+
+  /* Het scherpstellen. De onscherpte maakt van die twintig pixels een zachte
+     kleurvlek in plaats van een blokkenpatroon, en loopt daarna weg terwijl
+     de echte foto er al staat. Dat leest als een beeld dat aankomt, niet als
+     een vak dat omslaat.
+
+     clip-path houdt de onscherpte binnen het kader: zonder die regel waaiert
+     hij over de rand heen, en niet elke omlijsting snijdt af.
+
+     De transitie noemt ook scale, de eigenschap waar `group-hover:scale-*`
+     op uitkomt. Zo heeft een foto die inzoomt bij hover geen eigen
+     transitieklasse nodig: die zou transition-property overschrijven en het
+     scherpstellen weer uitzetten. */
+  filter: blur(14px);
+  transform: scale(1.04);
+  clip-path: inset(0);
+  transition: filter var(--dur-slow) var(--ease-smooth),
+    transform var(--dur-slow) var(--ease-smooth), scale var(--dur-slow) var(--ease-smooth);
+}
+
+.photo.is-loaded {
+  filter: none;
+  transform: none;
+  background-image: none;
 }
 
 /* ── Fotolijstje ──────────────────────────────────────────────────

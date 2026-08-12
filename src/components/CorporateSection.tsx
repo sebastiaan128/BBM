@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { photo } from '../photos';
+import Photo from './Photo';
 
 const features = [
   { title: 'Bedrijfstraining', description: 'Groepslessen op een vast moment in de week, afgestemd op uw team.' },
@@ -13,7 +14,7 @@ export default function CorporateSection() {
     <section className="py-20 md:py-28 bg-paper">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
+          <div data-reveal>
             <span className="eyebrow">Voor bedrijven</span>
 
             <h2 className="display-lg mt-6 text-ink">
@@ -42,20 +43,18 @@ export default function CorporateSection() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-[3/4] overflow-hidden rounded-md">
-              <img
+            <div className="aspect-[3/4] overflow-hidden rounded-md" data-reveal>
+              <Photo
                 src={photo.duoHalters}
                 alt="Twee collega's trainen samen met halters"
                 loading="lazy"
-                className="photo"
               />
             </div>
-            <div className="aspect-[3/4] overflow-hidden rounded-md mt-10">
-              <img
+            <div className="aspect-[3/4] overflow-hidden rounded-md mt-10" data-reveal>
+              <Photo
                 src={photo.duoHalters2}
                 alt="Collega's trainen samen in de studio"
                 loading="lazy"
-                className="photo"
               />
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { photo } from '../photos';
+import Photo from './Photo';
 
 const benefits = [
   'Een schema dat op jouw doelen en agenda is gebouwd',
@@ -15,16 +16,17 @@ export default function PersonalTrainingSection() {
       <div className="grid lg:grid-cols-2">
         {/* Beeld bloedt naar de rand */}
         <div className="relative min-h-[24rem] lg:min-h-[38rem] order-last lg:order-first">
-          <img
+          <Photo
             src={photo.emsVest2}
             alt="Persoonlijke begeleiding tijdens een krachtsessie"
             loading="lazy"
-            className="photo absolute inset-0"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="absolute inset-0"
           />
         </div>
 
         <div className="flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 py-20 lg:py-28">
-          <div className="max-w-lg">
+          <div className="max-w-lg" data-reveal>
             <span className="eyebrow eyebrow-light">Personal training</span>
 
             <h2 className="display-lg mt-6">

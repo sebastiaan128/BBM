@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
 import { photo } from '../photos';
+import Photo from './Photo';
 
 interface Slide {
   image: string;
@@ -44,13 +45,33 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
     onSelect();
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
+  // De teller loopt op selectedIndex, dus hij begint opnieuw zodra je zelf
+  // een beeld kiest: anders zou het volgende beeld vlak na je klik alsnog
+  // langsschuiven. Op een tabblad op de achtergrond staat hij stil.
   useEffect(() => {
     if (!emblaApi || !autoplay || isHovered) return;
-    const id = setInterval(() => emblaApi.scrollNext(), autoplayDelay);
-    return () => clearInterval(id);
-  }, [emblaApi, autoplay, autoplayDelay, isHovered]);
+
+    let id: number | undefined;
+    const stop = () => window.clearInterval(id);
+    const start = () => {
+      stop();
+      id = window.setInterval(() => emblaApi.scrollNext(), autoplayDelay);
+    };
+    const onVisibility = () => (document.hidden ? stop() : start());
+
+    start();
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      stop();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [emblaApi, autoplay, autoplayDelay, isHovered, selectedIndex]);
 
   return (
     <section id="home" className="bg-paper">
@@ -93,9 +114,22 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
         >
           <div className="overflow-hidden h-full" ref={emblaRef}>
             <div className="flex h-full">
-              {slides.map((slide) => (
+              {slides.map((slide, i) => (
                 <div key={slide.image} className="flex-[0_0_100%] min-w-0 relative">
-                  <img src={slide.image} alt={slide.alt} className="photo absolute inset-0" />
+                  {/* Het eerste beeld is het grootste element boven de vouw en
+                      bepaalt dus wanneer de pagina 'geladen' oogt.
+
+                      De andere twee laden gewoon mee: de carrousel schuift ze
+                      opzij, waardoor de browser ze als 'buiten beeld' ziet en
+                      met loading="lazy" pas ophaalt als ze al langsschuiven.
+                      Dan sta je naar een leeg vlak te kijken. */}
+                  <Photo
+                    src={slide.image}
+                    alt={slide.alt}
+                    className="absolute inset-0"
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    fetchPriority={i === 0 ? 'high' : 'auto'}
+                  />
                   {/* Alleen genoeg verloop om de indicatiestreepjes leesbaar
                       te houden; er staat geen tekst meer over de foto. */}
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/45 to-transparent" />
@@ -114,7 +148,7 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
                   role="tab"
                   aria-selected={i === selectedIndex}
                   aria-label={`Beeld ${i + 1} van ${slides.length}`}
-                  className="flex-1 h-[3px] transition-colors duration-300"
+                  className="flex-1 h-[3px] transition-colors duration-250 ease-smooth"
                   style={{
                     background: i === selectedIndex ? 'var(--color-lime)' : 'rgba(255,255,255,0.45)',
                   }}

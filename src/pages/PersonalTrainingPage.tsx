@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import { photo } from '../photos';
+import Photo from '../components/Photo';
 
 /**
  * LET OP: dit zijn placeholders. De namen, functies, bio's en certificeringen
@@ -123,12 +124,11 @@ export default function PersonalTrainingPage() {
 
             <div className="photo-accent photo-accent-left">
               <div className="aspect-[3/4]">
-                <img
+                <Photo
                   src={photo.emsVest2}
                   alt="Krachttraining onder begeleiding"
                   loading="lazy"
-                  className="photo"
-                />
+                  />
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function PersonalTrainingPage() {
             {trainers.map((trainer) => (
               <article key={trainer.name}>
                 <div className="aspect-[3/4] overflow-hidden rounded-md mb-4">
-                  <img src={trainer.image} alt={trainer.name} loading="lazy" className="photo" />
+                  <Photo src={trainer.image} alt={trainer.name} loading="lazy" />
                 </div>
 
                 <h3 className="display-md text-ink">{trainer.name}</h3>
@@ -175,7 +175,7 @@ export default function PersonalTrainingPage() {
       <section className="grid grid-cols-2 md:grid-cols-4">
         {[photo.deadlift, photo.kettlebellSquat, photo.cardioLoopband, photo.kabelRow].map((src) => (
           <div key={src} className="aspect-[3/4] overflow-hidden">
-            <img src={src} alt="" loading="lazy" className="photo" />
+            <Photo src={src} alt="" loading="lazy" />
           </div>
         ))}
       </section>

@@ -17,8 +17,14 @@ export default function Navigation() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      const scrolled = window.scrollY > 24;
+      // Alleen bijwerken als de drempel wordt gepasseerd; anders zou elke
+      // scrollstap een render kosten.
+      setIsScrolled((current) => (current === scrolled ? current : scrolled));
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -26,9 +32,26 @@ export default function Navigation() {
     setIsMobileOpen(false);
   }, [location]);
 
+  // Menu open: escape sluit het, en de pagina eronder scrollt niet mee.
+  useEffect(() => {
+    if (!isMobileOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isMobileOpen]);
+
   return (
     <nav
-      className={`sticky top-0 z-50 bg-paper border-b transition-shadow duration-200 ${
+      className={`sticky top-0 z-50 bg-paper border-b transition-[box-shadow,border-color] duration-250 ease-smooth ${
         isScrolled ? 'border-hairline shadow-[0_1px_12px_rgba(26,26,23,0.06)]' : 'border-transparent'
       }`}
     >
@@ -45,7 +68,7 @@ export default function Navigation() {
                 key={item.href}
                 to={item.href}
                 aria-current={location.pathname === item.href ? 'page' : undefined}
-                className={`text-[0.9375rem] transition-colors duration-150 pb-1 border-b-2 ${
+                className={`text-[0.9375rem] transition-colors duration-150 ease-smooth pb-1 border-b-2 ${
                   location.pathname === item.href
                     ? 'text-ink font-semibold border-lime'
                     : 'text-stone hover:text-ink border-transparent'
@@ -64,32 +87,47 @@ export default function Navigation() {
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             className="md:hidden text-ink p-2 -mr-2"
             aria-expanded={isMobileOpen}
+            aria-controls="mobiel-menu"
             aria-label={isMobileOpen ? 'Menu sluiten' : 'Menu openen'}
           >
             {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {isMobileOpen && (
-          <div className="md:hidden border-t border-hairline py-2 pb-5">
-            <div className="flex flex-col">
+        {/* Uitklappen via grid-rows 0fr → 1fr: dat animeert naar de eigen
+            hoogte van de inhoud, zonder een vaste max-height te raden. */}
+        <div
+          id="mobiel-menu"
+          aria-hidden={!isMobileOpen}
+          className={`md:hidden grid transition-[grid-template-rows,opacity] duration-250 ease-smooth ${
+            isMobileOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="flex flex-col border-t border-hairline py-2 pb-5">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`py-3.5 text-[0.9375rem] border-b border-hairline ${
+                  tabIndex={isMobileOpen ? undefined : -1}
+                  aria-current={location.pathname === item.href ? 'page' : undefined}
+                  className={`py-3.5 text-[0.9375rem] border-b border-hairline transition-colors duration-150 ease-smooth ${
                     location.pathname === item.href ? 'text-ink font-semibold' : 'text-stone'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link to="/proefdag" className="btn btn-lime justify-center mt-5">
+              <Link
+                to="/proefdag"
+                tabIndex={isMobileOpen ? undefined : -1}
+                className="btn btn-lime justify-center mt-5"
+              >
                 Plan je proefdag
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

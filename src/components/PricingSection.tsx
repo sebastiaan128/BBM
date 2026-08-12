@@ -52,7 +52,7 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="py-20 md:py-28 bg-paper-dim border-y border-hairline">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-14" data-reveal>
           <span className="eyebrow">Tarieven</span>
           <h2 className="display-lg mt-6 text-ink">Geen inschrijfgeld, geen opzegtermijn</h2>
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">
@@ -64,6 +64,7 @@ export default function PricingSection() {
           {plans.map((plan) => (
             <div
               key={plan.name}
+              data-reveal
               className={`flex flex-col p-7 ${
                 plan.highlighted ? 'bg-ink text-paper' : 'card'
               }`}
@@ -115,7 +116,10 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-hairline p-6">
+        <div
+          className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-hairline p-6"
+          data-reveal
+        >
           <p className="text-[0.9375rem] text-ink-soft max-w-xl">
             Er zijn ook tarieven voor kids, duo-training en bedrijven, en voordeelpakketten vanaf vijf
             sessies.

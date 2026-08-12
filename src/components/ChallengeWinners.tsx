@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { photo } from '../photos';
+import Photo from './Photo';
 
 interface Winner {
   year: number;
@@ -21,13 +22,13 @@ const years = ['Alle jaren', ...winners.map((w) => String(w.year))];
 
 function WinnerCard({ winner: w }: { winner: Winner }) {
   return (
-    <article className="group">
+    <article className="group" data-reveal>
       <div className="relative aspect-[4/5] overflow-hidden rounded-md">
-        <img
+        <Photo
           src={w.photo}
           alt={`Winnaar ${w.year}`}
           loading="lazy"
-          className="photo transition-transform duration-500 group-hover:scale-[1.03]"
+          className="group-hover:scale-[1.03]"
         />
         <span className="mono absolute top-0 left-0 bg-lime text-ink text-xs font-medium px-2.5 py-1.5">
           {w.year}
@@ -48,7 +49,7 @@ export default function ChallengeWinners() {
   return (
     <section className="py-20 md:py-28 bg-ink text-paper">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12" data-reveal>
           <div className="max-w-lg">
             <span className="eyebrow eyebrow-light">Eindejaarschallenge</span>
             <h2 className="display-lg mt-6">Hall of fame</h2>
@@ -64,7 +65,7 @@ export default function ChallengeWinners() {
                 key={y}
                 onClick={() => setActiveFilter(y)}
                 aria-pressed={activeFilter === y}
-                className={`mono text-xs uppercase tracking-[0.1em] px-3.5 py-2 border transition-colors duration-150 ${
+                className={`mono text-xs uppercase tracking-[0.1em] px-3.5 py-2 border transition-colors duration-150 ease-smooth ${
                   activeFilter === y
                     ? 'border-lime text-lime'
                     : 'border-ink-soft text-paper/50 hover:text-paper hover:border-paper/40'

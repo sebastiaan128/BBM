@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Photo from './Photo';
 
 interface Props {
   eyebrow: string;
@@ -30,7 +31,14 @@ export default function PageHero({ eyebrow, title, intro, image, imageAlt, child
         </div>
 
         <div className="relative min-h-[20rem] sm:min-h-[26rem] lg:min-h-[34rem]">
-          <img src={image} alt={imageAlt} className="photo absolute inset-0" />
+          {/* Bepaalt op elke subpagina het moment waarop de pagina 'staat'. */}
+          <Photo
+            src={image}
+            alt={imageAlt}
+            className="absolute inset-0"
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            fetchPriority="high"
+          />
         </div>
       </div>
     </header>

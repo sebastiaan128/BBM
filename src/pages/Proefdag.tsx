@@ -3,6 +3,7 @@ import BookingCalendar from '../components/BookingCalendar';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
 import { photo } from '../photos';
+import PageHero from '../components/PageHero';
 
 const timeSlots = ['09:00', '10:00', '11:00', '14:00', '16:00', '17:00', '19:00'];
 
@@ -32,28 +33,16 @@ export default function Proefdag() {
 
   return (
     <div className="bg-paper">
-      {/* Kop */}
-      <header className="bg-paper border-b border-hairline">
-        <div className="grid lg:grid-cols-[1fr_0.8fr]">
-          <div className="flex items-center px-6 sm:px-10 lg:px-14 xl:px-20 py-16 lg:py-20">
-            <div className="max-w-lg">
-              <span className="eyebrow">Gratis proefdag</span>
-              <h1 className="display-lg mt-6 text-ink">Kom een dag meedraaien</h1>
-              <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-                Kies een datum en tijd die je uitkomt. Je zit nergens aan vast, en de proefdag kost je
-                niets.
-              </p>
-            </div>
-          </div>
-          <div className="relative min-h-[14rem] lg:min-h-0">
-            <img
-              src={photo.kettlebellDaglicht}
-              alt="Training in de studio bij daglicht"
-              className="photo absolute inset-0"
-            />
-          </div>
-        </div>
-      </header>
+      {/* Dezelfde kop als op de andere pagina's. Stond hier eerst apart, met
+          een fotokolom die meekromp met de tekst: de staande foto werd dan
+          een strook waarin iemand halverwege werd afgesneden. */}
+      <PageHero
+        eyebrow="Gratis proefdag"
+        title="Kom een dag meedraaien"
+        intro="Kies een datum en tijd die je uitkomt. Je zit nergens aan vast, en de proefdag kost je niets."
+        image={photo.kettlebellDaglicht}
+        imageAlt="Training in de studio bij daglicht"
+      />
 
       {/* Stappen */}
       <section className="py-16 bg-paper-dim border-b border-hairline">
@@ -101,7 +90,7 @@ export default function Proefdag() {
                           key={time}
                           onClick={() => setSelectedTime(time)}
                           aria-pressed={selectedTime === time}
-                          className={`mono py-2.5 text-sm border transition-colors duration-150 ${
+                          className={`mono py-2.5 text-sm border transition-colors duration-150 ease-smooth ${
                             selectedTime === time
                               ? 'bg-ink text-paper border-ink'
                               : 'border-hairline text-ink hover:border-ink'

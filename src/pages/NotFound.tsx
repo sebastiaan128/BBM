@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { photo } from '../photos';
+import Photo from '../components/Photo';
 
 const destinations = [
   { label: 'Home', href: '/', description: 'Terug naar het begin' },
@@ -54,10 +55,10 @@ export default function NotFound() {
           </div>
 
           <div className="relative min-h-[20rem] sm:min-h-[26rem] lg:min-h-[34rem]">
-            <img
+            <Photo
               src={photo.matten}
               alt="De lege studio van Body by Marcel"
-              className="photo absolute inset-0"
+              className="absolute inset-0"
             />
           </div>
         </div>
@@ -77,13 +78,13 @@ export default function NotFound() {
                   to={item.href}
                   className="group grid sm:grid-cols-[14rem_1fr_auto] gap-1 sm:gap-6 items-baseline py-4"
                 >
-                  <span className="font-semibold text-ink group-hover:text-moss transition-colors duration-150">
+                  <span className="font-semibold text-ink group-hover:text-moss transition-colors duration-150 ease-smooth">
                     {item.label}
                   </span>
                   <span className="text-sm text-stone">{item.description}</span>
                   <ArrowRight
                     size={15}
-                    className="hidden sm:block text-stone group-hover:text-moss group-hover:translate-x-0.5 transition-all"
+                    className="hidden sm:block text-stone group-hover:text-moss group-hover:translate-x-0.5 transition-[color,transform] duration-150 ease-smooth"
                     aria-hidden="true"
                   />
                 </Link>

@@ -63,7 +63,7 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: Props) {
         </h3>
         <button
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-          className="p-2 -mr-2 text-stone hover:text-ink transition-colors"
+          className="p-2 -mr-2 text-stone hover:text-ink transition-colors duration-150 ease-smooth"
           aria-label="Volgende maand"
         >
           <ChevronRight size={20} />
@@ -100,7 +100,7 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: Props) {
               }
               aria-current={isToday ? 'date' : undefined}
               aria-pressed={isSelected}
-              className={`mono aspect-square text-sm transition-colors duration-150 ${
+              className={`mono aspect-square text-sm transition-colors duration-150 ease-smooth ${
                 isSelected
                   ? 'bg-ink text-paper font-medium'
                   : !available

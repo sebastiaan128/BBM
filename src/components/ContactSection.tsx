@@ -28,7 +28,7 @@ export default function ContactSection() {
     <section id="contact" className="py-20 md:py-28 bg-paper">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
-          <div>
+          <div data-reveal>
             <span className="eyebrow">Contact</span>
             <h2 className="display-lg mt-6 text-ink">
               Kom een keer
@@ -92,7 +92,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="aspect-[4/3] lg:aspect-[4/5] border border-hairline bg-mist">
+          <div className="aspect-[4/3] lg:aspect-[4/5] border border-hairline bg-mist" data-reveal>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.3597920090741!2d5.503261184825531!3d51.983427245326475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c651494090b197%3A0x1c69d179c91fc018!2sBody%20by%20Marcel!5e0!3m2!1snl!2snl!4v1774468241137!5m2!1snl!2snl"
               width="100%"

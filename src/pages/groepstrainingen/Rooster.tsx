@@ -33,14 +33,20 @@ export default function Rooster() {
     classes: day.classes.filter((cls) => activeCategory === 'all' || cls.category === activeCategory),
   }));
 
-  // Escape sluit het lesdetail, zoals bij elk ander venster.
+  // Escape sluit het lesdetail, zoals bij elk ander venster. Zolang het open
+  // staat scrollt het rooster erachter niet mee.
   useEffect(() => {
     if (!selectedClass) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedClass(null);
     };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [selectedClass]);
 
   return (
@@ -95,7 +101,7 @@ export default function Rooster() {
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 aria-pressed={activeCategory === cat.id}
-                className={`mono inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.12em] px-3 py-2 border transition-colors duration-150 ${
+                className={`mono inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.12em] px-3 py-2 border transition-colors duration-150 ease-smooth ${
                   activeCategory === cat.id
                     ? 'border-ink bg-ink text-paper'
                     : 'border-hairline text-stone hover:border-ink hover:text-ink'
@@ -140,7 +146,7 @@ export default function Rooster() {
                           }}
                           aria-haspopup="dialog"
                           aria-label={`${cls.name} om ${cls.time}, bekijk de details`}
-                          className="w-full text-left py-4 px-3 -mx-3 border-b border-hairline hover:bg-paper-dim transition-colors duration-150 group"
+                          className="w-full text-left py-4 px-3 -mx-3 border-b border-hairline hover:bg-paper-dim transition-colors duration-150 ease-smooth group"
                         >
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5">
                             <span className="mono text-ink text-[0.9375rem] w-14 flex-shrink-0">
@@ -152,7 +158,7 @@ export default function Rooster() {
                                 className={`w-2.5 h-2.5 flex-shrink-0 ${categoryDotColors[cls.category]}`}
                                 aria-hidden="true"
                               />
-                              <span className="font-semibold text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:text-moss group-hover:decoration-moss transition-colors">
+                              <span className="font-semibold text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:text-moss group-hover:decoration-moss transition-colors duration-150 ease-smooth">
                                 {cls.name}
                               </span>
                             </span>
@@ -167,7 +173,7 @@ export default function Rooster() {
                             {/* Maakt zichtbaar dat de regel zelf aanklikbaar is */}
                             <ChevronRight
                               size={16}
-                              className="hidden sm:block flex-shrink-0 text-stone group-hover:text-moss group-hover:translate-x-0.5 transition-all duration-200"
+                              className="hidden sm:block flex-shrink-0 text-stone group-hover:text-moss group-hover:translate-x-0.5 transition-[color,transform] duration-150 ease-smooth"
                               aria-hidden="true"
                             />
                           </div>
@@ -219,19 +225,22 @@ export default function Rooster() {
       {/* Detail van een les */}
       {selectedClass && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/70"
+          className="overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/70"
           onClick={() => setSelectedClass(null)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="les-titel"
         >
           <div
-            className="bg-paper max-w-md w-full p-8 relative border border-hairline"
+            className="dialog-panel bg-paper max-w-md w-full p-8 relative border border-hairline"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedClass(null)}
-              className="absolute top-4 right-4 p-1.5 text-stone hover:text-ink transition-colors"
+              // De focus hoort in het venster te staan, niet op de knop in
+              // het rooster erachter.
+              autoFocus
+              className="absolute top-4 right-4 p-1.5 text-stone hover:text-ink transition-colors duration-150 ease-smooth"
               aria-label="Sluiten"
             >
               <X size={18} />

@@ -162,12 +162,12 @@ export default function Tarieven() {
               <a
                 key={t.id}
                 href={`#${t.id}`}
-                className="group inline-flex items-center gap-2 border border-hairline bg-paper px-3.5 py-2 text-[0.8125rem] font-medium text-ink hover:border-ink hover:text-moss transition-colors duration-150"
+                className="group inline-flex items-center gap-2 border border-hairline bg-paper px-3.5 py-2 text-[0.8125rem] font-medium text-ink hover:border-ink hover:text-moss transition-colors duration-150 ease-smooth"
               >
                 {t.title}
                 <ArrowDown
                   size={13}
-                  className="text-stone group-hover:text-moss group-hover:translate-y-0.5 transition-all duration-200"
+                  className="text-stone group-hover:text-moss group-hover:translate-y-0.5 transition-[color,transform] duration-150 ease-smooth"
                   aria-hidden="true"
                 />
               </a>

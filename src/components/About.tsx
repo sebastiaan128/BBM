@@ -1,4 +1,5 @@
 import { photo } from '../photos';
+import Photo from './Photo';
 
 export default function About() {
   return (
@@ -7,18 +8,19 @@ export default function About() {
         <div className="grid lg:grid-cols-[0.9fr_1fr] gap-12 lg:gap-20 items-start">
           {/* Eén foto met de groene lijn. Een tweede, overlappende foto erbij
               botste met het kader: twee accenten om dezelfde hoek. */}
-          <div className="photo-accent lg:mr-4">
+          <div className="photo-accent lg:mr-4" data-reveal>
             <div className="aspect-[3/4]">
-              <img
+              <Photo
                 src={photo.trainerPortret}
                 alt="Trainer in de krachthal van Body by Marcel"
-                className="photo"
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 45vw"
               />
             </div>
           </div>
 
           {/* Tekst */}
-          <div className="lg:pt-4">
+          <div className="lg:pt-4" data-reveal>
             <span className="eyebrow">Over de studio</span>
 
             <h2 className="display-lg mt-6 text-ink">

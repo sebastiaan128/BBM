@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import PageHero from '../../components/PageHero';
 import { photo } from '../../photos';
 import { schedule, todayIndex } from '../../rooster';
+import Photo from '../../components/Photo';
 
 const trainingTypes = [
   {
@@ -109,12 +110,11 @@ export default function GroepstrainingenOverview() {
 
             <div className="photo-accent photo-accent-left">
               <div className="aspect-[4/5]">
-                <img
+                <Photo
                   src={photo.highFive}
                   alt="Deelnemer en trainer geven elkaar een high five"
                   loading="lazy"
-                  className="photo"
-                />
+                  />
               </div>
             </div>
           </div>
@@ -136,19 +136,15 @@ export default function GroepstrainingenOverview() {
               <Link
                 key={t.id}
                 to={`/groepstrainingen/${t.id}`}
-                className="group flex flex-col bg-paper border border-hairline hover:border-ink transition-colors duration-200 rounded-md overflow-hidden"
+                data-reveal
+                className="card group flex flex-col overflow-hidden"
               >
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img
-                    src={t.image}
-                    alt=""
-                    loading="lazy"
-                    className="photo transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+                  <Photo src={t.image} alt="" loading="lazy" className="group-hover:scale-[1.03]" />
                 </div>
 
                 <div className="flex flex-col flex-1 p-5">
-                  <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150">
+                  <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150 ease-smooth">
                     {t.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone flex-1">{t.description}</p>
@@ -156,7 +152,7 @@ export default function GroepstrainingenOverview() {
                     Bekijk {t.title.toLowerCase()}
                     <ArrowRight
                       size={13}
-                      className="transition-transform duration-200 group-hover:translate-x-0.5"
+                      className="transition-transform duration-150 ease-smooth group-hover:translate-x-0.5"
                       aria-hidden="true"
                     />
                   </span>
@@ -206,7 +202,7 @@ export default function GroepstrainingenOverview() {
             Volledig rooster
             <ArrowRight
               size={13}
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              className="transition-transform duration-150 ease-smooth group-hover:translate-x-0.5"
               aria-hidden="true"
             />
           </Link>
@@ -217,7 +213,7 @@ export default function GroepstrainingenOverview() {
       <section className="grid grid-cols-2 md:grid-cols-4">
         {[photo.studioHal, photo.opdrukken2, photo.schoudersHalters, photo.matten].map((src) => (
           <div key={src} className="aspect-[4/3] overflow-hidden">
-            <img src={src} alt="" loading="lazy" className="photo" />
+            <Photo src={src} alt="" loading="lazy" />
           </div>
         ))}
       </section>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { type LucideIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import PageHero from '../../components/PageHero';
+import Photo from '../../components/Photo';
 
 interface InfoItem {
   icon: LucideIcon;
@@ -61,7 +62,7 @@ export default function TrainingDetailPage({
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
             <div className="space-y-5 text-lg leading-relaxed text-ink-soft">{description}</div>
             <div className="aspect-[3/4] overflow-hidden rounded-md">
-              <img src={gallery[0]} alt="" loading="lazy" className="photo" />
+              <Photo src={gallery[0]} alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -92,7 +93,7 @@ export default function TrainingDetailPage({
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {gallery.slice(0, 6).map((img, i) => (
               <div key={img + i} className="aspect-[3/4] overflow-hidden rounded-md">
-                <img src={img} alt="" loading="lazy" className="photo" />
+                <Photo src={img} alt="" loading="lazy" />
               </div>
             ))}
           </div>

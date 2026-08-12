@@ -28,7 +28,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150"
+                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150 ease-smooth"
                 aria-label="Body by Marcel op Instagram"
               >
                 <Instagram size={17} />
@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150"
+                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150 ease-smooth"
                 aria-label="Body by Marcel op Facebook"
               >
                 <Facebook size={17} />
@@ -78,7 +78,7 @@ export default function Footer() {
               <p>
                 <a
                   href="tel:0642059446"
-                  className="mono text-paper/75 hover:text-lime transition-colors duration-150"
+                  className="mono text-paper/75 hover:text-lime transition-colors duration-150 ease-smooth"
                 >
                   06-42059446
                 </a>
@@ -86,7 +86,7 @@ export default function Footer() {
               <p>
                 <a
                   href="mailto:info@bodybymarcel.nl"
-                  className="text-paper/75 hover:text-lime transition-colors duration-150"
+                  className="text-paper/75 hover:text-lime transition-colors duration-150 ease-smooth"
                 >
                   info@bodybymarcel.nl
                 </a>

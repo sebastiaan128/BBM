@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { photo } from '../photos';
+import Photo from './Photo';
 
 interface Service {
   title: string;
@@ -74,7 +75,7 @@ export default function Services() {
   return (
     <section id="services" className="py-20 md:py-28 bg-paper-dim border-y border-hairline">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-14" data-reveal>
           <span className="eyebrow">Sportaanbod</span>
           <h2 className="display-lg mt-6 text-ink">Wat je hier kunt doen</h2>
           <p className="mt-4 text-ink-soft leading-relaxed">
@@ -87,19 +88,20 @@ export default function Services() {
             <Link
               key={service.title}
               to={service.link}
-              className="group flex flex-col bg-paper border border-hairline hover:border-ink transition-colors duration-200 rounded-md overflow-hidden"
+              data-reveal
+              className="card group flex flex-col overflow-hidden"
             >
               <div className="aspect-[4/5] overflow-hidden">
-                <img
+                <Photo
                   src={service.image}
                   alt=""
                   loading="lazy"
-                  className="photo transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="group-hover:scale-[1.03]"
                 />
               </div>
 
               <div className="flex flex-col flex-1 p-5">
-                <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150">
+                <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150 ease-smooth">
                   {service.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone flex-1">
@@ -111,7 +113,7 @@ export default function Services() {
                   {service.linkLabel}
                   <ArrowRight
                     size={13}
-                    className="transition-transform duration-200 group-hover:translate-x-0.5"
+                    className="transition-transform duration-150 ease-smooth group-hover:translate-x-0.5"
                     aria-hidden="true"
                   />
                 </span>
