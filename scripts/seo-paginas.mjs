@@ -4,7 +4,7 @@
 // /tarieven nog steeds de homepage.
 //
 // Per pagina uit src/content/seo.json schrijft dit script daarom een eigen
-// dist/<pad>/index.html met de juiste titel, omschrijving, canonical en
+// dist/<pad>.html met de juiste titel, omschrijving, canonical en
 // deelafbeelding. Netlify levert een bestaand bestand voor de SPA-regel in
 // _redirects, dus /tarieven krijgt dit bestand en de app start daarna gewoon.
 //
@@ -111,11 +111,15 @@ function metKop(html, pagina) {
   return zonder.replace('</head>', `  ${kop(pagina)}\n  </head>`);
 }
 
+// /tarieven wordt tarieven.html en niet tarieven/index.html: een map laat
+// Netlify doorsturen naar /tarieven/ (met slash), en dan wijst de canonical
+// naar een adres dat zelf doorstuurt. Een .html-bestand levert Netlify
+// direct op /tarieven uit.
 for (const pagina of seo.paginas) {
   const html = metKop(sjabloon, pagina);
-  const map = path.join(DIST, pagina.pad);
-  await mkdir(map, { recursive: true });
-  await writeFile(path.join(map, 'index.html'), html);
+  const bestand = pagina.pad === '/' ? path.join(DIST, 'index.html') : path.join(DIST, `${pagina.pad}.html`);
+  await mkdir(path.dirname(bestand), { recursive: true });
+  await writeFile(bestand, html);
 }
 
 // ── Sitemap en robots.txt ─────────────────────────────────────────────
