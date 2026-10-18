@@ -1,0 +1,47 @@
+{
+  "titel": "Calisthenics",
+  "ondertitel": "Kracht en controle met je eigen lichaamsgewicht.",
+  "tekst": "Calisthenics is trainen met je eigen lichaam als gewicht: optrekken, opdrukken, dips, squats en de variaties daarop. Je bouwt kracht en controle op zonder zware gewichten.\n\nOp donderdag geeft Marcel de les, in een groep van maximaal vier. Zo kijkt hij bij iedereen mee naar de uitvoering en past hij de oefening aan op wat je al kunt.\n\nBegin je net, dan werk je met lichtere varianten. Ben je verder, dan wordt het zwaarder. Je doet dezelfde les mee, op je eigen niveau.",
+  "kenmerken": [
+    {
+      "icoon": "PersonStanding",
+      "titel": "Je eigen lichaam als gewicht",
+      "tekst": "Optrekken, opdrukken, dips en squats. Kracht die je ook buiten de sportschool merkt."
+    },
+    {
+      "icoon": "Users",
+      "titel": "Maximaal vier per groep",
+      "tekst": "Een kleine groep, zodat de trainer bij iedereen meekijkt naar de techniek."
+    },
+    {
+      "icoon": "TrendingUp",
+      "titel": "Opbouwen in stappen",
+      "tekst": "Van een lichtere variant naar de volledige oefening. Je ziet zelf wanneer je een stap verder bent."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/squatrek.jpg",
+    "/fotos-bron/matten.jpg",
+    "/fotos-bron/studio-plafond.jpg",
+    "/fotos-bron/studio-hal.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Wanneer",
+      "waarde": "Donderdag 17:30"
+    },
+    {
+      "label": "Duur",
+      "waarde": "60 minuten"
+    },
+    {
+      "label": "Groepsgrootte",
+      "waarde": "Maximaal 4 personen"
+    },
+    {
+      "label": "Trainer",
+      "waarde": "Marcel"
+    }
+  ],
+  "afsluiterTitel": "Train een keer mee"
+}

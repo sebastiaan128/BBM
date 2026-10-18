@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Groepstrainingen",
     "titel": "Samen trainen, zonder in de massa te verdwijnen",
-    "intro": "Zes vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een.",
+    "intro": "Acht vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een.",
     "foto": "/fotos-bron/duo-medicijnbal.jpg",
     "fotoAlt": "Twee deelnemers trainen samen met een medicijnbal"
   },
@@ -69,6 +69,18 @@
       "titel": "Bedrijfstraining",
       "tekst": "Een vast moment in de week voor uw team, op maat samengesteld.",
       "foto": "/fotos-bron/duo-halters.jpg"
+    },
+    {
+      "id": "zumba",
+      "titel": "Zumba",
+      "tekst": "Een uur dansen op muziek. Conditie zonder dat het als werken voelt.",
+      "foto": "/fotos-bron/matten.jpg"
+    },
+    {
+      "id": "calisthenics",
+      "titel": "Calisthenics",
+      "tekst": "Kracht met je eigen lichaamsgewicht, in een groep van maximaal vier.",
+      "foto": "/fotos-bron/squatrek.jpg"
     }
   ],
   "weekTitel": "Deze week",

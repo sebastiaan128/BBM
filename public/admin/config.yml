@@ -68,6 +68,8 @@ x-velden:
       - { label: Tabata, value: /groepstrainingen/tabata }
       - { label: Circuit, value: /groepstrainingen/circuit }
       - { label: Kids, value: /groepstrainingen/kids }
+      - { label: Zumba, value: /groepstrainingen/zumba }
+      - { label: Calisthenics, value: /groepstrainingen/calisthenics }
       - { label: Bedrijfstraining, value: /groepstrainingen/corporate }
   labelWaarde: &labelWaarde
     - { label: Label, name: label, widget: string }
@@ -92,7 +94,7 @@ x-velden:
           - label: Icoon
             name: icoon
             widget: select
-            options: [Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
+            options: [Building2, Cloud, Dumbbell, Flame, Heart, Music, PersonStanding, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
           - { label: Titel, name: titel, widget: string }
           - { label: Tekst, name: tekst, widget: text }
       - label: Foto's
@@ -399,6 +401,8 @@ collections:
                   - { label: Circuit, value: circuit }
                   - { label: Kids, value: kids }
                   - { label: Bedrijfstraining, value: corporate }
+                  - { label: Zumba, value: zumba }
+                  - { label: Calisthenics, value: calisthenics }
               - { label: Titel, name: titel, widget: string }
               - { label: Tekst, name: tekst, widget: text }
               - { label: Foto, name: foto, widget: image }
@@ -415,6 +419,8 @@ collections:
       - { name: tabata, label: Tabata, file: src/content/trainingen/tabata.json, <<: *training }
       - { name: circuit, label: Circuit, file: src/content/trainingen/circuit.json, <<: *training }
       - { name: kids, label: Kids, file: src/content/trainingen/kids.json, <<: *training }
+      - { name: zumba, label: Zumba, file: src/content/trainingen/zumba.json, <<: *training }
+      - { name: calisthenics, label: Calisthenics, file: src/content/trainingen/calisthenics.json, <<: *training }
       - name: corporate
         label: Bedrijfstraining
         file: src/content/trainingen/corporate.json
@@ -431,7 +437,7 @@ collections:
               - label: Icoon
                 name: icoon
                 widget: select
-                options: [Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
+                options: [Building2, Cloud, Dumbbell, Flame, Heart, Music, PersonStanding, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
               - { label: Titel, name: titel, widget: string }
               - { label: Tekst, name: tekst, widget: text }
           - { label: Foto's, name: fotos, hint: De eerste foto staat bovenaan de pagina., <<: *fotoLijst }

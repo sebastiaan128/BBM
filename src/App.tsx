@@ -17,6 +17,8 @@ const Tabata = lazy(routeLoaders['/groepstrainingen/tabata']);
 const Circuit = lazy(routeLoaders['/groepstrainingen/circuit']);
 const Kids = lazy(routeLoaders['/groepstrainingen/kids']);
 const Corporate = lazy(routeLoaders['/groepstrainingen/corporate']);
+const Zumba = lazy(routeLoaders['/groepstrainingen/zumba']);
+const Calisthenics = lazy(routeLoaders['/groepstrainingen/calisthenics']);
 const Rooster = lazy(routeLoaders['/groepstrainingen/rooster']);
 const PrivacyPolicy = lazy(routeLoaders['/privacy-policy']);
 const AlgemeneVoorwaarden = lazy(routeLoaders['/algemene-voorwaarden']);
@@ -67,6 +69,8 @@ export default function App() {
               <Route path="groepstrainingen/circuit" element={<Circuit />} />
               <Route path="groepstrainingen/kids" element={<Kids />} />
               <Route path="groepstrainingen/corporate" element={<Corporate />} />
+              <Route path="groepstrainingen/zumba" element={<Zumba />} />
+              <Route path="groepstrainingen/calisthenics" element={<Calisthenics />} />
               <Route path="groepstrainingen/rooster" element={<Rooster />} />
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
               <Route path="algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />

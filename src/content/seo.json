@@ -50,6 +50,16 @@
       "omschrijving": "Groepstraining op maat voor teams, in de sportschool in Elst of op uw locatie. Vraag vrijblijvend een offerte aan."
     },
     {
+      "pad": "/groepstrainingen/zumba",
+      "titel": "Zumba in Elst · Body by Marcel",
+      "omschrijving": "Een uur dansen en sporten op dinsdagavond, in een groep van maximaal acht. Geen danservaring nodig."
+    },
+    {
+      "pad": "/groepstrainingen/calisthenics",
+      "titel": "Calisthenics in Elst · Body by Marcel",
+      "omschrijving": "Kracht en controle met je eigen lichaamsgewicht. Op donderdag, in een groep van maximaal vier."
+    },
+    {
       "pad": "/groepstrainingen/rooster",
       "titel": "Lesrooster · Body by Marcel",
       "omschrijving": "Alle groepslessen van de week op een rij. Inschrijven doe je via SportBit."

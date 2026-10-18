@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
-  Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer,
-  TrendingUp, UserCheck, Users, Zap, type LucideIcon,
+  Building2, Cloud, Dumbbell, Flame, Heart, Music, PersonStanding, RotateCcw, Shield, Smile, Star,
+  Target, Timer, TrendingUp, UserCheck, Users, Zap, type LucideIcon,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import PageHero from '../../components/PageHero';
@@ -14,8 +14,8 @@ import { Alineas } from '../../components/Tekst';
  * daar dan ook bij.
  */
 const iconen: Record<string, LucideIcon> = {
-  Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer,
-  TrendingUp, UserCheck, Users, Zap,
+  Building2, Cloud, Dumbbell, Flame, Heart, Music, PersonStanding, RotateCcw, Shield, Smile, Star,
+  Target, Timer, TrendingUp, UserCheck, Users, Zap,
 };
 
 /** Vorm van de bestanden in src/content/trainingen/. */

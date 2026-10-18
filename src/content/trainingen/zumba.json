@@ -1,0 +1,46 @@
+{
+  "titel": "Zumba",
+  "ondertitel": "Een uur dansen en sporten tegelijk, op muziek die je meetrekt.",
+  "tekst": "Zumba is dansen en sporten in één: een uur bewegen op Latijns-Amerikaanse en internationale muziek, met pasjes die je gaandeweg oppikt. Je hebt geen danservaring nodig om mee te doen.\n\nBij Body by Marcel geeft Melissa de les, op dinsdagavond in twee blokken van een uur. Je werkt aan je conditie zonder dat het als werken voelt: de muziek trekt je erdoorheen.\n\nDe groep is klein, maximaal acht mensen. Zo heb je ruimte om te bewegen en zie je de pasjes goed voor.",
+  "kenmerken": [
+    {
+      "icoon": "Music",
+      "titel": "Dansen op muziek",
+      "tekst": "Je beweegt op het ritme in plaats van herhalingen te tellen. Het uur is om voor je het weet."
+    },
+    {
+      "icoon": "Flame",
+      "titel": "Werken aan je conditie",
+      "tekst": "Een uur in beweging zonder lange pauzes. Goed voor je uithoudingsvermogen en je energie."
+    },
+    {
+      "icoon": "Smile",
+      "titel": "Geen ervaring nodig",
+      "tekst": "De pasjes leer je gaandeweg. Kun je iets nog niet, dan doe je een eenvoudiger versie mee."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/matten.jpg",
+    "/fotos-bron/studio-plafond.jpg",
+    "/fotos-bron/studio-hal.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Wanneer",
+      "waarde": "Dinsdag 19:00 en 20:00"
+    },
+    {
+      "label": "Duur",
+      "waarde": "60 minuten"
+    },
+    {
+      "label": "Groepsgrootte",
+      "waarde": "Maximaal 8 personen"
+    },
+    {
+      "label": "Trainer",
+      "waarde": "Melissa"
+    }
+  ],
+  "afsluiterTitel": "Dans een keer mee"
+}

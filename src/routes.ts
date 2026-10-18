@@ -20,6 +20,8 @@ export const routeLoaders: Record<string, RouteLoader> = {
   '/groepstrainingen/circuit': () => import('./pages/groepstrainingen/Circuit'),
   '/groepstrainingen/kids': () => import('./pages/groepstrainingen/Kids'),
   '/groepstrainingen/corporate': () => import('./pages/groepstrainingen/Corporate'),
+  '/groepstrainingen/zumba': () => import('./pages/groepstrainingen/Zumba'),
+  '/groepstrainingen/calisthenics': () => import('./pages/groepstrainingen/Calisthenics'),
   '/groepstrainingen/rooster': () => import('./pages/groepstrainingen/Rooster'),
   // Zelfde adressen als op de oude site, zodat bestaande links blijven werken.
   '/privacy-policy': () => import('./pages/PrivacyPolicy'),
