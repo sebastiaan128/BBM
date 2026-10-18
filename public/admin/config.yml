@@ -136,6 +136,13 @@ collections:
             fields:
               - { label: Instagram, name: instagram, widget: string, required: false }
               - { label: Facebook, name: facebook, widget: string, required: false }
+          - label: WhatsApp-knop
+            name: whatsapp
+            widget: object
+            hint: Nummer leeg laten = geen knop op de site.
+            fields:
+              - { label: Nummer, name: nummer, widget: string, required: false }
+              - { label: Begintekst van het bericht, name: bericht, widget: string, required: false }
           - { label: Tekst in de footer, name: footerTekst, widget: text }
           - label: SportBit-roosterwidget (iframe-adres)
             name: sportbitRoosterWidget
@@ -577,6 +584,29 @@ collections:
           - { label: Tijden maandag t/m vrijdag, name: tijdenDoordeweeks, <<: *tekstLijst, hint: 'Bijvoorbeeld 09:00' }
           - { label: Tijden zaterdag, name: tijdenZaterdag, <<: *tekstLijst }
           - { label: Bevestiging na aanvragen, name: bevestiging, widget: string }
+
+  - name: seo
+    label: Vindbaarheid (Google)
+    description: Hoe de pagina's in Google en in gedeelde links (WhatsApp, Facebook) verschijnen.
+    editor: { preview: false }
+    files:
+      - name: seo
+        label: Titels en omschrijvingen
+        file: src/content/seo.json
+        fields:
+          - { label: Adres van de website, name: siteUrl, widget: string, hint: 'Bijvoorbeeld https://www.bodybymarcel.nl' }
+          - { label: Standaardtitel, name: standaardTitel, widget: string }
+          - { label: Standaardomschrijving, name: standaardOmschrijving, widget: text }
+          - { label: Foto bij gedeelde links, name: deelfoto, widget: image, hint: Wordt bijgesneden tot 1200 bij 630 pixels. }
+          - label: Pagina's
+            name: paginas
+            widget: list
+            summary: '{{fields.pad}}'
+            allow_add: false
+            fields:
+              - { label: Pagina, name: pad, widget: string, hint: Niet aanpassen. }
+              - { label: Titel (in Google en het browsertabblad), name: titel, widget: string, hint: Liefst onder de 60 tekens. }
+              - { label: Omschrijving (onder de titel in Google), name: omschrijving, widget: text, hint: Liefst tussen 120 en 160 tekens. }
 
   - name: paginas
     label: Privacy en voorwaarden

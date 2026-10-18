@@ -1,0 +1,83 @@
+{
+  "siteUrl": "https://www.bodybymarcel.nl",
+  "standaardTitel": "Body by Marcel, fitness & personal training in Elst",
+  "standaardOmschrijving": "Kleine fitnessstudio aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis.",
+  "deelfoto": "/fotos-bron/studio-hal.jpg",
+  "paginas": [
+    {
+      "pad": "/",
+      "titel": "Body by Marcel, fitness & personal training in Elst",
+      "omschrijving": "Kleine fitnessstudio aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis."
+    },
+    {
+      "pad": "/personal-training",
+      "titel": "Personal training in Elst · Body by Marcel",
+      "omschrijving": "Eén op één trainen met een trainer die je schema kent. Spiergroei, afvallen, techniek of trainen na een blessure. Plan een gratis intake."
+    },
+    {
+      "pad": "/groepstrainingen",
+      "titel": "Groepstrainingen in Elst · Body by Marcel",
+      "omschrijving": "Small group, bootcamp, tabata, circuit, kids en bedrijfstraining. Altijd in kleine groepen, op jouw niveau. Je eerste groepsles is gratis."
+    },
+    {
+      "pad": "/groepstrainingen/small-group",
+      "titel": "Small group training · Body by Marcel",
+      "omschrijving": "Persoonlijke aandacht in een groep van maximaal acht. Krachttraining, cardio en mobility, aangepast aan jouw niveau."
+    },
+    {
+      "pad": "/groepstrainingen/bootcamp",
+      "titel": "Bootcamp in Elst · Body by Marcel",
+      "omschrijving": "Buiten trainen in weer en wind. Functionele oefeningen in een groep die elkaar vooruit helpt, voor alle niveaus."
+    },
+    {
+      "pad": "/groepstrainingen/tabata",
+      "titel": "Tabata · Body by Marcel",
+      "omschrijving": "Korte, explosieve intervallen van 20 seconden aan en 10 seconden rust. Een stevige training in weinig tijd."
+    },
+    {
+      "pad": "/groepstrainingen/circuit",
+      "titel": "Circuit training · Body by Marcel",
+      "omschrijving": "Wisselende stations met kracht en cardio. Je hele lichaam in één les, op je eigen niveau."
+    },
+    {
+      "pad": "/groepstrainingen/kids",
+      "titel": "Kids fitness & bootcamp · Body by Marcel",
+      "omschrijving": "Kracht, conditie en coördinatie voor jongeren van 8 tot 16 jaar. Bewegen op een manier die ze leuk blijven vinden."
+    },
+    {
+      "pad": "/groepstrainingen/corporate",
+      "titel": "Bedrijfstraining · Body by Marcel",
+      "omschrijving": "Groepstraining op maat voor teams, in de studio in Elst of op uw locatie. Vraag vrijblijvend een offerte aan."
+    },
+    {
+      "pad": "/groepstrainingen/rooster",
+      "titel": "Lesrooster · Body by Marcel",
+      "omschrijving": "Alle groepslessen van de week op een rij. Inschrijven doe je via SportBit."
+    },
+    {
+      "pad": "/tarieven",
+      "titel": "Tarieven · Body by Marcel",
+      "omschrijving": "Losse lessen, strippenkaarten, personal training en voordeelpakketten. Alle prijzen op een rij, zonder kleine lettertjes."
+    },
+    {
+      "pad": "/contact",
+      "titel": "Contact en openingstijden · Body by Marcel",
+      "omschrijving": "Rijksstraatweg 125 in Elst (U). Openingstijden, telefoon, e-mail en een formulier voor je vraag."
+    },
+    {
+      "pad": "/proefdag",
+      "titel": "Gratis proefdag · Body by Marcel",
+      "omschrijving": "Kom een dag meedraaien: rondleiding, proeftraining en advies. Kies zelf een datum en tijd."
+    },
+    {
+      "pad": "/privacy-policy",
+      "titel": "Privacy policy · Body by Marcel",
+      "omschrijving": "Hoe Body by Marcel omgaat met je gegevens en met cookies."
+    },
+    {
+      "pad": "/algemene-voorwaarden",
+      "titel": "Algemene voorwaarden · Body by Marcel",
+      "omschrijving": "De algemene voorwaarden voor leden van Body by Marcel."
+    }
+  ]
+}

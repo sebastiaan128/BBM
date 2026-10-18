@@ -8,9 +8,18 @@
     "parkeren": "Parkeren kan bij de studio."
   },
   "openingstijden": [
-    { "dagen": "Maandag t/m vrijdag", "tijden": "08:00 – 12:00\n16:00 – 22:00" },
-    { "dagen": "Zaterdag", "tijden": "08:00 – 12:00" },
-    { "dagen": "Zondag", "tijden": "Gesloten" }
+    {
+      "dagen": "Maandag t/m vrijdag",
+      "tijden": "08:00 – 12:00\n16:00 – 22:00"
+    },
+    {
+      "dagen": "Zaterdag",
+      "tijden": "08:00 – 12:00"
+    },
+    {
+      "dagen": "Zondag",
+      "tijden": "Gesloten"
+    }
   ],
   "openingstijdenNotitie": "Personal training kan op werkdagen al vanaf 07:00.",
   "social": {
@@ -18,5 +27,9 @@
     "facebook": ""
   },
   "footerTekst": "Fitness en personal training in het hart van Elst, Utrecht. Kracht, rust en voeding in balans.",
-  "sportbitRoosterWidget": ""
+  "sportbitRoosterWidget": "",
+  "whatsapp": {
+    "nummer": "06-42059446",
+    "bericht": "Hoi Body by Marcel, ik heb een vraag:"
+  }
 }

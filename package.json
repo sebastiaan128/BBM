@@ -8,9 +8,13 @@
     "fotos": "node scripts/optimaliseer-fotos.mjs",
     "prebuild": "node scripts/optimaliseer-fotos.mjs",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "node scripts/seo-paginas.mjs"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/instrument-sans": "5.3.0",
+    "@fontsource/tinos": "5.3.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.487.0",
