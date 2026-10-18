@@ -86,7 +86,7 @@ export default function TrainingDetailPage({ content, extraContent }: Props) {
         </div>
       </section>
 
-      {/* Beeld uit de studio */}
+      {/* Beeld uit de sportschool */}
       <section className="py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">

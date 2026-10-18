@@ -175,7 +175,7 @@ collections:
                   - { label: Foto, name: foto, widget: image }
                   - { label: Omschrijving van de foto, name: alt, widget: string }
               - { label: Feiten in de zwarte balk, name: feiten, widget: list, fields: *labelWaarde }
-          - label: Over de studio
+          - label: Over de sportschool
             name: over
             widget: object
             collapsed: true

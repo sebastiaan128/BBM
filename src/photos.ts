@@ -1,5 +1,5 @@
 /**
- * Alle foto's uit de studio in Elst. De waarden zijn de naam van de foto,
+ * Alle foto's uit de sportschool in Elst. De waarden zijn de naam van de foto,
  * niet een pad: Photo.tsx zoekt in photoAssets op welke breedtes er van
  * bestaan en bouwt daar de srcset uit op.
  *

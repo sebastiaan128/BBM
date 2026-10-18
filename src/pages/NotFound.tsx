@@ -58,7 +58,7 @@ export default function NotFound() {
           <div className="relative min-h-[20rem] sm:min-h-[26rem] lg:min-h-[34rem]">
             <Photo
               src={photo.matten}
-              alt="De lege studio van Body by Marcel"
+              alt="De lege sportschool van Body by Marcel"
               className="absolute inset-0"
             />
           </div>

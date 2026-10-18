@@ -1,13 +1,13 @@
 {
   "siteUrl": "https://www.bodybymarcel.nl",
   "standaardTitel": "Body by Marcel, fitness & personal training in Elst",
-  "standaardOmschrijving": "Kleine fitnessstudio aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis.",
+  "standaardOmschrijving": "Kleine sportschool aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis.",
   "deelfoto": "/fotos-bron/studio-hal.jpg",
   "paginas": [
     {
       "pad": "/",
       "titel": "Body by Marcel, fitness & personal training in Elst",
-      "omschrijving": "Kleine fitnessstudio aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis."
+      "omschrijving": "Kleine sportschool aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis."
     },
     {
       "pad": "/personal-training",
@@ -47,7 +47,7 @@
     {
       "pad": "/groepstrainingen/corporate",
       "titel": "Bedrijfstraining · Body by Marcel",
-      "omschrijving": "Groepstraining op maat voor teams, in de studio in Elst of op uw locatie. Vraag vrijblijvend een offerte aan."
+      "omschrijving": "Groepstraining op maat voor teams, in de sportschool in Elst of op uw locatie. Vraag vrijblijvend een offerte aan."
     },
     {
       "pad": "/groepstrainingen/rooster",

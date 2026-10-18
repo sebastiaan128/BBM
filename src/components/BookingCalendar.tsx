@@ -136,7 +136,7 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: Props) {
             locale: nl,
           })}
         </strong>
-        . Op zondag is de studio gesloten.
+        . Op zondag is de sportschool gesloten.
       </p>
     </div>
   );

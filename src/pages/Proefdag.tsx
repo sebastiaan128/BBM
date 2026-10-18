@@ -19,7 +19,7 @@ export default function Proefdag() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [formData, setFormData] = useState({ naam: '', email: '', telefoon: '', opmerkingen: '' });
   const [isBooked, setIsBooked] = useState(false);
-  // Zaterdag is de studio alleen 's ochtends open.
+  // Zaterdag is de sportschool alleen 's ochtends open.
   const timeSlots = selectedDate?.getDay() === 6 ? content.tijdenZaterdag : content.tijdenDoordeweeks;
   const [isSending, setIsSending] = useState(false);
   const [sendFailed, setSendFailed] = useState(false);
