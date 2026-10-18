@@ -17,12 +17,7 @@
     {
       "pad": "/groepstrainingen",
       "titel": "Groepstrainingen in Elst · Body by Marcel",
-      "omschrijving": "Small group, bootcamp, tabata, circuit, kids en bedrijfstraining. Altijd in kleine groepen, op jouw niveau. Je eerste groepsles is gratis."
-    },
-    {
-      "pad": "/groepstrainingen/small-group",
-      "titel": "Small group training · Body by Marcel",
-      "omschrijving": "Persoonlijke aandacht in een groep van maximaal acht. Krachttraining, cardio en mobility, aangepast aan jouw niveau."
+      "omschrijving": "Bootcamp, tabata, zumba, calisthenics, kids en bedrijfstraining. Altijd in kleine groepen, op jouw niveau. Je eerste groepsles is gratis."
     },
     {
       "pad": "/groepstrainingen/bootcamp",
@@ -33,11 +28,6 @@
       "pad": "/groepstrainingen/tabata",
       "titel": "Tabata · Body by Marcel",
       "omschrijving": "Korte, explosieve intervallen van 20 seconden aan en 10 seconden rust. Een stevige training in weinig tijd."
-    },
-    {
-      "pad": "/groepstrainingen/circuit",
-      "titel": "Circuit training · Body by Marcel",
-      "omschrijving": "Wisselende stations met kracht en cardio. Je hele lichaam in één les, op je eigen niveau."
     },
     {
       "pad": "/groepstrainingen/kids",

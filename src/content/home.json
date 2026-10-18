@@ -75,11 +75,11 @@
         "linkTekst": "Naar personal training"
       },
       {
-        "titel": "Small Group Training",
-        "tekst": "Acht mensen, één trainer. Groepsenergie zonder in te leveren op aandacht.",
-        "foto": "/fotos-bron/high-five.jpg",
-        "link": "/groepstrainingen/small-group",
-        "linkTekst": "Naar small group"
+        "titel": "Zumba",
+        "tekst": "Een uur dansen op muziek, op dinsdagavond. Geen danservaring nodig.",
+        "foto": "/fotos-bron/matten.jpg",
+        "link": "/groepstrainingen/zumba",
+        "linkTekst": "Naar zumba"
       },
       {
         "titel": "Bootcamp",
@@ -210,7 +210,7 @@
     "pakketten": [
       {
         "naam": "Groepstraining",
-        "ondertitel": "Small group, bootcamp, tabata en circuit",
+        "ondertitel": "Bootcamp, tabata, zumba en calisthenics",
         "prijs": "€25",
         "per": "per les",
         "punten": [

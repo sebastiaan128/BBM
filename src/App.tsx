@@ -11,10 +11,8 @@ const PersonalTrainingPage = lazy(routeLoaders['/personal-training']);
 const Tarieven = lazy(routeLoaders['/tarieven']);
 const Contact = lazy(routeLoaders['/contact']);
 const GroepstrainingenOverview = lazy(routeLoaders['/groepstrainingen']);
-const SmallGroup = lazy(routeLoaders['/groepstrainingen/small-group']);
 const Bootcamp = lazy(routeLoaders['/groepstrainingen/bootcamp']);
 const Tabata = lazy(routeLoaders['/groepstrainingen/tabata']);
-const Circuit = lazy(routeLoaders['/groepstrainingen/circuit']);
 const Kids = lazy(routeLoaders['/groepstrainingen/kids']);
 const Corporate = lazy(routeLoaders['/groepstrainingen/corporate']);
 const Zumba = lazy(routeLoaders['/groepstrainingen/zumba']);
@@ -63,10 +61,8 @@ export default function App() {
               <Route path="tarieven" element={<Tarieven />} />
               <Route path="contact" element={<Contact />} />
               <Route path="groepstrainingen" element={<GroepstrainingenOverview />} />
-              <Route path="groepstrainingen/small-group" element={<SmallGroup />} />
               <Route path="groepstrainingen/bootcamp" element={<Bootcamp />} />
               <Route path="groepstrainingen/tabata" element={<Tabata />} />
-              <Route path="groepstrainingen/circuit" element={<Circuit />} />
               <Route path="groepstrainingen/kids" element={<Kids />} />
               <Route path="groepstrainingen/corporate" element={<Corporate />} />
               <Route path="groepstrainingen/zumba" element={<Zumba />} />

@@ -9,7 +9,7 @@ const destinations = [
   {
     label: 'Groepstrainingen',
     href: '/groepstrainingen',
-    description: 'Small group, bootcamp, tabata, circuit, kids, zumba, calisthenics en bedrijven',
+    description: 'Bootcamp, tabata, zumba, calisthenics, kids en bedrijven',
   },
   { label: 'Rooster', href: '/groepstrainingen/rooster', description: 'Alle lessen per dag' },
   {

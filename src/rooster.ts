@@ -14,10 +14,8 @@ import roosterContent from './content/rooster.json';
 
 export type TrainingCategory =
   | 'all'
-  | 'small-group'
   | 'bootcamp'
   | 'tabata'
-  | 'circuit'
   | 'kids'
   | 'zumba'
   | 'calisthenics';
@@ -59,10 +57,8 @@ export const schedule: DaySchedule[] = roosterContent.dagen.map((d) => ({
 
 const alleCategorieen: { id: TrainingCategory; label: string }[] = [
   { id: 'all', label: 'Alles' },
-  { id: 'small-group', label: 'Small Group' },
   { id: 'bootcamp', label: 'Bootcamp' },
   { id: 'tabata', label: 'Tabata' },
-  { id: 'circuit', label: 'Circuit' },
   { id: 'kids', label: 'Kids' },
   { id: 'zumba', label: 'Zumba' },
   { id: 'calisthenics', label: 'Calisthenics' },

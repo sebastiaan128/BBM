@@ -14,10 +14,8 @@ import {
 
 const categoryDotColors: Record<TrainingCategory, string> = {
   all: 'bg-stone',
-  'small-group': 'bg-plate-blue',
   bootcamp: 'bg-plate-green',
   tabata: 'bg-plate-red',
-  circuit: 'bg-plate-yellow',
   kids: 'bg-plate-white border border-hairline',
   zumba: 'bg-moss',
   calisthenics: 'bg-ink',

@@ -13,13 +13,17 @@
 /starten                                     /proefdag                       301
 /sportaanbod                                 /groepstrainingen               301
 /sportaanbod/bootcamp                        /groepstrainingen/bootcamp      301
-/sportaanbod/small-group-training            /groepstrainingen/small-group   301
+/sportaanbod/small-group-training            /groepstrainingen               301
 /sportaanbod/kids-fitness-en-bootcamp        /groepstrainingen/kids          301
 /sportaanbod/cardio                          /personal-training              301
 /sportaanbod/traditionele-krachttraining     /personal-training              301
 /sportaanbod/vrije-gewichttraining           /personal-training              301
 /sportaanbod/meten-wegen-en-schema           /personal-training              301
 /sportaanbod/ontspanning                     /                               301
+
+# Lessen die niet meer gegeven worden.
+/groepstrainingen/small-group                /groepstrainingen               301
+/groepstrainingen/circuit                    /groepstrainingen               301
 
 # Alle andere adressen: de app zelf.
 /*  /index.html  200

@@ -63,10 +63,8 @@ x-velden:
       - { label: Contact, value: /contact }
       - { label: Groepstrainingen, value: /groepstrainingen }
       - { label: Rooster, value: /groepstrainingen/rooster }
-      - { label: Small group, value: /groepstrainingen/small-group }
       - { label: Bootcamp, value: /groepstrainingen/bootcamp }
       - { label: Tabata, value: /groepstrainingen/tabata }
-      - { label: Circuit, value: /groepstrainingen/circuit }
       - { label: Kids, value: /groepstrainingen/kids }
       - { label: Zumba, value: /groepstrainingen/zumba }
       - { label: Calisthenics, value: /groepstrainingen/calisthenics }
@@ -395,10 +393,8 @@ collections:
                 name: id
                 widget: select
                 options:
-                  - { label: Small group, value: small-group }
                   - { label: Bootcamp, value: bootcamp }
                   - { label: Tabata, value: tabata }
-                  - { label: Circuit, value: circuit }
                   - { label: Kids, value: kids }
                   - { label: Bedrijfstraining, value: corporate }
                   - { label: Zumba, value: zumba }
@@ -414,10 +410,8 @@ collections:
             fields:
               - *titelMetEnters
               - { label: Tekst, name: tekst, widget: text }
-      - { name: small-group, label: Small group, file: src/content/trainingen/small-group.json, <<: *training }
       - { name: bootcamp, label: Bootcamp, file: src/content/trainingen/bootcamp.json, <<: *training }
       - { name: tabata, label: Tabata, file: src/content/trainingen/tabata.json, <<: *training }
-      - { name: circuit, label: Circuit, file: src/content/trainingen/circuit.json, <<: *training }
       - { name: kids, label: Kids, file: src/content/trainingen/kids.json, <<: *training }
       - { name: zumba, label: Zumba, file: src/content/trainingen/zumba.json, <<: *training }
       - { name: calisthenics, label: Calisthenics, file: src/content/trainingen/calisthenics.json, <<: *training }
@@ -485,10 +479,8 @@ collections:
                     name: categorie
                     widget: select
                     options:
-                      - { label: Small group, value: small-group }
                       - { label: Bootcamp, value: bootcamp }
                       - { label: Tabata, value: tabata }
-                      - { label: Circuit, value: circuit }
                       - { label: Kids, value: kids }
                       - { label: Zumba, value: zumba }
                       - { label: Calisthenics, value: calisthenics }

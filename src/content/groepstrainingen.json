@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Groepstrainingen",
     "titel": "Samen trainen, zonder in de massa te verdwijnen",
-    "intro": "Acht vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een.",
+    "intro": "Zes vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een.",
     "foto": "/fotos-bron/duo-medicijnbal.jpg",
     "fotoAlt": "Twee deelnemers trainen samen met een medicijnbal"
   },
@@ -35,12 +35,6 @@
   "kiesIntro": "Klik op een training voor de details, het niveau en de tijden.",
   "trainingen": [
     {
-      "id": "small-group",
-      "titel": "Small Group Training",
-      "tekst": "Maximaal acht personen, dus je krijgt nog steeds correctie op je techniek.",
-      "foto": "/fotos-bron/cardio-duo.jpg"
-    },
-    {
       "id": "bootcamp",
       "titel": "Bootcamp",
       "tekst": "Buiten op het terrein, met je eigen gewicht en wat er verder voorhanden is.",
@@ -51,12 +45,6 @@
       "titel": "Tabata",
       "tekst": "Korte, explosieve intervallen. Twintig seconden aan, tien seconden uit.",
       "foto": "/fotos-bron/opdrukken.jpg"
-    },
-    {
-      "id": "circuit",
-      "titel": "Circuit Training",
-      "tekst": "Vaste ronde langs de stations, hele lichaam in één les.",
-      "foto": "/fotos-bron/kabel-pull.jpg"
     },
     {
       "id": "kids",
