@@ -18,7 +18,9 @@ export type TrainingCategory =
   | 'bootcamp'
   | 'tabata'
   | 'circuit'
-  | 'kids';
+  | 'kids'
+  | 'zumba'
+  | 'calisthenics';
 
 export interface ClassItem {
   /** Volledige naam, zoals op de roosterpagina. */
@@ -55,15 +57,21 @@ export const schedule: DaySchedule[] = roosterContent.dagen.map((d) => ({
   })),
 }));
 
-/** Filterlabels op de roosterpagina. */
-export const categories: { id: TrainingCategory; label: string }[] = [
+const alleCategorieen: { id: TrainingCategory; label: string }[] = [
   { id: 'all', label: 'Alles' },
   { id: 'small-group', label: 'Small Group' },
   { id: 'bootcamp', label: 'Bootcamp' },
   { id: 'tabata', label: 'Tabata' },
   { id: 'circuit', label: 'Circuit' },
   { id: 'kids', label: 'Kids' },
+  { id: 'zumba', label: 'Zumba' },
+  { id: 'calisthenics', label: 'Calisthenics' },
 ];
+
+/** Filterlabels op de roosterpagina: alleen soorten die nu in het rooster staan. */
+export const categories = alleCategorieen.filter(
+  (c) => c.id === 'all' || schedule.some((d) => d.classes.some((cls) => cls.category === c.id)),
+);
 
 /**
  * Index van vandaag binnen `schedule`, of -1 als er geen lessen zijn.

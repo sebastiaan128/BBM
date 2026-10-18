@@ -484,10 +484,12 @@ collections:
                       - { label: Tabata, value: tabata }
                       - { label: Circuit, value: circuit }
                       - { label: Kids, value: kids }
+                      - { label: Zumba, value: zumba }
+                      - { label: Calisthenics, value: calisthenics }
                   - { label: Duur, name: duur, widget: string }
                   - { label: Trainer, name: trainer, widget: string }
                   - { label: Locatie, name: locatie, widget: string }
-                  - { label: Niveau, name: niveau, widget: string }
+                  - { label: Niveau, name: niveau, widget: string, required: false }
 
   - name: tarieven
     label: Tarieven

@@ -19,6 +19,8 @@ const categoryDotColors: Record<TrainingCategory, string> = {
   tabata: 'bg-plate-red',
   circuit: 'bg-plate-yellow',
   kids: 'bg-plate-white border border-hairline',
+  zumba: 'bg-moss',
+  calisthenics: 'bg-ink',
 };
 
 export default function Rooster() {
@@ -134,7 +136,9 @@ export default function Rooster() {
                 </div>
 
                 {day.classes.length === 0 ? (
-                  <p className="py-6 text-sm text-stone">Geen lessen in dit filter.</p>
+                  <p className="py-6 text-sm text-stone">
+                    {activeCategory === 'all' ? 'Geen groepslessen op deze dag.' : 'Geen lessen in dit filter.'}
+                  </p>
                 ) : (
                   <ul>
                     {day.classes.map((cls) => (
@@ -264,7 +268,10 @@ export default function Rooster() {
                 { label: 'Trainer', value: selectedClass.trainer },
                 { label: 'Locatie', value: selectedClass.location },
                 { label: 'Niveau', value: selectedClass.level },
-              ].map((info) => (
+              ]
+                // Een leeg veld in het rooster (bijvoorbeeld geen niveau) slaan we over.
+                .filter((info) => info.value)
+                .map((info) => (
                 <div
                   key={info.label}
                   className="grid grid-cols-[6.5rem_1fr] gap-4 py-3 border-b border-hairline"

@@ -130,8 +130,11 @@ export default function GroepstrainingenOverview() {
                   {i === currentDayIndex && <span className="sr-only">(vandaag)</span>}
                 </h3>
                 <ul className="flex flex-wrap gap-x-6 gap-y-1.5">
+                  {day.classes.length === 0 && (
+                    <li className="text-[0.9375rem] text-stone">Geen groepslessen</li>
+                  )}
                   {day.classes.map((cls) => (
-                    <li key={cls.short} className="text-[0.9375rem] text-ink-soft">
+                    <li key={cls.short + cls.time} className="text-[0.9375rem] text-ink-soft">
                       <span className="mono text-stone mr-2">{cls.time}</span>
                       {cls.short}
                     </li>
