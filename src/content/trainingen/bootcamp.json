@@ -1,0 +1,49 @@
+{
+  "titel": "Bootcamp",
+  "ondertitel": "Buiten trainen in weer en wind. Functioneel en intensief.",
+  "tekst": "Bootcamp bij Body by Marcel vindt buiten plaats, in de frisse lucht van Elst en omgeving. Regen of zonneschijn, wij trainen altijd. Functionele oefeningen met je eigen lichaamsgewicht en natuurlijke elementen maken je sterker, sneller en mentaal weerbaarder.\n\nVan sprints en burpees tot tire flips en battle ropes, elke bootcamp is uniek en uitdagend. De groep motiveert elkaar om grenzen te verleggen, terwijl onze coaches zorgen dat je veilig en effectief traint.\n\nBootcamp is niet alleen fysiek intensief, het is ook een mentale uitdaging. Je leert doorzetten, samenwerken en jezelf overtreffen. Perfect voor wie echt wil pushen.",
+  "kenmerken": [
+    {
+      "icoon": "Cloud",
+      "titel": "Altijd buiten",
+      "tekst": "Regen, wind of zon, we trainen in alle weersomstandigheden. Dat maakt je mentaal sterker."
+    },
+    {
+      "icoon": "Flame",
+      "titel": "Functionele oefeningen",
+      "tekst": "Geen machines, wel bewegingen die je in het dagelijks leven gebruikt. Praktisch en effectief."
+    },
+    {
+      "icoon": "Users",
+      "titel": "Teamspirit",
+      "tekst": "Samen train je harder. De groep motiveert en pusht elkaar naar nieuwe prestaties."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/farmerswalk.jpg",
+    "/fotos-bron/buiten-squat.jpg",
+    "/fotos-bron/buiten-halter.jpg",
+    "/fotos-bron/opdrukken.jpg",
+    "/fotos-bron/lunge.jpg",
+    "/fotos-bron/farmerswalk-2.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Duur",
+      "waarde": "60 minuten"
+    },
+    {
+      "label": "Locatie",
+      "waarde": "Buiten (Elst omgeving)"
+    },
+    {
+      "label": "Niveau",
+      "waarde": "Alle niveaus"
+    },
+    {
+      "label": "Seizoen",
+      "waarde": "Het hele jaar door"
+    }
+  ],
+  "afsluiterTitel": "Doe mee met de volgende bootcamp"
+}

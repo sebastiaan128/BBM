@@ -1,41 +1,39 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { photo } from '../photos';
 import Photo from './Photo';
+import content from '../content/home.json';
+
+const challenge = content.challenge;
 
 interface Winner {
-  year: number;
-  name: string;
-  result: string;
-  photo: string;
+  jaar: number;
+  /** Leeg zolang de namen van dat jaar nog niet bekend zijn. */
+  namen: string;
+  onderdelen: string;
+  foto: string;
 }
 
-const winners: Winner[] = [
-  { year: 2024, name: 'Naam winnaar', result: 'Resultaat', photo: photo.deadlift },
-  { year: 2023, name: 'Naam winnaar', result: 'Resultaat', photo: photo.schouderdrukken },
-  { year: 2022, name: 'Naam winnaar', result: 'Resultaat', photo: photo.duoHalters2 },
-  { year: 2021, name: 'Naam winnaar', result: 'Resultaat', photo: photo.kettlebellSquat },
-  { year: 2020, name: 'Naam winnaar', result: 'Resultaat', photo: photo.bicepsBank },
-];
+// Nieuwste jaar eerst, ook als ze in /admin in een andere volgorde staan.
+const winners: Winner[] = [...challenge.winnaars].sort((a, b) => b.jaar - a.jaar);
 
-const years = ['Alle jaren', ...winners.map((w) => String(w.year))];
+const years = ['Alle jaren', ...winners.map((w) => String(w.jaar))];
 
 function WinnerCard({ winner: w }: { winner: Winner }) {
   return (
     <article className="group" data-reveal>
-      <div className="relative aspect-[4/5] overflow-hidden rounded-md">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-md">
         <Photo
-          src={w.photo}
-          alt={`Winnaar ${w.year}`}
+          src={w.foto}
+          alt={w.namen ? `${w.namen}, winnaars ${w.jaar}` : `Winnaars ${w.jaar}`}
           loading="lazy"
           className="group-hover:scale-[1.03]"
         />
         <span className="mono absolute top-0 left-0 bg-lime text-ink text-xs font-medium px-2.5 py-1.5">
-          {w.year}
+          {w.jaar}
         </span>
       </div>
-      <h3 className="display-md mt-4 text-paper">{w.name}</h3>
-      <p className="mt-1 text-sm text-paper/55">{w.result}</p>
+      <h3 className="display-md mt-4 text-paper">{w.namen || `Winnaars ${w.jaar}`}</h3>
+      <p className="mt-1 text-sm text-paper/55">{w.onderdelen}</p>
     </article>
   );
 }
@@ -44,18 +42,16 @@ export default function ChallengeWinners() {
   const [activeFilter, setActiveFilter] = useState('Alle jaren');
 
   const filtered =
-    activeFilter === 'Alle jaren' ? winners : winners.filter((w) => String(w.year) === activeFilter);
+    activeFilter === 'Alle jaren' ? winners : winners.filter((w) => String(w.jaar) === activeFilter);
 
   return (
     <section className="py-20 md:py-28 bg-ink text-paper">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12" data-reveal>
           <div className="max-w-lg">
-            <span className="eyebrow eyebrow-light">Eindejaarschallenge</span>
-            <h2 className="display-lg mt-6">Hall of fame</h2>
-            <p className="mt-5 text-paper/65 leading-relaxed">
-              Elk jaar sluiten we af met een challenge. Dit zijn de mensen die hem wonnen.
-            </p>
+            <span className="eyebrow eyebrow-light">{challenge.eyebrow}</span>
+            <h2 className="display-lg mt-6">{challenge.titel}</h2>
+            <p className="mt-5 text-paper/65 leading-relaxed">{challenge.intro}</p>
           </div>
 
           {/* Jaarfilter */}
@@ -77,9 +73,9 @@ export default function ChallengeWinners() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-5 gap-y-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
           {filtered.map((w) => (
-            <WinnerCard key={w.year} winner={w} />
+            <WinnerCard key={w.jaar} winner={w} />
           ))}
         </div>
 

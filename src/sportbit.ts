@@ -1,3 +1,5 @@
+import { site } from './site';
+
 /**
  * Koppeling met SportBit, het systeem waarin de lessen en inschrijvingen
  * al worden beheerd (bodybymarcel.sportbitapp.nl).
@@ -7,9 +9,10 @@
  * bezoekers de lestijden zien en zich direct inschrijven. Die code staat
  * niet publiek; vraag hem op in je SportBit-omgeving of bij hun support.
  *
- * Krijg je een IFRAME-adres, zet dat hieronder bij `roosterWidgetUrl`.
- * Het rooster op /groepstrainingen/rooster schakelt dan vanzelf over van
- * het handmatige overzicht naar het echte, actuele rooster.
+ * Krijg je een IFRAME-adres, vul het in bij 'SportBit-roosterwidget' in
+ * /admin (Algemeen), of in src/content/site.json. Het rooster op
+ * /groepstrainingen/rooster schakelt dan vanzelf over van het handmatige
+ * overzicht naar het echte, actuele rooster.
  *
  * Krijg je in plaats daarvan een <script>-fragment, laat het me weten:
  * dat vraagt een andere inbouw dan een iframe.
@@ -27,8 +30,8 @@ export const sportbit = {
 } as const;
 
 /**
- * Vul hier het iframe-adres van de SportBit-roosterwidget in.
- * Zolang dit `null` is, toont de site het handmatige weekoverzicht met de
+ * Het iframe-adres van de SportBit-roosterwidget, uit de site-instellingen.
+ * Zolang het leeg is, toont de site het handmatige weekoverzicht met de
  * melding dat het een indicatie is.
  */
-export const roosterWidgetUrl: string | null = null;
+export const roosterWidgetUrl: string | null = site.sportbitRoosterWidget || null;

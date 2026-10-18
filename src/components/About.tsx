@@ -1,5 +1,8 @@
-import { photo } from '../photos';
 import Photo from './Photo';
+import { Alineas, Regels } from './Tekst';
+import content from '../content/home.json';
+
+const over = content.over;
 
 export default function About() {
   return (
@@ -11,8 +14,8 @@ export default function About() {
           <div className="photo-accent lg:mr-4" data-reveal>
             <div className="aspect-[3/4]">
               <Photo
-                src={photo.trainerPortret}
-                alt="Trainer in de krachthal van Body by Marcel"
+                src={over.foto}
+                alt={over.fotoAlt}
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
@@ -21,47 +24,27 @@ export default function About() {
 
           {/* Tekst */}
           <div className="lg:pt-4" data-reveal>
-            <span className="eyebrow">Over de studio</span>
+            <span className="eyebrow">{over.eyebrow}</span>
 
             <h2 className="display-lg mt-6 text-ink">
-              Je bent hier
-              <br />
-              geen abonneenummer
+              <Regels tekst={over.titel} />
             </h2>
 
             <div className="mt-8 space-y-5 text-ink-soft leading-relaxed">
-              <p>
-                Met een achtergrond in <strong className="text-ink font-semibold">Taekwon-do</strong> en
-                jarenlange ervaring in de fitnessindustrie weet ik hoeveel er van balans afhangt.
-                Balans tussen kracht en rust, tussen intensiteit en herstel, tussen training en
-                voeding.
-              </p>
-              <p>
-                Bij Body by Marcel draait alles om jou. Of je nu net begint, een specifiek doel voor
-                ogen hebt of gewoon in vorm wilt blijven, je traint met een programma dat op jou is
-                afgestemd, en met iemand die je vooruitgang bijhoudt.
-              </p>
-              <p>
-                Het resultaat is een club waar hard werken samengaat met een warme sfeer, en waar
-                iedereen zich thuis voelt.
-              </p>
+              <Alineas tekst={over.tekst} />
             </div>
 
             {/* Feiten, geen decoratie */}
             <dl className="mt-10 border-t border-hairline">
-              {[
-                { k: 'Achtergrond', v: 'Taekwon-do, jarenlange ervaring als trainer' },
-                { k: 'Aanpak', v: 'Training, voeding en herstel als één geheel' },
-                { k: 'Groepsgrootte', v: 'Nooit meer dan acht per les' },
-              ].map((row) => (
+              {over.feiten.map((row) => (
                 <div
-                  key={row.k}
+                  key={row.label}
                   className="grid sm:grid-cols-[10rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline"
                 >
                   <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
-                    {row.k}
+                    {row.label}
                   </dt>
-                  <dd className="text-[0.9375rem] text-ink">{row.v}</dd>
+                  <dd className="text-[0.9375rem] text-ink">{row.waarde}</dd>
                 </div>
               ))}
             </dl>

@@ -21,6 +21,9 @@ export const routeLoaders: Record<string, RouteLoader> = {
   '/groepstrainingen/kids': () => import('./pages/groepstrainingen/Kids'),
   '/groepstrainingen/corporate': () => import('./pages/groepstrainingen/Corporate'),
   '/groepstrainingen/rooster': () => import('./pages/groepstrainingen/Rooster'),
+  // Zelfde adressen als op de oude site, zodat bestaande links blijven werken.
+  '/privacy-policy': () => import('./pages/PrivacyPolicy'),
+  '/algemene-voorwaarden': () => import('./pages/AlgemeneVoorwaarden'),
 };
 
 const prefetched = new Set<string>();

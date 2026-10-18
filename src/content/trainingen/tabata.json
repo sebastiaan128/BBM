@@ -1,0 +1,49 @@
+{
+  "titel": "Tabata",
+  "ondertitel": "Korte, explosieve intervallen. Maximaal resultaat in minimale tijd.",
+  "tekst": "Tabata is gebaseerd op het wetenschappelijk bewezen intervalprotocol: 20 seconden alles geven, 10 seconden rust, 8 rondes per oefening. Simpel in opzet, vernietigend in intensiteit. Je verbrandt calorieën tijdens én uren na de training.\n\nBij Body by Marcel combineren we het klassieke Tabata-protocol met gevarieerde oefeningen voor een complete full-body workout. Van squats en push-ups tot kettlebell swings en jumping jacks, elke sessie is anders.\n\nTabata is ideaal voor wie weinig tijd heeft maar maximale resultaten wil. In 30 minuten heb je meer gedaan dan een uur rustig cardio. De afterburn zorgt dat je vetverbranding nog lang na de training op gang blijft.",
+  "kenmerken": [
+    {
+      "icoon": "Timer",
+      "titel": "20/10 protocol",
+      "tekst": "20 seconden intense inspanning, 10 seconden rust. Bewezen effectief voor vetverbranding en conditie."
+    },
+    {
+      "icoon": "Zap",
+      "titel": "Afterburn effect",
+      "tekst": "Je lichaam blijft na de training calorieën verbranden. EPOC zorgt voor verhoogde vetverbranding tot 24 uur later."
+    },
+    {
+      "icoon": "TrendingUp",
+      "titel": "Snel resultaat",
+      "tekst": "Door de hoge intensiteit zie je sneller resultaten dan bij traditionele cardio. Efficiënt en effectief."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/opdrukken.jpg",
+    "/fotos-bron/opdrukken-2.jpg",
+    "/fotos-bron/lunge.jpg",
+    "/fotos-bron/lunge-2.jpg",
+    "/fotos-bron/dumbbell-duo.jpg",
+    "/fotos-bron/kettlebell-zijkant.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Duur",
+      "waarde": "30-45 minuten"
+    },
+    {
+      "label": "Intensiteit",
+      "waarde": "Hoog"
+    },
+    {
+      "label": "Niveau",
+      "waarde": "Gemiddeld - Gevorderd"
+    },
+    {
+      "label": "Locatie",
+      "waarde": "BBM Elst"
+    }
+  ],
+  "afsluiterTitel": "Klaar voor de ultieme uitdaging?"
+}

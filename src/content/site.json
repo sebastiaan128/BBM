@@ -1,0 +1,22 @@
+{
+  "contact": {
+    "straat": "Rijksstraatweg 125",
+    "postcodePlaats": "3921 AD Elst (U)",
+    "telefoon": "06-42059446",
+    "email": "info@bodybymarcel.nl",
+    "mapsLink": "https://maps.google.com/?q=Rijksstraatweg+125+Elst+Utrecht",
+    "parkeren": "Parkeren kan bij de studio."
+  },
+  "openingstijden": [
+    { "dagen": "Maandag t/m vrijdag", "tijden": "08:00 – 12:00\n16:00 – 22:00" },
+    { "dagen": "Zaterdag", "tijden": "08:00 – 12:00" },
+    { "dagen": "Zondag", "tijden": "Gesloten" }
+  ],
+  "openingstijdenNotitie": "Personal training kan op werkdagen al vanaf 07:00.",
+  "social": {
+    "instagram": "https://www.instagram.com/bodybymarcel/",
+    "facebook": ""
+  },
+  "footerTekst": "Fitness en personal training in het hart van Elst, Utrecht. Kracht, rust en voeding in balans.",
+  "sportbitRoosterWidget": ""
+}

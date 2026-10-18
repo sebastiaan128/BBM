@@ -1,0 +1,70 @@
+{
+  "titel": "Bedrijfstraining",
+  "ondertitel": "Groepstraining speciaal voor bedrijven en teams.",
+  "tekst": "Een fit en vitaal team presteert beter. Body by Marcel biedt op maat gemaakte bedrijfstrainingen voor teams en organisaties. Of het nu gaat om een wekelijkse groepstraining, een teambuilding bootcamp of een vitaliteitsprogramma, wij regelen het.\n\nWe komen naar uw locatie of u bezoekt ons in Elst. Onze coaches stemmen het programma af op de doelstellingen van uw bedrijf en het niveau van uw medewerkers. Van lichte beweegprogramma's tot intensieve teamuitdagingen.\n\nInvesteer in de gezondheid en het welzijn van uw team. Fittere medewerkers verzuimen minder, zijn productiever en hebben meer plezier in hun werk. Dat is de ROI van bedrijfsfitness bij Body by Marcel.",
+  "kenmerken": [
+    {
+      "icoon": "Building2",
+      "titel": "Op locatie mogelijk",
+      "tekst": "We komen naar uw kantoor, bedrijfsterrein of wij ontvangen u in onze studio in Elst. Flexibel en gemakkelijk."
+    },
+    {
+      "icoon": "TrendingUp",
+      "titel": "Meetbare resultaten",
+      "tekst": "Minder verzuim, meer energie en een betere teamdynamiek. Wij meten de voortgang en rapporteren aan u."
+    },
+    {
+      "icoon": "Users",
+      "titel": "Teambuilding",
+      "tekst": "Samen zweten schept een band. Onze bedrijfstrainingen versterken de samenwerking en het teamgevoel."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/duo-halters.jpg",
+    "/fotos-bron/duo-halters-2.jpg",
+    "/fotos-bron/handdruk.jpg",
+    "/fotos-bron/coaching.jpg",
+    "/fotos-bron/studio-hal.jpg",
+    "/fotos-bron/koeling.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Duur",
+      "waarde": "Flexibel (30-90 min)"
+    },
+    {
+      "label": "Groepsgrootte",
+      "waarde": "5 - 30 personen"
+    },
+    {
+      "label": "Programma",
+      "waarde": "Op maat gemaakt"
+    },
+    {
+      "label": "Locatie",
+      "waarde": "Bij u of in BBM Elst"
+    }
+  ],
+  "afsluiterTitel": "Investeer in uw team",
+  "pakketten": {
+    "titel": "Bedrijfspakketten",
+    "intro": "Alle pakketten zijn maatwerk. In een vrijblijvend gesprek kijken we wat er past bij de omvang van uw team en de ruimte in de agenda.",
+    "items": [
+      {
+        "naam": "Starter",
+        "sessies": "4 sessies per maand",
+        "tekst": "Voor teams tot tien personen."
+      },
+      {
+        "naam": "Business",
+        "sessies": "8 sessies per maand",
+        "tekst": "De meestgekozen vorm bij groeiende bedrijven."
+      },
+      {
+        "naam": "Enterprise",
+        "sessies": "In overleg",
+        "tekst": "Volledig op maat voor grotere organisaties."
+      }
+    ]
+  }
+}

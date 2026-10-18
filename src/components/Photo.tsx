@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ImgHTMLAttributes } from 'react';
 import { photoAssets } from '../photoAssets';
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'srcSet'> & {
-  /** Naam van de foto, zoals in photos.ts. Dus 'coaching', geen pad. */
+  /** Naam van de foto ('coaching'), of het pad uit de content ('/fotos-bron/coaching.jpg'). */
   src: string;
   /** Leeg laten voor decoratieve beelden, net als bij een gewone <img>. */
   alt: string;
@@ -17,14 +17,31 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'srcSet'>
 const STANDAARD_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 
 /**
+ * Van wat er in de content staat ('/fotos-bron/Foto Marcel.JPG' uit /admin,
+ * of al 'foto-marcel') naar de naam waaronder de varianten bestaan. Moet
+ * gelijk lopen met fotoNaam() in scripts/optimaliseer-fotos.mjs.
+ */
+export function fotoNaam(src: string) {
+  return src
+    .replace(/^.*\//, '')
+    .replace(/\.(jpe?g|png|webp)$/i, '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
  * Een foto met de .photo-uitsnede, in WebP en op de breedte die bij het scherm
  * past. Zolang het beeld onderweg is staat er een sterk vergroot voorbeeldje
  * van 20px als achtergrond: je ziet de kleuren en de compositie al, en de foto
  * scherpt daar overheen aan in plaats van uit een grijs vlak te springen.
  */
-export default function Photo({ src, className = '', sizes, onLoad, onError, ...rest }: Props) {
+export default function Photo({ src: bron, className = '', sizes, onLoad, onError, ...rest }: Props) {
   const ref = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const src = fotoNaam(bron);
   const asset = photoAssets[src];
 
   // Een beeld uit de cache is bij het mounten al compleet en vuurt geen

@@ -1,0 +1,49 @@
+{
+  "titel": "Kids Fitness & Bootcamp",
+  "ondertitel": "Kracht en conditie voor jongeren van 8-16 jaar.",
+  "tekst": "Bij Body by Marcel geloven we dat een actieve leefstijl begint op jonge leeftijd. Onze Kids Fitness & Bootcamp lessen zijn speciaal ontworpen voor kinderen en jongeren van 8 tot 16 jaar. Leuk, veilig en uitdagend, precies op het goede niveau.\n\nOnze gecertificeerde jeugdcoaches weten hoe ze jongeren motiveren en uitdagen. We combineren spelelementen met echte fitness-oefeningen, zodat kinderen bewegen als iets fijns ervaren en niet als een verplichting.\n\nVan coördinatie en lenigheid tot kracht en uithoudingsvermogen, we ontwikkelen alle aspecten van de fysieke gezondheid van jouw kind. In een veilige, positieve omgeving waar plezier voorop staat.",
+  "kenmerken": [
+    {
+      "icoon": "Smile",
+      "titel": "Leuk en motiverend",
+      "tekst": "Speelse oefenvormen en spelelementen maken bewegen leuk. Kinderen kijken uit naar elke training."
+    },
+    {
+      "icoon": "Shield",
+      "titel": "Veilig en verantwoord",
+      "tekst": "Gecertificeerde jeugdcoaches zorgen voor leeftijds- en niveaugeschikte oefeningen zonder blessurerisico."
+    },
+    {
+      "icoon": "Star",
+      "titel": "Compleet ontwikkeld",
+      "tekst": "Kracht, lenigheid, coördinatie en conditie, een brede basis voor een actieve en gezonde leefstijl."
+    }
+  ],
+  "fotos": [
+    "/fotos-bron/opdrukken-2.jpg",
+    "/fotos-bron/lunge.jpg",
+    "/fotos-bron/matten.jpg",
+    "/fotos-bron/kettlebell-squat.jpg",
+    "/fotos-bron/opdrukken.jpg",
+    "/fotos-bron/studio-hal.jpg"
+  ],
+  "praktisch": [
+    {
+      "label": "Duur",
+      "waarde": "45 minuten"
+    },
+    {
+      "label": "Leeftijd",
+      "waarde": "8 - 16 jaar"
+    },
+    {
+      "label": "Niveau",
+      "waarde": "Alle niveaus"
+    },
+    {
+      "label": "Locatie",
+      "waarde": "BBM Elst / Buiten"
+    }
+  ],
+  "afsluiterTitel": "Geef jouw kind een actieve start"
+}

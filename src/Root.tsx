@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import CookieBanner from './components/CookieBanner';
 import useScrollReveal from './hooks/useScrollReveal';
 import useRoutePrefetch from './hooks/useRoutePrefetch';
 
@@ -28,6 +29,7 @@ export default function Root() {
         <Outlet />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }

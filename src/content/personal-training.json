@@ -1,0 +1,105 @@
+{
+  "hero": {
+    "eyebrow": "Personal training",
+    "titel": "Een uur dat helemaal van jou is",
+    "intro": "Van intake tot resultaat, met een trainer die je schema kent en je vooruitgang bijhoudt.",
+    "foto": "/fotos-bron/handdruk.jpg",
+    "fotoAlt": "Kennismaking met de trainer in de studio"
+  },
+  "waarom": {
+    "eyebrow": "Waarom personal training",
+    "titel": "Sneller vooruit met\niemand naast je",
+    "tekst": "We beginnen met een gesprek: wat wil je bereiken, wat heb je al geprobeerd, en hoeveel ruimte is er in je week. Daaruit volgt een plan dat je aankunt en volhoudt.\n\nAfvallen, sterker worden, opbouwen na een blessure of simpelweg fitter zijn. De aanpak verschilt, de aandacht niet.",
+    "voordelen": [
+      { "titel": "Een plan voor jou", "tekst": "Opgebouwd rond je doel, je niveau en de tijd die je werkelijk hebt." },
+      { "titel": "Volledige aandacht", "tekst": "Geen wachten op een toestel, geen gedeelde aandacht. Het uur is van jou." },
+      { "titel": "Iemand die meekijkt", "tekst": "Je trainer ziet wanneer je vorm verslapt, en wanneer er meer in zit." },
+      { "titel": "Zichtbare voortgang", "tekst": "Vaste meetmomenten, zodat je weet of het werkt in plaats van het te hopen." }
+    ],
+    "foto": "/fotos-bron/ems-vest-2.jpg",
+    "fotoAlt": "Krachttraining onder begeleiding"
+  },
+  "team": {
+    "eyebrow": "Het team",
+    "titel": "Met wie je traint",
+    "trainers": [
+      {
+        "naam": "Marcel",
+        "functie": "Eigenaar & hoofdcoach",
+        "bio": "Marcel is de oprichter van Body by Marcel en de hoofdcoach van het team. Wil je spiermassa opbouwen of op een gezonde manier afvallen, dan zet hij samen met jou een traject uit en houdt hij bij of het werkt.",
+        "focus": ["Spiergroei", "Afvaltrajecten"],
+        "foto": ""
+      },
+      {
+        "naam": "Marvin",
+        "functie": "Personal trainer",
+        "bio": "Marvin ziet wat anderen over het hoofd zien. Hij schaaft je techniek bij tot elke herhaling klopt, zodat je veilig traint en meer uit iedere oefening haalt.",
+        "focus": ["Techniek", "Details"],
+        "foto": "/fotos-bron/profiel-marvin.jpg"
+      },
+      {
+        "naam": "Wessel",
+        "functie": "Personal trainer",
+        "bio": "Wessel kijkt verder dan het uur in de studio. Samen zoek je naar kleine aanpassingen in je dagelijkse ritme die je ook volhoudt als het even druk is.",
+        "focus": ["Lifestyle-aanpassingen"],
+        "foto": ""
+      },
+      {
+        "naam": "Eva",
+        "functie": "Personal trainer",
+        "bio": "Eva richt zich op billen, benen en buik. Ze stelt een programma samen dat precies die spiergroepen sterker maakt, met oefeningen die je voelt waar het hoort.",
+        "focus": ["Billen", "Benen", "Buik"],
+        "foto": ""
+      },
+      {
+        "naam": "Bart",
+        "functie": "Personal trainer",
+        "bio": "Bart helpt je verder als je lichaam even niet meewerkt. Hij bouwt je training stap voor stap op, zodat je blijft trainen zonder je herstel in de weg te zitten.",
+        "focus": ["Herstel", "Trainen met blessures"],
+        "foto": ""
+      },
+      {
+        "naam": "Cees",
+        "functie": "Personal trainer",
+        "bio": "Bij Cees staat plezier voorop. Hij helpt je spieren opbouwen met trainingen waar je naar uitkijkt, want wie het leuk vindt, blijft komen.",
+        "focus": ["Spieropbouw", "Plezier in fitness"],
+        "foto": ""
+      }
+    ]
+  },
+  "beeldstrook": [
+    "/fotos-bron/deadlift.jpg",
+    "/fotos-bron/kettlebell-squat.jpg",
+    "/fotos-bron/cardio-loopband.jpg",
+    "/fotos-bron/kabel-row.jpg"
+  ],
+  "prijzen": {
+    "titel": "Wat het kost",
+    "los": {
+      "naam": "Losse sessie",
+      "prijs": "€65",
+      "per": "per sessie van 60 minuten",
+      "tekst": "Om te proberen, of als aanvulling naast je groepstrainingen."
+    },
+    "voordeel": {
+      "label": "Voordeel",
+      "naam": "Tien sessies",
+      "prijs": "€600",
+      "per": "€60 per sessie, je bespaart €50",
+      "tekst": "Voor wie een doel heeft dat meer dan een paar weken vraagt."
+    },
+    "inbegrepenTitel": "Bij elk traject inbegrepen",
+    "inbegrepen": [
+      "Uitgebreide intake en doelanalyse",
+      "Persoonlijk trainingsschema",
+      "Voedings- en leefstijladvies",
+      "Voortgangsmetingen op vaste momenten",
+      "Vragen tussendoor via WhatsApp",
+      "Sessies inplannen wanneer het jou uitkomt"
+    ]
+  },
+  "afsluiter": {
+    "titel": "Klaar om te beginnen?",
+    "tekst": "Het kennismakingsgesprek is gratis en kost je een half uur. Daarna weet je precies wat personal training voor jou zou betekenen."
+  }
+}

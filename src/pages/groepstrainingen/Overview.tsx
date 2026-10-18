@@ -1,55 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageHero from '../../components/PageHero';
-import { photo } from '../../photos';
+import content from '../../content/groepstrainingen.json';
 import { schedule, todayIndex } from '../../rooster';
 import Photo from '../../components/Photo';
+import { Alineas, Regels } from '../../components/Tekst';
 
-const trainingTypes = [
-  {
-    id: 'small-group',
-    title: 'Small Group Training',
-    description: 'Maximaal acht personen, dus je krijgt nog steeds correctie op je techniek.',
-    image: photo.cardioDuo,
-  },
-  {
-    id: 'bootcamp',
-    title: 'Bootcamp',
-    description: 'Buiten op het terrein, met je eigen gewicht en wat er verder voorhanden is.',
-    image: photo.farmerswalk,
-  },
-  {
-    id: 'tabata',
-    title: 'Tabata',
-    description: 'Korte, explosieve intervallen. Twintig seconden aan, tien seconden uit.',
-    image: photo.opdrukken,
-  },
-  {
-    id: 'circuit',
-    title: 'Circuit Training',
-    description: 'Vaste ronde langs de stations, hele lichaam in één les.',
-    image: photo.kabelPull,
-  },
-  {
-    id: 'kids',
-    title: 'Kids Fitness & Bootcamp',
-    description: 'Voor 8 tot 16 jaar. Bewegen leren zonder dat het op school lijkt.',
-    image: photo.lunge2,
-  },
-  {
-    id: 'corporate',
-    title: 'Bedrijfstraining',
-    description: 'Een vast moment in de week voor uw team, op maat samengesteld.',
-    image: photo.duoHalters,
-  },
-];
-
-const principles = [
-  { k: 'Groepsgrootte', v: 'Nooit meer dan acht mensen per les' },
-  { k: 'Begeleiding', v: 'Een trainer die je naam en je schema kent' },
-  { k: 'Niveau', v: 'Elke oefening heeft een lichtere en zwaardere variant' },
-  { k: 'Rooster', v: 'Vroeg in de ochtend, eind van de middag en zaterdag' },
-];
+const { hero, aanpak, afsluiter } = content;
 
 export default function GroepstrainingenOverview() {
   const currentDayIndex = todayIndex();
@@ -57,11 +14,11 @@ export default function GroepstrainingenOverview() {
   return (
     <div className="bg-paper">
       <PageHero
-        eyebrow="Groepstrainingen"
-        title="Samen trainen, zonder in de massa te verdwijnen"
-        intro="Zes vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een."
-        image={photo.duoMedicijnbal}
-        imageAlt="Twee deelnemers trainen samen met een medicijnbal"
+        eyebrow={hero.eyebrow}
+        title={hero.titel}
+        intro={hero.intro}
+        image={hero.foto}
+        imageAlt={hero.fotoAlt}
       >
         <Link to="/groepstrainingen/rooster" className="btn btn-lime">
           Bekijk het rooster
@@ -76,33 +33,24 @@ export default function GroepstrainingenOverview() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_0.85fr] gap-12 lg:gap-20 items-center">
             <div>
-              <span className="eyebrow">De aanpak</span>
+              <span className="eyebrow">{aanpak.eyebrow}</span>
               <h2 className="display-lg mt-6 text-ink">
-                Kwaliteit boven
-                <br />
-                aantallen
+                <Regels tekst={aanpak.titel} />
               </h2>
               <div className="mt-7 space-y-4 text-lg leading-relaxed text-ink-soft">
-                <p>
-                  Groepstraining hoeft niet te betekenen dat je een nummer bent. Door de groepen klein
-                  te houden blijft er ruimte om je houding te corrigeren en de oefening aan te passen
-                  aan wat jij op dat moment aankunt.
-                </p>
-                <p>
-                  Beginner of gevorderd: je doet dezelfde les mee, op jouw niveau.
-                </p>
+                <Alineas tekst={aanpak.tekst} />
               </div>
 
               <dl className="mt-10 border-t border-hairline">
-                {principles.map((row) => (
+                {aanpak.principes.map((row) => (
                   <div
-                    key={row.k}
+                    key={row.label}
                     className="grid sm:grid-cols-[10rem_1fr] gap-1 sm:gap-6 py-4 border-b border-hairline"
                   >
                     <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone sm:pt-0.5">
-                      {row.k}
+                      {row.label}
                     </dt>
-                    <dd className="text-[0.9375rem] text-ink">{row.v}</dd>
+                    <dd className="text-[0.9375rem] text-ink">{row.waarde}</dd>
                   </div>
                 ))}
               </dl>
@@ -111,8 +59,8 @@ export default function GroepstrainingenOverview() {
             <div className="photo-accent photo-accent-left">
               <div className="aspect-[4/5]">
                 <Photo
-                  src={photo.highFive}
-                  alt="Deelnemer en trainer geven elkaar een high five"
+                  src={aanpak.foto}
+                  alt={aanpak.fotoAlt}
                   loading="lazy"
                   />
               </div>
@@ -125,14 +73,12 @@ export default function GroepstrainingenOverview() {
       <section className="py-20 md:py-24 bg-paper-dim border-y border-hairline">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
           <div className="max-w-2xl mb-12">
-            <h2 className="display-lg text-ink">Kies je training</h2>
-            <p className="mt-4 text-ink-soft leading-relaxed">
-              Klik op een training voor de details, het niveau en de tijden.
-            </p>
+            <h2 className="display-lg text-ink">{content.kiesTitel}</h2>
+            <p className="mt-4 text-ink-soft leading-relaxed">{content.kiesIntro}</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {trainingTypes.map((t) => (
+            {content.trainingen.map((t) => (
               <Link
                 key={t.id}
                 to={`/groepstrainingen/${t.id}`}
@@ -140,16 +86,16 @@ export default function GroepstrainingenOverview() {
                 className="card group flex flex-col overflow-hidden"
               >
                 <div className="aspect-[3/4] overflow-hidden">
-                  <Photo src={t.image} alt="" loading="lazy" className="group-hover:scale-[1.03]" />
+                  <Photo src={t.foto} alt="" loading="lazy" className="group-hover:scale-[1.03]" />
                 </div>
 
                 <div className="flex flex-col flex-1 p-5">
                   <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150 ease-smooth">
-                    {t.title}
+                    {t.titel}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-stone flex-1">{t.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-stone flex-1">{t.tekst}</p>
                   <span className="mono inline-flex items-center gap-1.5 mt-4 text-[0.6875rem] uppercase tracking-[0.12em] text-moss">
-                    Bekijk {t.title.toLowerCase()}
+                    Bekijk {t.titel.toLowerCase()}
                     <ArrowRight
                       size={13}
                       className="transition-transform duration-150 ease-smooth group-hover:translate-x-0.5"
@@ -166,7 +112,7 @@ export default function GroepstrainingenOverview() {
       {/* Deze week */}
       <section className="py-20 md:py-24">
         <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-8">
-          <h2 className="display-lg text-ink mb-10">Deze week</h2>
+          <h2 className="display-lg text-ink mb-10">{content.weekTitel}</h2>
 
           <div className="border-t border-ink">
             {schedule.map((day, i) => (
@@ -211,8 +157,8 @@ export default function GroepstrainingenOverview() {
 
       {/* Beeldstrook */}
       <section className="grid grid-cols-2 md:grid-cols-4">
-        {[photo.studioHal, photo.opdrukken2, photo.schoudersHalters, photo.matten].map((src) => (
-          <div key={src} className="aspect-[4/3] overflow-hidden">
+        {content.beeldstrook.map((src, i) => (
+          <div key={src + i} className="aspect-[4/3] overflow-hidden">
             <Photo src={src} alt="" loading="lazy" />
           </div>
         ))}
@@ -222,13 +168,9 @@ export default function GroepstrainingenOverview() {
       <section className="bg-ink text-paper py-20 md:py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="display-lg">
-            Je eerste groepsles
-            <br />
-            is gratis
+            <Regels tekst={afsluiter.titel} />
           </h2>
-          <p className="mt-6 text-paper/65 leading-relaxed">
-            Kom een keer meedoen en kijk of het klikt. Geen abonnement, geen verplichtingen.
-          </p>
+          <p className="mt-6 text-paper/65 leading-relaxed">{afsluiter.tekst}</p>
           <Link to="/proefdag" className="btn btn-lime mt-9">
             Proefles boeken
           </Link>

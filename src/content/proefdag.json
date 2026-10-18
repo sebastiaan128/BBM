@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "eyebrow": "Gratis proefdag",
+    "titel": "Kom een dag meedraaien",
+    "intro": "Kies een datum en tijd die je uitkomt. Je zit nergens aan vast, en de proefdag kost je niets.",
+    "foto": "/fotos-bron/kettlebell-daglicht.jpg",
+    "fotoAlt": "Training in de studio bij daglicht"
+  },
+  "stappenTitel": "Hoe de dag eruitziet",
+  "stappen": [
+    {
+      "titel": "Rondleiding",
+      "tekst": "Je ziet de studio, de krachthal en het buitenterrein."
+    },
+    {
+      "titel": "Proeftraining",
+      "tekst": "Een volledige training mee, onder begeleiding en op jouw niveau."
+    },
+    {
+      "titel": "Advies",
+      "tekst": "Na afloop bespreken we je doelen en wat daar het beste bij past."
+    }
+  ],
+  "tijdenDoordeweeks": [
+    "09:00",
+    "10:00",
+    "11:00",
+    "16:00",
+    "17:00",
+    "19:00"
+  ],
+  "tijdenZaterdag": [
+    "09:00",
+    "10:00",
+    "11:00"
+  ],
+  "bevestiging": "We bellen je binnen 24 uur om de proefdag te bevestigen."
+}

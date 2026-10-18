@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { site, telLink } from '../site';
 
 interface Props {
   children: ReactNode;
@@ -50,8 +51,8 @@ export default class ErrorBoundary extends Component<Props, State> {
 
           <p className="mt-8 text-sm text-stone">
             Liever bellen?{' '}
-            <a href="tel:0642059446" className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2">
-              06-42059446
+            <a href={telLink} className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2">
+              {site.contact.telefoon}
             </a>
           </p>
         </div>

@@ -1,0 +1,602 @@
+# Beheerpaneel op /admin (Decap CMS).
+#
+# Elke opgeslagen wijziging wordt een commit op master in GitHub; Netlify bouwt
+# de site daarna opnieuw (een paar minuten). De velden hieronder horen bij de
+# bestanden in src/content/. Hernoem je daar een veld, doe het hier ook.
+
+backend:
+  name: git-gateway
+  branch: master
+  commit_messages:
+    create: 'Beheer: {{collection}} “{{slug}}” aangemaakt'
+    update: 'Beheer: {{collection}} “{{slug}}” bijgewerkt'
+    delete: 'Beheer: {{collection}} “{{slug}}” verwijderd'
+    uploadMedia: 'Beheer: foto “{{path}}” toegevoegd'
+    deleteMedia: 'Beheer: foto “{{path}}” verwijderd'
+
+# Alleen op localhost: met `npx decap-server` ernaast bewerkt /admin dan
+# rechtstreeks de bestanden op je schijf, zonder inloggen.
+local_backend: true
+
+locale: nl
+site_url: https://bodybymarcel.netlify.app
+display_url: https://bodybymarcel.netlify.app
+logo_url: /logo-icon.svg
+
+# Geüploade foto's komen in fotos-bron/. Bij de volgende build maakt de site
+# er zelf de juiste formaten van.
+media_folder: fotos-bron
+public_folder: /fotos-bron
+
+# Herbruikbare veldgroepen.
+x-velden:
+  hero: &hero
+    label: Bovenkant van de pagina
+    name: hero
+    widget: object
+    collapsed: true
+    fields:
+      - { label: Klein label boven de titel, name: eyebrow, widget: string }
+      - { label: Titel, name: titel, widget: string }
+      - { label: Introtekst, name: intro, widget: text }
+      - { label: Foto, name: foto, widget: image }
+      - { label: Omschrijving van de foto (voor blinden en Google), name: fotoAlt, widget: string }
+  titelMetEnters: &titelMetEnters
+    label: Titel
+    name: titel
+    widget: text
+    hint: Een enter is een nieuwe regel in de kop.
+  lopendeTekst: &lopendeTekst
+    label: Tekst
+    name: tekst
+    widget: text
+    hint: 'Een lege regel begint een nieuwe alinea. Twee sterretjes aan beide kanten (\*\*zo\*\*) maken een woord vet.'
+  link: &link
+    label: Gaat naar
+    name: link
+    widget: select
+    options:
+      - { label: Home, value: / }
+      - { label: Proefdag, value: /proefdag }
+      - { label: Personal training, value: /personal-training }
+      - { label: Tarieven, value: /tarieven }
+      - { label: Contact, value: /contact }
+      - { label: Groepstrainingen, value: /groepstrainingen }
+      - { label: Rooster, value: /groepstrainingen/rooster }
+      - { label: Small group, value: /groepstrainingen/small-group }
+      - { label: Bootcamp, value: /groepstrainingen/bootcamp }
+      - { label: Tabata, value: /groepstrainingen/tabata }
+      - { label: Circuit, value: /groepstrainingen/circuit }
+      - { label: Kids, value: /groepstrainingen/kids }
+      - { label: Bedrijfstraining, value: /groepstrainingen/corporate }
+  labelWaarde: &labelWaarde
+    - { label: Label, name: label, widget: string }
+    - { label: Waarde, name: waarde, widget: string }
+  fotoLijst: &fotoLijst
+    widget: list
+    field: { label: Foto, name: foto, widget: image }
+  tekstLijst: &tekstLijst
+    widget: list
+    field: { label: Regel, name: regel, widget: string }
+  training: &training
+    editor: { preview: false }
+    fields:
+      - { label: Titel, name: titel, widget: string }
+      - { label: Ondertitel, name: ondertitel, widget: string }
+      - *lopendeTekst
+      - label: Wat je kunt verwachten
+        name: kenmerken
+        widget: list
+        summary: '{{fields.titel}}'
+        fields:
+          - label: Icoon
+            name: icoon
+            widget: select
+            options: [Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
+          - { label: Titel, name: titel, widget: string }
+          - { label: Tekst, name: tekst, widget: text }
+      - label: Foto's
+        name: fotos
+        hint: De eerste foto staat bovenaan de pagina.
+        <<: *fotoLijst
+      - { label: Praktisch, name: praktisch, widget: list, fields: *labelWaarde }
+      - { label: Titel van het blok onderaan, name: afsluiterTitel, widget: string }
+
+collections:
+  - name: algemeen
+    label: Algemeen
+    description: Contactgegevens, openingstijden en links die op meerdere pagina's staan.
+    editor: { preview: false }
+    files:
+      - name: site
+        label: Contact, openingstijden en links
+        file: src/content/site.json
+        fields:
+          - label: Contactgegevens
+            name: contact
+            widget: object
+            fields:
+              - { label: Straat en huisnummer, name: straat, widget: string }
+              - { label: Postcode en plaats, name: postcodePlaats, widget: string }
+              - { label: Telefoon, name: telefoon, widget: string }
+              - { label: E-mail, name: email, widget: string }
+              - { label: Link naar Google Maps, name: mapsLink, widget: string }
+              - { label: Parkeren, name: parkeren, widget: string }
+          - label: Openingstijden
+            name: openingstijden
+            widget: list
+            fields:
+              - { label: Dagen, name: dagen, widget: string }
+              - { label: Tijden, name: tijden, widget: text, hint: Twee blokken op een dag? Zet ze onder elkaar. }
+          - { label: Extra regel onder de openingstijden, name: openingstijdenNotitie, widget: string, required: false }
+          - label: Sociale media
+            name: social
+            widget: object
+            hint: Leeg laten = geen knop in de footer.
+            fields:
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: Facebook, name: facebook, widget: string, required: false }
+          - { label: Tekst in de footer, name: footerTekst, widget: text }
+          - label: SportBit-roosterwidget (iframe-adres)
+            name: sportbitRoosterWidget
+            widget: string
+            required: false
+            hint: Ingevuld? Dan toont de roosterpagina het live rooster uit SportBit in plaats van het rooster hieronder.
+
+  - name: home
+    label: Homepage
+    editor: { preview: false }
+    files:
+      - name: home
+        label: Homepage
+        file: src/content/home.json
+        fields:
+          - label: Bovenkant
+            name: hero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label boven de titel, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - { label: Introtekst, name: intro, widget: text }
+              - { label: Tekst op de groene knop, name: knopProefdag, widget: string }
+              - { label: Tekst op de tweede knop, name: knopRooster, widget: string }
+              - label: Wisselende foto's
+                name: slides
+                widget: list
+                fields:
+                  - { label: Foto, name: foto, widget: image }
+                  - { label: Omschrijving van de foto, name: alt, widget: string }
+              - { label: Feiten in de zwarte balk, name: feiten, widget: list, fields: *labelWaarde }
+          - label: Over de studio
+            name: over
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Foto, name: foto, widget: image }
+              - { label: Omschrijving van de foto, name: fotoAlt, widget: string }
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - *lopendeTekst
+              - { label: Feiten, name: feiten, widget: list, fields: *labelWaarde }
+          - label: Sportaanbod
+            name: aanbod
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - { label: Titel, name: titel, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Onderdelen
+                name: items
+                widget: list
+                fields:
+                  - { label: Titel, name: titel, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+                  - { label: Foto, name: foto, widget: image }
+                  - *link
+                  - { label: Linktekst, name: linkTekst, widget: string }
+          - label: Personal training
+            name: personalTraining
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Foto, name: foto, widget: image }
+              - { label: Omschrijving van de foto, name: fotoAlt, widget: string }
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - { label: Intro, name: intro, widget: text }
+              - { label: Punten, name: punten, <<: *tekstLijst }
+          - label: Challenge (hall of fame)
+            name: challenge
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - { label: Titel, name: titel, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Winnaars
+                name: winnaars
+                widget: list
+                hint: De volgorde maakt niet uit, de site zet het nieuwste jaar vooraan.
+                summary: '{{fields.jaar}}: {{fields.namen}}'
+                fields:
+                  - { label: Jaar, name: jaar, widget: number, value_type: int }
+                  - { label: Namen, name: namen, widget: string, required: false, hint: Leeg = er staat "Winnaars <jaar>". }
+                  - { label: Onderdelen, name: onderdelen, widget: text }
+                  - { label: Foto, name: foto, widget: image }
+          - label: Voor bedrijven
+            name: bedrijven
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - { label: Intro, name: intro, widget: text }
+              - label: Punten
+                name: punten
+                widget: list
+                fields:
+                  - { label: Titel, name: titel, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+              - { label: Tekst op de knop, name: knop, widget: string }
+              - label: Twee foto's
+                name: fotos
+                widget: list
+                max: 2
+                fields:
+                  - { label: Foto, name: foto, widget: image }
+                  - { label: Omschrijving, name: alt, widget: string }
+          - label: Tarieven (blok op de homepage)
+            name: tarieven
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - { label: Titel, name: titel, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Pakketten
+                name: pakketten
+                widget: list
+                fields:
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Ondertitel, name: ondertitel, widget: string }
+                  - { label: Prijs, name: prijs, widget: string }
+                  - { label: Per, name: per, widget: string }
+                  - { label: Punten, name: punten, <<: *tekstLijst }
+                  - { label: Tekst op de knop, name: knop, widget: string }
+                  - *link
+                  - { label: Uitgelicht (zwart blok), name: uitgelicht, widget: boolean, default: false }
+              - { label: Tekst onder de pakketten, name: onderTekst, widget: text }
+          - label: Contactblok
+            name: contact
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - { label: Intro, name: intro, widget: text }
+
+  - name: personal-training
+    label: Personal training
+    editor: { preview: false }
+    files:
+      - name: personal-training
+        label: Personal training
+        file: src/content/personal-training.json
+        fields:
+          - *hero
+          - label: Waarom personal training
+            name: waarom
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - *lopendeTekst
+              - label: Voordelen
+                name: voordelen
+                widget: list
+                fields:
+                  - { label: Titel, name: titel, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+              - { label: Foto, name: foto, widget: image }
+              - { label: Omschrijving van de foto, name: fotoAlt, widget: string }
+          - label: Team
+            name: team
+            widget: object
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - { label: Titel, name: titel, widget: string }
+              - label: Trainers
+                name: trainers
+                widget: list
+                summary: '{{fields.naam}} · {{fields.functie}}'
+                fields:
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Functie, name: functie, widget: string }
+                  - { label: Over deze trainer, name: bio, widget: text }
+                  - { label: Focus, name: focus, <<: *tekstLijst }
+                  - label: Profielfoto
+                    name: foto
+                    widget: image
+                    required: false
+                    hint: Een vierkante foto van hoofd en schouders werkt het best. Leeg = de eerste letter van de naam.
+          - { label: Strook met foto's, name: beeldstrook, <<: *fotoLijst }
+          - label: Prijzen
+            name: prijzen
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - label: Losse sessie
+                name: los
+                widget: object
+                fields:
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Prijs, name: prijs, widget: string }
+                  - { label: Per, name: per, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+              - label: Voordeelpakket
+                name: voordeel
+                widget: object
+                fields:
+                  - { label: Label in de hoek, name: label, widget: string }
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Prijs, name: prijs, widget: string }
+                  - { label: Per, name: per, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+              - { label: Titel boven de lijst, name: inbegrepenTitel, widget: string }
+              - { label: Inbegrepen, name: inbegrepen, <<: *tekstLijst }
+          - label: Blok onderaan
+            name: afsluiter
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+
+  - name: groepstrainingen
+    label: Groepstrainingen
+    editor: { preview: false }
+    files:
+      - name: overzicht
+        label: Overzichtspagina
+        file: src/content/groepstrainingen.json
+        fields:
+          - *hero
+          - label: De aanpak
+            name: aanpak
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Klein label, name: eyebrow, widget: string }
+              - *titelMetEnters
+              - *lopendeTekst
+              - { label: Uitgangspunten, name: principes, widget: list, fields: *labelWaarde }
+              - { label: Foto, name: foto, widget: image }
+              - { label: Omschrijving van de foto, name: fotoAlt, widget: string }
+          - { label: Titel boven de trainingen, name: kiesTitel, widget: string }
+          - { label: Intro boven de trainingen, name: kiesIntro, widget: text }
+          - label: Trainingen
+            name: trainingen
+            widget: list
+            fields:
+              - label: Pagina
+                name: id
+                widget: select
+                options:
+                  - { label: Small group, value: small-group }
+                  - { label: Bootcamp, value: bootcamp }
+                  - { label: Tabata, value: tabata }
+                  - { label: Circuit, value: circuit }
+                  - { label: Kids, value: kids }
+                  - { label: Bedrijfstraining, value: corporate }
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+              - { label: Foto, name: foto, widget: image }
+          - { label: Titel boven het weekoverzicht, name: weekTitel, widget: string }
+          - { label: Strook met foto's, name: beeldstrook, <<: *fotoLijst }
+          - label: Blok onderaan
+            name: afsluiter
+            widget: object
+            fields:
+              - *titelMetEnters
+              - { label: Tekst, name: tekst, widget: text }
+      - { name: small-group, label: Small group, file: src/content/trainingen/small-group.json, <<: *training }
+      - { name: bootcamp, label: Bootcamp, file: src/content/trainingen/bootcamp.json, <<: *training }
+      - { name: tabata, label: Tabata, file: src/content/trainingen/tabata.json, <<: *training }
+      - { name: circuit, label: Circuit, file: src/content/trainingen/circuit.json, <<: *training }
+      - { name: kids, label: Kids, file: src/content/trainingen/kids.json, <<: *training }
+      - name: corporate
+        label: Bedrijfstraining
+        file: src/content/trainingen/corporate.json
+        editor: { preview: false }
+        fields:
+          - { label: Titel, name: titel, widget: string }
+          - { label: Ondertitel, name: ondertitel, widget: string }
+          - *lopendeTekst
+          - label: Wat je kunt verwachten
+            name: kenmerken
+            widget: list
+            summary: '{{fields.titel}}'
+            fields:
+              - label: Icoon
+                name: icoon
+                widget: select
+                options: [Building2, Cloud, Dumbbell, Flame, Heart, RotateCcw, Shield, Smile, Star, Target, Timer, TrendingUp, UserCheck, Users, Zap]
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+          - { label: Foto's, name: fotos, hint: De eerste foto staat bovenaan de pagina., <<: *fotoLijst }
+          - { label: Praktisch, name: praktisch, widget: list, fields: *labelWaarde }
+          - { label: Titel van het blok onderaan, name: afsluiterTitel, widget: string }
+          - label: Bedrijfspakketten
+            name: pakketten
+            widget: object
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Pakketten
+                name: items
+                widget: list
+                fields:
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Sessies, name: sessies, widget: string }
+                  - { label: Tekst, name: tekst, widget: string }
+
+  - name: rooster
+    label: Rooster
+    editor: { preview: false }
+    files:
+      - name: rooster
+        label: Weekrooster
+        file: src/content/rooster.json
+        fields:
+          - *hero
+          - label: Dagen
+            name: dagen
+            widget: list
+            summary: '{{fields.dag}}'
+            fields:
+              - { label: Dag, name: dag, widget: string }
+              - { label: Korte dagnaam, name: kort, widget: string, hint: 'Bijvoorbeeld "Ma".' }
+              - label: Lessen
+                name: lessen
+                widget: list
+                summary: '{{fields.tijd}} {{fields.naam}}'
+                fields:
+                  - { label: Tijd, name: tijd, widget: string, hint: 'Bijvoorbeeld 18:00' }
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Korte naam (weekoverzicht), name: kort, widget: string }
+                  - label: Soort (voor het filter)
+                    name: categorie
+                    widget: select
+                    options:
+                      - { label: Small group, value: small-group }
+                      - { label: Bootcamp, value: bootcamp }
+                      - { label: Tabata, value: tabata }
+                      - { label: Circuit, value: circuit }
+                      - { label: Kids, value: kids }
+                  - { label: Duur, name: duur, widget: string }
+                  - { label: Trainer, name: trainer, widget: string }
+                  - { label: Locatie, name: locatie, widget: string }
+                  - { label: Niveau, name: niveau, widget: string }
+
+  - name: tarieven
+    label: Tarieven
+    editor: { preview: false }
+    files:
+      - name: tarieven
+        label: Tarievenpagina
+        file: src/content/tarieven.json
+        fields:
+          - *hero
+          - label: Prijstabellen
+            name: tabellen
+            widget: list
+            summary: '{{fields.titel}}'
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Code voor de link (zonder spaties), name: id, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Regels
+                name: regels
+                widget: list
+                summary: '{{fields.naam}} · {{fields.prijs}}'
+                fields:
+                  - { label: Naam, name: naam, widget: string }
+                  - { label: Prijs, name: prijs, widget: string }
+                  - { label: Eenheid, name: eenheid, widget: string, required: false }
+                  - { label: Toelichting, name: toelichting, widget: string }
+                  - { label: Label "Meest gekozen", name: meestGekozen, widget: boolean, default: false }
+          - { label: Titel boven inbegrepen, name: inbegrepenTitel, widget: string }
+          - { label: Inbegrepen, name: inbegrepen, <<: *tekstLijst }
+          - { label: Titel boven "goed om te weten", name: praktischTitel, widget: string }
+          - label: Goed om te weten
+            name: praktisch
+            widget: list
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+          - label: Twijfelblok
+            name: twijfel
+            widget: object
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+          - label: Blok onderaan
+            name: afsluiter
+            widget: object
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+
+  - name: contact-proefdag
+    label: Contact en proefdag
+    editor: { preview: false }
+    files:
+      - name: contact
+        label: Contactpagina
+        file: src/content/contact.json
+        fields:
+          - *hero
+          - label: Formulier
+            name: formulier
+            widget: object
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - { label: Bevestiging na verzenden, name: bevestiging, widget: string }
+          - { label: Titel bij de kaart, name: kaartTitel, widget: string }
+          - { label: Titel boven de vragen, name: faqTitel, widget: string }
+          - label: Veelgestelde vragen
+            name: faqs
+            widget: list
+            summary: '{{fields.vraag}}'
+            fields:
+              - { label: Vraag, name: vraag, widget: string }
+              - { label: Antwoord, name: antwoord, widget: text }
+          - label: Blok onderaan
+            name: afsluiter
+            widget: object
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+      - name: proefdag
+        label: Proefdag
+        file: src/content/proefdag.json
+        fields:
+          - *hero
+          - { label: Titel boven de stappen, name: stappenTitel, widget: string }
+          - label: Stappen
+            name: stappen
+            widget: list
+            fields:
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst, name: tekst, widget: text }
+          - { label: Tijden maandag t/m vrijdag, name: tijdenDoordeweeks, <<: *tekstLijst, hint: 'Bijvoorbeeld 09:00' }
+          - { label: Tijden zaterdag, name: tijdenZaterdag, <<: *tekstLijst }
+          - { label: Bevestiging na aanvragen, name: bevestiging, widget: string }
+
+  - name: paginas
+    label: Privacy en voorwaarden
+    editor: { preview: false }
+    files:
+      - &beleid
+        name: privacy-policy
+        label: Privacy policy
+        file: src/content/paginas/privacy-policy.json
+        fields:
+          - { label: Titel, name: titel, widget: string }
+          - { label: Intro, name: intro, widget: text }
+          - label: Onderdelen
+            name: secties
+            widget: list
+            summary: '{{fields.kop}}'
+            fields:
+              - { label: Kop, name: kop, widget: string }
+              - *lopendeTekst
+      - <<: *beleid
+        name: algemene-voorwaarden
+        label: Algemene voorwaarden
+        file: src/content/paginas/algemene-voorwaarden.json

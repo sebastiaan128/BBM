@@ -1,0 +1,264 @@
+{
+  "hero": {
+    "eyebrow": "Elst · Utrecht",
+    "titel": "Kracht, rust\nen voeding\nin balans.",
+    "intro": "Body by Marcel is een kleine studio waar je bij naam bekend bent. Groepen van maximaal acht, of één op één, met begeleiding die verder kijkt dan de training alleen.",
+    "knopProefdag": "Plan je proefdag",
+    "knopRooster": "Bekijk het rooster",
+    "slides": [
+      {
+        "foto": "/fotos-bron/kettlebell-daglicht.jpg",
+        "alt": "Kettlebell squat in de studio"
+      },
+      {
+        "foto": "/fotos-bron/coaching.jpg",
+        "alt": "Trainer begeleidt een klant tijdens een oefening"
+      },
+      {
+        "foto": "/fotos-bron/farmerswalk.jpg",
+        "alt": "Farmer's walk op het buitenterrein"
+      }
+    ],
+    "feiten": [
+      {
+        "label": "Groepsgrootte",
+        "waarde": "Max. 8 personen"
+      },
+      {
+        "label": "Waar",
+        "waarde": "Rijksstraatweg 125, Elst"
+      },
+      {
+        "label": "Bellen",
+        "waarde": "06-42059446"
+      }
+    ]
+  },
+  "over": {
+    "foto": "/fotos-bron/trainer-portret.jpg",
+    "fotoAlt": "Trainer in de krachthal van Body by Marcel",
+    "eyebrow": "Over de studio",
+    "titel": "Je bent hier\ngeen abonneenummer",
+    "tekst": "Met een achtergrond in **Taekwon-do** en jarenlange ervaring in de fitnessindustrie weet ik hoeveel er van balans afhangt. Balans tussen kracht en rust, tussen intensiteit en herstel, tussen training en voeding.\n\nBij Body by Marcel draait alles om jou. Of je nu net begint, een specifiek doel voor ogen hebt of gewoon in vorm wilt blijven, je traint met een programma dat op jou is afgestemd, en met iemand die je vooruitgang bijhoudt.\n\nHet resultaat is een club waar hard werken samengaat met een warme sfeer, en waar iedereen zich thuis voelt.",
+    "feiten": [
+      {
+        "label": "Achtergrond",
+        "waarde": "Taekwon-do, jarenlange ervaring als trainer"
+      },
+      {
+        "label": "Aanpak",
+        "waarde": "Training, voeding en herstel als één geheel"
+      },
+      {
+        "label": "Groepsgrootte",
+        "waarde": "Nooit meer dan acht per les"
+      }
+    ]
+  },
+  "aanbod": {
+    "eyebrow": "Sportaanbod",
+    "titel": "Wat je hier kunt doen",
+    "intro": "Klik op een onderdeel voor de details, de tijden en wat het kost.",
+    "items": [
+      {
+        "titel": "Cardio",
+        "tekst": "Loopbanden, stairmaster en fietsen, met een schema dat bij je conditie past.",
+        "foto": "/fotos-bron/cardio-loopband.jpg",
+        "link": "/personal-training",
+        "linkTekst": "Naar personal training"
+      },
+      {
+        "titel": "Krachttraining",
+        "tekst": "Opbouwen met vrije gewichten en machines, techniek eerst.",
+        "foto": "/fotos-bron/deadlift.jpg",
+        "link": "/personal-training",
+        "linkTekst": "Naar personal training"
+      },
+      {
+        "titel": "Small Group Training",
+        "tekst": "Acht mensen, één trainer. Groepsenergie zonder in te leveren op aandacht.",
+        "foto": "/fotos-bron/high-five.jpg",
+        "link": "/groepstrainingen/small-group",
+        "linkTekst": "Naar small group"
+      },
+      {
+        "titel": "Bootcamp",
+        "tekst": "Buiten trainen op het terrein achter de studio, weer of geen weer.",
+        "foto": "/fotos-bron/farmerswalk.jpg",
+        "link": "/groepstrainingen/bootcamp",
+        "linkTekst": "Naar bootcamp"
+      },
+      {
+        "titel": "Vrije gewichten",
+        "tekst": "Complete dumbbell- en schijvensectie voor functionele kracht.",
+        "foto": "/fotos-bron/dumbbellrek.jpg",
+        "link": "/personal-training",
+        "linkTekst": "Naar personal training"
+      },
+      {
+        "titel": "Kids Fitness & Bootcamp",
+        "tekst": "Bewegen leren op een manier die kinderen leuk blijven vinden.",
+        "foto": "/fotos-bron/lunge-2.jpg",
+        "link": "/groepstrainingen/kids",
+        "linkTekst": "Naar kids fitness"
+      },
+      {
+        "titel": "Meten, wegen & schema",
+        "tekst": "Metingen op vaste momenten, zodat je vooruitgang zichtbaar wordt.",
+        "foto": "/fotos-bron/coaching.jpg",
+        "link": "/personal-training",
+        "linkTekst": "Naar personal training"
+      },
+      {
+        "titel": "Sauna & sportbar",
+        "tekst": "Even blijven hangen na je training. Herstel telt net zo hard mee.",
+        "foto": "/fotos-bron/koeling.jpg",
+        "link": "/contact",
+        "linkTekst": "Naar contact"
+      }
+    ]
+  },
+  "personalTraining": {
+    "foto": "/fotos-bron/ems-vest-2.jpg",
+    "fotoAlt": "Persoonlijke begeleiding tijdens een krachtsessie",
+    "eyebrow": "Personal training",
+    "titel": "Eén op één,\nvan intake tot resultaat",
+    "intro": "We beginnen met een intake: waar sta je nu, waar wil je heen, en wat past er in je week. Daarna train je met een plan dat meegroeit met je vooruitgang.",
+    "punten": [
+      "Een schema dat op jouw doelen en agenda is gebouwd",
+      "Eén op één begeleiding, elke sessie",
+      "Voedingsadvies dat past bij hoe je leeft",
+      "Metingen op vaste momenten, zodat je ziet wat er verandert",
+      "Trainen op tijden die jou schikken"
+    ]
+  },
+  "challenge": {
+    "eyebrow": "Eindejaarschallenge",
+    "titel": "Hall of fame",
+    "intro": "Elk jaar sluiten we af met een challenge. Dit zijn de mensen die hem wonnen.",
+    "winnaars": [
+      {
+        "jaar": 2025,
+        "namen": "Bram, Jetty en Mila",
+        "onderdelen": "3×10 bankdrukken, 3×20 hex deadlift, 2×15 box step-up, 3×15 EZ-bar bicep curl en dumbbell hold",
+        "foto": "/fotos-bron/winnaars-2025.jpg"
+      },
+      {
+        "jaar": 2024,
+        "namen": "Jorik en Brigitte van Oosten",
+        "onderdelen": "Leg press 3×20, dumbbell schouderdrukken 3×10, lat pulldown 3×8, slee 1×15 en deadhang",
+        "foto": "/fotos-bron/winnaars-2024.jpg"
+      },
+      {
+        "jaar": 2023,
+        "namen": "Jorik Siereveld en Iryna Romaniuk",
+        "onderdelen": "Hanging knee raise 2×10, supported T-bar row 3×15, chest press 3×10, box squat met dumbbell press 3×20 en deadlift zo vaak mogelijk",
+        "foto": "/fotos-bron/winnaars-2023.jpg"
+      },
+      {
+        "jaar": 2022,
+        "namen": "",
+        "onderdelen": "Fitnesstoernooi: zittende cable fly 3×10, cable row 3×25, leg extension 3 minuten hold, deadlift 3×40 en plank",
+        "foto": "/fotos-bron/winnaars-2022.jpg"
+      },
+      {
+        "jaar": 2021,
+        "namen": "",
+        "onderdelen": "Koppelchallenge: 1 km hardlopen, 100× kabelroeien, 100× bankdrukken, 50× bicep curls en 50× tricep extensions",
+        "foto": "/fotos-bron/winnaars-2021.jpg"
+      }
+    ]
+  },
+  "bedrijven": {
+    "eyebrow": "Voor bedrijven",
+    "titel": "Zet uw team\nin beweging",
+    "intro": "Body by Marcel verzorgt bedrijfstrainingen voor teams uit Elst en omgeving. U kiest het moment, wij zorgen voor een programma waar iedereen op zijn eigen niveau in meekan.",
+    "punten": [
+      {
+        "titel": "Bedrijfstraining",
+        "tekst": "Groepslessen op een vast moment in de week, afgestemd op uw team."
+      },
+      {
+        "titel": "Lager verzuim",
+        "tekst": "Medewerkers die bewegen melden zich minder vaak ziek."
+      },
+      {
+        "titel": "Teambuilding",
+        "tekst": "Samen trainen doet meer voor de onderlinge band dan een uitje."
+      },
+      {
+        "titel": "Scherpere dagen",
+        "tekst": "Fittere mensen houden hun energie langer vast."
+      }
+    ],
+    "knop": "Vraag een offerte aan",
+    "fotos": [
+      {
+        "foto": "/fotos-bron/duo-halters.jpg",
+        "alt": "Twee collega's trainen samen met halters"
+      },
+      {
+        "foto": "/fotos-bron/duo-halters-2.jpg",
+        "alt": "Collega's trainen samen in de studio"
+      }
+    ]
+  },
+  "tarieven": {
+    "eyebrow": "Tarieven",
+    "titel": "Geen inschrijfgeld, geen opzegtermijn",
+    "intro": "Je betaalt per les, per strippenkaart of per pakket. Wat je niet gebruikt, betaal je niet.",
+    "pakketten": [
+      {
+        "naam": "Groepstraining",
+        "ondertitel": "Small group, bootcamp, tabata en circuit",
+        "prijs": "€25",
+        "per": "per les",
+        "punten": [
+          "Maximaal 8 personen per groep",
+          "Alle groepslessen toegankelijk",
+          "Per les inschrijven, geen abonnement",
+          "Je eerste les is gratis"
+        ],
+        "knop": "Probeer het gratis",
+        "link": "/proefdag",
+        "uitgelicht": false
+      },
+      {
+        "naam": "Personal training",
+        "ondertitel": "Eén op één, zestig minuten",
+        "prijs": "€65",
+        "per": "per sessie",
+        "punten": [
+          "Persoonlijk trainingsschema",
+          "Volledige aandacht van je trainer",
+          "Voedings- en leefstijladvies",
+          "Trainen wanneer het jou uitkomt"
+        ],
+        "knop": "Boek een intake",
+        "link": "/proefdag",
+        "uitgelicht": true
+      },
+      {
+        "naam": "Strippenkaart",
+        "ondertitel": "Tien groepslessen naar keuze",
+        "prijs": "€220",
+        "per": "€22 per les",
+        "punten": [
+          "Geldig voor alle groepstrainingen",
+          "Drie maanden geldig",
+          "Je bespaart €30",
+          "Goed te combineren met personal training"
+        ],
+        "knop": "Koop een strippenkaart",
+        "link": "/contact",
+        "uitgelicht": false
+      }
+    ],
+    "onderTekst": "Er zijn ook tarieven voor kids, duo-training en bedrijven, en voordeelpakketten vanaf vijf sessies."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "titel": "Kom een keer\nkijken",
+    "intro": "De studio staat aan de Rijksstraatweg in Elst, met parkeerplaatsen bij de studio. Bel even of boek een proefdag, dan zorgen we dat er iemand voor je klaarstaat."
+  }
+}

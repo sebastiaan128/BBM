@@ -1,14 +1,9 @@
 import { Link } from 'react-router-dom';
-import { photo } from '../photos';
 import Photo from './Photo';
+import { Regels } from './Tekst';
+import content from '../content/home.json';
 
-const benefits = [
-  'Een schema dat op jouw doelen en agenda is gebouwd',
-  'Eén op één begeleiding, elke sessie',
-  'Voedingsadvies dat past bij hoe je leeft',
-  'Metingen op vaste momenten, zodat je ziet wat er verandert',
-  'Trainen op tijden die jou schikken',
-];
+const pt = content.personalTraining;
 
 export default function PersonalTrainingSection() {
   return (
@@ -17,8 +12,8 @@ export default function PersonalTrainingSection() {
         {/* Beeld bloedt naar de rand */}
         <div className="relative min-h-[24rem] lg:min-h-[38rem] order-last lg:order-first">
           <Photo
-            src={photo.emsVest2}
-            alt="Persoonlijke begeleiding tijdens een krachtsessie"
+            src={pt.foto}
+            alt={pt.fotoAlt}
             loading="lazy"
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="absolute inset-0"
@@ -27,21 +22,16 @@ export default function PersonalTrainingSection() {
 
         <div className="flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 py-20 lg:py-28">
           <div className="max-w-lg" data-reveal>
-            <span className="eyebrow eyebrow-light">Personal training</span>
+            <span className="eyebrow eyebrow-light">{pt.eyebrow}</span>
 
             <h2 className="display-lg mt-6">
-              Eén op één,
-              <br />
-              van intake tot resultaat
+              <Regels tekst={pt.titel} />
             </h2>
 
-            <p className="mt-7 text-lg leading-relaxed text-paper/70">
-              We beginnen met een intake: waar sta je nu, waar wil je heen, en wat past er in je
-              week. Daarna train je met een plan dat meegroeit met je vooruitgang.
-            </p>
+            <p className="mt-7 text-lg leading-relaxed text-paper/70">{pt.intro}</p>
 
             <ul className="mt-9 border-t border-ink-soft">
-              {benefits.map((benefit) => (
+              {pt.punten.map((benefit) => (
                 <li
                   key={benefit}
                   className="flex gap-4 py-3.5 border-b border-ink-soft text-[0.9375rem] text-paper/90"

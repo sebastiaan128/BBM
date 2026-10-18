@@ -1,0 +1,197 @@
+{
+  "hero": {
+    "eyebrow": "Tarieven",
+    "titel": "Alles op een rij, zonder kleine lettertjes",
+    "intro": "Geen inschrijfgeld en geen opzegtermijn. Je betaalt per les, per strippenkaart of per pakket.",
+    "foto": "/fotos-bron/schijven.jpg",
+    "fotoAlt": "Halterschijven in het rek in de studio"
+  },
+  "tabellen": [
+    {
+      "id": "personal-training",
+      "titel": "Personal training",
+      "intro": "Eén op één, zestig minuten per sessie. Hoe meer sessies, hoe lager het tarief.",
+      "regels": [
+        {
+          "naam": "Losse sessie",
+          "prijs": "€65",
+          "eenheid": "per sessie",
+          "toelichting": "Flexibel en vrijblijvend",
+          "meestGekozen": false
+        },
+        {
+          "naam": "5 sessies",
+          "prijs": "€315",
+          "eenheid": "€63 per sessie",
+          "toelichting": "Je bespaart €10",
+          "meestGekozen": false
+        },
+        {
+          "naam": "10 sessies",
+          "prijs": "€600",
+          "eenheid": "€60 per sessie",
+          "toelichting": "Je bespaart €50",
+          "meestGekozen": true
+        },
+        {
+          "naam": "20 sessies",
+          "prijs": "€1140",
+          "eenheid": "€57 per sessie",
+          "toelichting": "Je bespaart €160",
+          "meestGekozen": false
+        }
+      ]
+    },
+    {
+      "id": "groepstraining",
+      "titel": "Groepstraining",
+      "intro": "Small group, bootcamp, tabata en circuit. Maximaal acht personen per les.",
+      "regels": [
+        {
+          "naam": "Losse les",
+          "prijs": "€25",
+          "eenheid": "per les",
+          "toelichting": "Alle groepslessen",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Strippenkaart 10 lessen",
+          "prijs": "€220",
+          "eenheid": "€22 per les",
+          "toelichting": "3 maanden geldig, je bespaart €30",
+          "meestGekozen": true
+        },
+        {
+          "naam": "Strippenkaart 20 lessen",
+          "prijs": "€400",
+          "eenheid": "€20 per les",
+          "toelichting": "6 maanden geldig, je bespaart €100",
+          "meestGekozen": false
+        }
+      ]
+    },
+    {
+      "id": "combi",
+      "titel": "Combinaties",
+      "intro": "Personal training naast je groepslessen, in één pakket.",
+      "regels": [
+        {
+          "naam": "Starter, 5 PT en 10 groepslessen",
+          "prijs": "€280",
+          "eenheid": "eenmalig",
+          "toelichting": "Je bespaart €30",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Performance, 10 PT en 20 groepslessen",
+          "prijs": "€750",
+          "eenheid": "eenmalig",
+          "toelichting": "Je bespaart €70",
+          "meestGekozen": true
+        },
+        {
+          "naam": "Premium, 20 PT en 20 groepslessen",
+          "prijs": "€1400",
+          "eenheid": "eenmalig",
+          "toelichting": "Je bespaart €140",
+          "meestGekozen": false
+        }
+      ]
+    },
+    {
+      "id": "overig",
+      "titel": "Kids, duo en bedrijven",
+      "intro": "Aangepaste tarieven voor jeugd, samen trainen en teams.",
+      "regels": [
+        {
+          "naam": "Kids fitness (8–16 jaar), losse les",
+          "prijs": "€18",
+          "eenheid": "per les",
+          "toelichting": "Jeugdtarief",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Kids fitness, 10 lessen",
+          "prijs": "€160",
+          "eenheid": "€16 per les",
+          "toelichting": "Je bespaart €20",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Duo personal training, losse sessie",
+          "prijs": "€45",
+          "eenheid": "per persoon",
+          "toelichting": "Samen trainen, samen betalen",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Duo personal training, 10 sessies",
+          "prijs": "€400",
+          "eenheid": "€40 per sessie p.p.",
+          "toelichting": "Je bespaart €50",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Small group PT (3–4 personen), losse sessie",
+          "prijs": "€35",
+          "eenheid": "per persoon",
+          "toelichting": "Kleine groep, eigen schema",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Small group PT, 10 sessies",
+          "prijs": "€320",
+          "eenheid": "€32 per sessie p.p.",
+          "toelichting": "Je bespaart €30",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Bedrijfstraining vanaf 5 personen",
+          "prijs": "Op aanvraag",
+          "eenheid": "",
+          "toelichting": "Maatwerk voor uw team",
+          "meestGekozen": false
+        },
+        {
+          "naam": "Bedrijfstraining, vast contract",
+          "prijs": "Op aanvraag",
+          "eenheid": "",
+          "toelichting": "Wekelijks op een vast moment",
+          "meestGekozen": false
+        }
+      ]
+    }
+  ],
+  "inbegrepenTitel": "Bij elk personal-trainingtraject inbegrepen",
+  "inbegrepen": [
+    "Uitgebreide intake en doelanalyse",
+    "Persoonlijk trainingsschema",
+    "Voedings- en leefstijladvies",
+    "Voortgangsmetingen op vaste momenten",
+    "Vragen tussendoor via WhatsApp",
+    "Sessies inplannen wanneer het jou uitkomt"
+  ],
+  "praktischTitel": "Goed om te weten",
+  "praktisch": [
+    {
+      "titel": "Betalen",
+      "tekst": "Contant, pin, iDEAL of overschrijving. Strippenkaarten en pakketten betaal je vooraf."
+    },
+    {
+      "titel": "Geldigheid",
+      "tekst": "Strippenkaart van 10 lessen is 3 maanden geldig, die van 20 lessen 6 maanden."
+    },
+    {
+      "titel": "Afmelden",
+      "tekst": "Tot 24 uur van tevoren kosteloos. Daarna gaat de les van je kaart af."
+    }
+  ],
+  "twijfel": {
+    "titel": "Niet zeker wat bij je past?",
+    "tekst": "Begin met een losse les of een gratis proefdag. Daarna kiezen we samen het pakket dat aansluit bij hoe vaak je echt gaat trainen."
+  },
+  "afsluiter": {
+    "titel": "Klaar om te beginnen?",
+    "tekst": "Boek je eerste training, of stel eerst je vraag. Beide kan."
+  }
+}

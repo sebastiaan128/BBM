@@ -16,9 +16,26 @@
       name="description"
       content="Kleine fitnessstudio aan de Rijksstraatweg in Elst (U). Groepstrainingen met maximaal acht deelnemers, personal training en bedrijfstraining. Je eerste les is gratis."
     />
+    <script>
+      // Uitnodigings- en wachtwoordmails van Netlify Identity linken naar de
+      // homepage met een code achter de #. Afhandelen gebeurt in /admin.
+      if (/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)) {
+        location.replace('/admin/' + location.hash);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <!-- Alleen voor Netlify Forms: zo weet Netlify bij het deployen welke
+         formulieren en velden er zijn. Zie src/netlifyForms.ts. -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="naam" /><input name="email" /><input name="telefoon" />
+      <input name="onderwerp" /><textarea name="bericht"></textarea>
+    </form>
+    <form name="proefdag" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="naam" /><input name="email" /><input name="telefoon" />
+      <input name="moment" /><textarea name="opmerkingen"></textarea>
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

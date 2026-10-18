@@ -2,27 +2,44 @@ import { useState } from 'react';
 import BookingCalendar from '../components/BookingCalendar';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
-import { photo } from '../photos';
+import content from '../content/proefdag.json';
+import { site, telLink } from '../site';
 import PageHero from '../components/PageHero';
-
-const timeSlots = ['09:00', '10:00', '11:00', '14:00', '16:00', '17:00', '19:00'];
+import { submitNetlifyForm } from '../netlifyForms';
 
 /* De proefdag is een echte volgorde, dus de nummering betekent iets. */
-const expectations = [
-  { step: '01', title: 'Rondleiding', description: 'Je ziet de studio, de krachthal en het buitenterrein.' },
-  { step: '02', title: 'Proeftraining', description: 'Een volledige training mee, onder begeleiding en op jouw niveau.' },
-  { step: '03', title: 'Advies', description: 'Na afloop bespreken we je doelen en wat daar het beste bij past.' },
-];
+const expectations = content.stappen.map((s, i) => ({
+  step: String(i + 1).padStart(2, '0'),
+  title: s.titel,
+  description: s.tekst,
+}));
 
 export default function Proefdag() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [formData, setFormData] = useState({ naam: '', email: '', telefoon: '', opmerkingen: '' });
   const [isBooked, setIsBooked] = useState(false);
+  // Zaterdag is de studio alleen 's ochtends open.
+  const timeSlots = selectedDate?.getDay() === 6 ? content.tijdenZaterdag : content.tijdenDoordeweeks;
+  const [isSending, setIsSending] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsBooked(true);
+    if (!selectedDate || !selectedTime) return;
+    setIsSending(true);
+    setSendFailed(false);
+    try {
+      await submitNetlifyForm('proefdag', {
+        ...formData,
+        moment: `${format(selectedDate, 'EEEE d MMMM yyyy', { locale: nl })} om ${selectedTime}`,
+      });
+      setIsBooked(true);
+    } catch {
+      setSendFailed(true);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const fields = [
@@ -37,18 +54,18 @@ export default function Proefdag() {
           een fotokolom die meekromp met de tekst: de staande foto werd dan
           een strook waarin iemand halverwege werd afgesneden. */}
       <PageHero
-        eyebrow="Gratis proefdag"
-        title="Kom een dag meedraaien"
-        intro="Kies een datum en tijd die je uitkomt. Je zit nergens aan vast, en de proefdag kost je niets."
-        image={photo.kettlebellDaglicht}
-        imageAlt="Training in de studio bij daglicht"
+        eyebrow={content.hero.eyebrow}
+        title={content.hero.titel}
+        intro={content.hero.intro}
+        image={content.hero.foto}
+        imageAlt={content.hero.fotoAlt}
       />
 
       {/* Stappen */}
       <section className="py-16 bg-paper-dim border-b border-hairline">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8">
           <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-8">
-            Hoe de dag eruitziet
+            {content.stappenTitel}
           </h2>
           <ol className="grid md:grid-cols-3 gap-x-10 gap-y-8">
             {expectations.map((item) => (
@@ -72,7 +89,14 @@ export default function Proefdag() {
                 <h2 className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-stone mb-3">
                   Stap 1. Kies een datum
                 </h2>
-                <BookingCalendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+                <BookingCalendar
+                  selectedDate={selectedDate}
+                  onSelectDate={(d) => {
+                    setSelectedDate(d);
+                    // Een tijd die op de nieuwe dag niet bestaat mag niet blijven staan.
+                    setSelectedTime(null);
+                  }}
+                />
               </div>
 
               {selectedDate && (
@@ -162,17 +186,22 @@ export default function Proefdag() {
                   <div aria-live="polite">
                     {isBooked && (
                       <p className="text-sm text-ink border border-moss bg-lime/10 p-4">
-                        <strong className="font-semibold">Aanvraag ontvangen.</strong> We bellen je
-                        binnen 24 uur om de proefdag te bevestigen.
+                        <strong className="font-semibold">Aanvraag ontvangen.</strong>{' '}
+                        {content.bevestiging}
+                      </p>
+                    )}
+                    {sendFailed && (
+                      <p className="text-sm text-ink border border-hairline p-4">
+                        Versturen is niet gelukt. Probeer het nog eens, of bel ons even.
                       </p>
                     )}
                   </div>
 
                   <button
                     type="submit"
-                    disabled={!selectedDate || !selectedTime || isBooked}
+                    disabled={!selectedDate || !selectedTime || isBooked || isSending}
                     className={`btn w-full justify-center ${
-                      selectedDate && selectedTime && !isBooked
+                      selectedDate && selectedTime && !isBooked && !isSending
                         ? 'btn-primary'
                         : 'bg-hairline text-stone cursor-not-allowed'
                     }`}
@@ -185,12 +214,12 @@ export default function Proefdag() {
               <p className="mt-5 text-sm text-stone leading-relaxed">
                 Liever even bellen? Dat kan op{' '}
                 <a
-                  href="tel:0642059446"
+                  href={telLink}
                   className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2"
                 >
-                  06-42059446
+                  {site.contact.telefoon}
                 </a>
-                . We zitten aan de Rijksstraatweg 125 in Elst.
+                . We zitten aan de {site.contact.straat} in Elst.
               </p>
             </div>
           </div>

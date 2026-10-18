@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook } from 'lucide-react';
 import Logo from './Logo';
+import { setConsent } from '../consent';
+import { site, telLink, mailLink } from '../site';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -19,29 +21,26 @@ export default function Footer() {
           {/* Merk */}
           <div>
             <Logo tone="light" size="2.25rem" className="!items-start" />
-            <p className="mt-5 text-paper/60 text-sm leading-relaxed max-w-xs">
-              Fitness en personal training in het hart van Elst, Utrecht. Kracht, rust en voeding in
-              balans.
-            </p>
+            <p className="mt-5 text-paper/60 text-sm leading-relaxed max-w-xs">{site.footerTekst}</p>
             <div className="flex gap-2 mt-6">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150 ease-smooth"
-                aria-label="Body by Marcel op Instagram"
-              >
-                <Instagram size={17} />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150 ease-smooth"
-                aria-label="Body by Marcel op Facebook"
-              >
-                <Facebook size={17} />
-              </a>
+              {[
+                { href: site.social.instagram, label: 'Instagram', Icon: Instagram },
+                { href: site.social.facebook, label: 'Facebook', Icon: Facebook },
+              ]
+                // Een leeg veld in /admin betekent: geen knop.
+                .filter((s) => s.href)
+                .map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 border border-ink-soft hover:border-lime hover:text-lime flex items-center justify-center text-paper/60 transition-colors duration-150 ease-smooth"
+                    aria-label={`Body by Marcel op ${label}`}
+                  >
+                    <Icon size={17} />
+                  </a>
+                ))}
             </div>
           </div>
 
@@ -71,24 +70,24 @@ export default function Footer() {
             </h2>
             <address className="not-italic space-y-4 text-sm">
               <p className="text-paper/75 leading-relaxed">
-                Rijksstraatweg 125
+                {site.contact.straat}
                 <br />
-                3921 AD Elst, Utrecht
+                {site.contact.postcodePlaats}
               </p>
               <p>
                 <a
-                  href="tel:0642059446"
+                  href={telLink}
                   className="mono text-paper/75 hover:text-lime transition-colors duration-150 ease-smooth"
                 >
-                  06-42059446
+                  {site.contact.telefoon}
                 </a>
               </p>
               <p>
                 <a
-                  href="mailto:info@bodybymarcel.nl"
+                  href={mailLink}
                   className="text-paper/75 hover:text-lime transition-colors duration-150 ease-smooth"
                 >
-                  info@bodybymarcel.nl
+                  {site.contact.email}
                 </a>
               </p>
             </address>
@@ -99,19 +98,28 @@ export default function Footer() {
           <p className="mono text-xs text-paper/55">
             © {new Date().getFullYear()} Body by Marcel
           </p>
-          {/* TODO: hier horen een echt privacybeleid en echte algemene
-              voorwaarden te staan. Tot die pagina's er zijn geen link, want
-              een link met dat label die naar het contactformulier gaat is
-              misleidend. */}
-          <p className="text-xs text-paper/55">
-            Vragen over je gegevens?{' '}
-            <Link
-              to="/contact"
-              className="text-paper underline underline-offset-4 decoration-1 hover:text-lime transition-colors"
-            >
-              Neem contact op
-            </Link>
-          </p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-paper/55">
+            <li>
+              <Link to="/privacy-policy" className="hover:text-lime transition-colors">
+                Privacy policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/algemene-voorwaarden" className="hover:text-lime transition-colors">
+                Algemene voorwaarden
+              </Link>
+            </li>
+            <li>
+              {/* Wist de keuze, zodat de banner terugkomt. */}
+              <button
+                type="button"
+                onClick={() => setConsent(null)}
+                className="hover:text-lime transition-colors"
+              >
+                Cookie-instellingen
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

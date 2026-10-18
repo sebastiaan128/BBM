@@ -58,6 +58,10 @@ body {
   background: var(--color-paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Vangnet: niets mag de pagina breder maken dan het scherm. 'clip' en
+     niet 'hidden', want hidden maakt van body een scrollcontainer en dan
+     werkt position: sticky (de proefdagkolom) niet meer. */
+  overflow-x: clip;
 }
 
 ::selection {
@@ -348,7 +352,6 @@ textarea.field {
      transitieklasse nodig: die zou transition-property overschrijven en het
      scherpstellen weer uitzetten. */
   filter: blur(14px);
-  transform: scale(1.04);
   clip-path: inset(0);
   transition: filter var(--dur-slow) var(--ease-smooth),
     transform var(--dur-slow) var(--ease-smooth), scale var(--dur-slow) var(--ease-smooth);

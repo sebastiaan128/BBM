@@ -18,6 +18,8 @@ const Circuit = lazy(routeLoaders['/groepstrainingen/circuit']);
 const Kids = lazy(routeLoaders['/groepstrainingen/kids']);
 const Corporate = lazy(routeLoaders['/groepstrainingen/corporate']);
 const Rooster = lazy(routeLoaders['/groepstrainingen/rooster']);
+const PrivacyPolicy = lazy(routeLoaders['/privacy-policy']);
+const AlgemeneVoorwaarden = lazy(routeLoaders['/algemene-voorwaarden']);
 
 /**
  * Een laadscherm dat pas verschijnt als het laden echt merkbaar is. Bij een
@@ -66,6 +68,8 @@ export default function App() {
               <Route path="groepstrainingen/kids" element={<Kids />} />
               <Route path="groepstrainingen/corporate" element={<Corporate />} />
               <Route path="groepstrainingen/rooster" element={<Rooster />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
 
               {/* Alles wat niet bestaat, mét navigatie en footer eromheen */}
               <Route path="*" element={<NotFound />} />

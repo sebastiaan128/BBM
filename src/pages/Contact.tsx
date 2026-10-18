@@ -2,37 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Send, CheckCircle2 } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import { photo } from '../photos';
+import content from '../content/contact.json';
+import { site, telLink, mailLink } from '../site';
+import { submitNetlifyForm } from '../netlifyForms';
+import MapEmbed from '../components/MapEmbed';
+
+const c = site.contact;
 
 const contactInfo = [
-  {
-    title: 'Adres',
-    details: ['Rijksstraatweg 125', '3921 AD Elst (U)', 'Utrecht'],
-    link: 'https://maps.google.com/?q=Rijksstraatweg+125+Elst+Utrecht',
-    linkText: 'Op de kaart',
-  },
-  { title: 'Telefoon', details: ['06-42059446'], link: 'tel:0642059446', linkText: 'Bel ons' },
-  {
-    title: 'E-mail',
-    details: ['info@bodybymarcel.nl'],
-    link: 'mailto:info@bodybymarcel.nl',
-    linkText: 'Stuur een mail',
-  },
-  {
-    title: 'Openingstijden',
-    details: ['Ma t/m vr 06:00 – 21:00', 'Za 08:00 – 16:00', 'Zo gesloten'],
-    link: null,
-    linkText: null,
-  },
-];
-
-const faqs = [
-  { q: 'Hoe snel krijg ik antwoord?', a: 'Binnen 24 uur, meestal dezelfde dag nog.' },
-  {
-    q: 'Kan ik langskomen zonder afspraak?',
-    a: 'Bel even van tevoren voor een rondleiding, of boek meteen een proefdag.',
-  },
-  { q: 'Is er parkeergelegenheid?', a: 'Ja, je parkeert gratis bij de studio.' },
+  { title: 'Adres', details: [c.straat, c.postcodePlaats], link: c.mapsLink, linkText: 'Op de kaart' },
+  { title: 'Telefoon', details: [c.telefoon], link: telLink, linkText: 'Bel ons' },
+  { title: 'E-mail', details: [c.email], link: mailLink, linkText: 'Stuur een mail' },
 ];
 
 export default function Contact() {
@@ -44,9 +24,21 @@ export default function Contact() {
     bericht: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSending(true);
+    setSendFailed(false);
+    try {
+      await submitNetlifyForm('contact', formData);
+    } catch {
+      setSendFailed(true);
+      return;
+    } finally {
+      setIsSending(false);
+    }
     setIsSubmitted(true);
     setTimeout(() => {
       setFormData({ naam: '', email: '', telefoon: '', onderwerp: '', bericht: '' });
@@ -63,17 +55,17 @@ export default function Contact() {
   return (
     <div className="bg-paper">
       <PageHero
-        eyebrow="Contact"
-        title="Stel je vraag"
-        intro="Bel, mail of vul het formulier in. We reageren meestal dezelfde dag nog."
-        image={photo.studioHal}
-        imageAlt="De krachthal van Body by Marcel in Elst"
+        eyebrow={content.hero.eyebrow}
+        title={content.hero.titel}
+        intro={content.hero.intro}
+        image={content.hero.foto}
+        imageAlt={content.hero.fotoAlt}
       />
 
       {/* Gegevens */}
       <section className="border-b border-hairline bg-paper-dim">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
-          <dl className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-hairline">
+          <dl className="grid sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.2fr_1.6fr] divide-y sm:divide-y-0 sm:divide-x divide-hairline">
             {contactInfo.map((info) => (
               <div key={info.title} className="py-7 sm:px-7 first:sm:pl-0 last:sm:pr-0">
                 <dt className="mono text-[0.625rem] uppercase tracking-[0.18em] text-stone">
@@ -98,6 +90,24 @@ export default function Contact() {
                 </dd>
               </div>
             ))}
+
+            {/* Openingstijden: dag links, tijden rechts, zoals op de homepage */}
+            <div className="py-7 sm:px-7 last:sm:pr-0">
+              <dt className="mono text-[0.625rem] uppercase tracking-[0.18em] text-stone">
+                Openingstijden
+              </dt>
+              <dd className="mt-2 space-y-1.5">
+                {site.openingstijden.map((o) => (
+                  <p key={o.dagen} className="flex justify-between gap-4 text-[0.9375rem]">
+                    <span className="text-ink-soft">{o.dagen}</span>
+                    <span className="mono text-ink text-right whitespace-pre">{o.tijden}</span>
+                  </p>
+                ))}
+                {site.openingstijdenNotitie && (
+                  <p className="pt-1 text-sm text-stone">{site.openingstijdenNotitie}</p>
+                )}
+              </dd>
+            </div>
           </dl>
         </div>
       </section>
@@ -108,10 +118,8 @@ export default function Contact() {
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-14 lg:gap-20 items-start">
             {/* Formulier */}
             <div>
-              <h2 className="display-lg text-ink">Stuur een bericht</h2>
-              <p className="mt-4 text-ink-soft leading-relaxed">
-                Vul in wat je wilt weten. Hoe concreter je vraag, hoe gerichter ons antwoord.
-              </p>
+              <h2 className="display-lg text-ink">{content.formulier.titel}</h2>
+              <p className="mt-4 text-ink-soft leading-relaxed">{content.formulier.intro}</p>
 
               <form onSubmit={handleSubmit} className="mt-9 space-y-6">
                 <div>
@@ -207,18 +215,27 @@ export default function Contact() {
                       <div>
                         <p className="font-semibold text-ink text-[0.9375rem]">Bericht verzonden</p>
                         <p className="text-sm text-stone mt-0.5">
-                          We nemen binnen 24 uur contact met je op.
+                          {content.formulier.bevestiging}
                         </p>
                       </div>
                     </div>
+                  )}
+                  {sendFailed && (
+                    <p className="text-sm text-ink border border-hairline p-4">
+                      Versturen is niet gelukt. Probeer het nog eens, of mail naar{' '}
+                      <a href={mailLink} className="underline underline-offset-4">
+                        {c.email}
+                      </a>
+                      .
+                    </p>
                   )}
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitted}
+                  disabled={isSubmitted || isSending}
                   className={`btn w-full justify-center ${
-                    isSubmitted
+                    isSubmitted || isSending
                       ? 'bg-hairline text-stone cursor-not-allowed'
                       : 'btn-primary'
                   }`}
@@ -240,23 +257,14 @@ export default function Contact() {
             <div className="space-y-12">
               <div>
                 <div className="aspect-[4/3] bg-mist border border-hairline">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.3597920090741!2d5.503261184825531!3d51.983427245326475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c651494090b197%3A0x1c69d179c91fc018!2sBody%20by%20Marcel!5e0!3m2!1snl!2snl!4v1774468241137!5m2!1snl!2snl"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Locatie van Body by Marcel op Google Maps"
-                  />
+                  <MapEmbed />
                 </div>
-                <h2 className="display-md text-ink mt-5">Kom langs</h2>
+                <h2 className="display-md text-ink mt-5">{content.kaartTitel}</h2>
                 <p className="mt-2 text-sm text-stone leading-relaxed">
-                  Rijksstraatweg 125, 3921 AD Elst (U). Gratis parkeren voor de deur.
+                  {c.straat}, {c.postcodePlaats}. {c.parkeren}
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Rijksstraatweg+125+Elst+Utrecht"
+                  href={c.mapsLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline mt-5"
@@ -266,12 +274,12 @@ export default function Contact() {
               </div>
 
               <div>
-                <h2 className="display-md text-ink mb-5">Veelgestelde vragen</h2>
+                <h2 className="display-md text-ink mb-5">{content.faqTitel}</h2>
                 <dl className="border-t border-ink">
-                  {faqs.map((faq) => (
-                    <div key={faq.q} className="py-4 border-b border-hairline">
-                      <dt className="font-semibold text-ink text-[0.9375rem]">{faq.q}</dt>
-                      <dd className="mt-1 text-sm text-stone leading-relaxed">{faq.a}</dd>
+                  {content.faqs.map((faq) => (
+                    <div key={faq.vraag} className="py-4 border-b border-hairline">
+                      <dt className="font-semibold text-ink text-[0.9375rem]">{faq.vraag}</dt>
+                      <dd className="mt-1 text-sm text-stone leading-relaxed">{faq.antwoord}</dd>
                     </div>
                   ))}
                 </dl>
@@ -284,9 +292,9 @@ export default function Contact() {
       {/* Afsluiter */}
       <section className="bg-ink text-paper py-20 md:py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="display-lg">Liever gewoon een keer meetrainen?</h2>
+          <h2 className="display-lg">{content.afsluiter.titel}</h2>
           <p className="mt-6 text-paper/65 leading-relaxed max-w-xl mx-auto">
-            De proefdag is gratis en verplicht je tot niets.
+            {content.afsluiter.tekst}
           </p>
           <Link to="/proefdag" className="btn btn-lime mt-9">
             Boek een gratis proefdag

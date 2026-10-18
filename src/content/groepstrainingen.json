@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "eyebrow": "Groepstrainingen",
+    "titel": "Samen trainen, zonder in de massa te verdwijnen",
+    "intro": "Zes vormen van groepstraining, allemaal in groepen van maximaal acht. Kies wat bij je past, of probeer er eerst een.",
+    "foto": "/fotos-bron/duo-medicijnbal.jpg",
+    "fotoAlt": "Twee deelnemers trainen samen met een medicijnbal"
+  },
+  "aanpak": {
+    "eyebrow": "De aanpak",
+    "titel": "Kwaliteit boven\naantallen",
+    "tekst": "Groepstraining hoeft niet te betekenen dat je een nummer bent. Door de groepen klein te houden blijft er ruimte om je houding te corrigeren en de oefening aan te passen aan wat jij op dat moment aankunt.\n\nBeginner of gevorderd: je doet dezelfde les mee, op jouw niveau.",
+    "principes": [
+      {
+        "label": "Groepsgrootte",
+        "waarde": "Nooit meer dan acht mensen per les"
+      },
+      {
+        "label": "Begeleiding",
+        "waarde": "Een trainer die je naam en je schema kent"
+      },
+      {
+        "label": "Niveau",
+        "waarde": "Elke oefening heeft een lichtere en zwaardere variant"
+      },
+      {
+        "label": "Rooster",
+        "waarde": "Vroeg in de ochtend, eind van de middag en zaterdag"
+      }
+    ],
+    "foto": "/fotos-bron/high-five.jpg",
+    "fotoAlt": "Deelnemer en trainer geven elkaar een high five"
+  },
+  "kiesTitel": "Kies je training",
+  "kiesIntro": "Klik op een training voor de details, het niveau en de tijden.",
+  "trainingen": [
+    {
+      "id": "small-group",
+      "titel": "Small Group Training",
+      "tekst": "Maximaal acht personen, dus je krijgt nog steeds correctie op je techniek.",
+      "foto": "/fotos-bron/cardio-duo.jpg"
+    },
+    {
+      "id": "bootcamp",
+      "titel": "Bootcamp",
+      "tekst": "Buiten op het terrein, met je eigen gewicht en wat er verder voorhanden is.",
+      "foto": "/fotos-bron/farmerswalk.jpg"
+    },
+    {
+      "id": "tabata",
+      "titel": "Tabata",
+      "tekst": "Korte, explosieve intervallen. Twintig seconden aan, tien seconden uit.",
+      "foto": "/fotos-bron/opdrukken.jpg"
+    },
+    {
+      "id": "circuit",
+      "titel": "Circuit Training",
+      "tekst": "Vaste ronde langs de stations, hele lichaam in één les.",
+      "foto": "/fotos-bron/kabel-pull.jpg"
+    },
+    {
+      "id": "kids",
+      "titel": "Kids Fitness & Bootcamp",
+      "tekst": "Voor 8 tot 16 jaar. Bewegen leren zonder dat het op school lijkt.",
+      "foto": "/fotos-bron/lunge-2.jpg"
+    },
+    {
+      "id": "corporate",
+      "titel": "Bedrijfstraining",
+      "tekst": "Een vast moment in de week voor uw team, op maat samengesteld.",
+      "foto": "/fotos-bron/duo-halters.jpg"
+    }
+  ],
+  "weekTitel": "Deze week",
+  "beeldstrook": [
+    "/fotos-bron/studio-hal.jpg",
+    "/fotos-bron/opdrukken-2.jpg",
+    "/fotos-bron/schouders-halters.jpg",
+    "/fotos-bron/matten.jpg"
+  ],
+  "afsluiter": {
+    "titel": "Je eerste groepsles\nis gratis",
+    "tekst": "Kom een keer meedoen en kijk of het klikt. Geen abonnement, geen verplichtingen."
+  }
+}

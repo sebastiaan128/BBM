@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, ChevronRight, ExternalLink } from 'lucide-react';
 import PageHero from '../../components/PageHero';
-import { photo } from '../../photos';
+import roosterContent from '../../content/rooster.json';
 import { sportbit, roosterWidgetUrl } from '../../sportbit';
 import {
   schedule,
@@ -52,11 +52,11 @@ export default function Rooster() {
   return (
     <div className="bg-paper">
       <PageHero
-        eyebrow="Rooster"
-        title="Het weekrooster"
-        intro="Alle groepslessen op een rij. Inschrijven doe je in SportBit, waar je ook ziet hoeveel plekken er nog vrij zijn."
-        image={photo.matten}
-        imageAlt="De studio van Body by Marcel, klaar voor de volgende les"
+        eyebrow={roosterContent.hero.eyebrow}
+        title={roosterContent.hero.titel}
+        intro={roosterContent.hero.intro}
+        image={roosterContent.hero.foto}
+        imageAlt={roosterContent.hero.fotoAlt}
       >
         <a
           href={sportbit.inloggen}

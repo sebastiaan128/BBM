@@ -1,26 +1,16 @@
 import { Link } from 'react-router-dom';
+import MapEmbed from './MapEmbed';
+import { Regels } from './Tekst';
+import content from '../content/home.json';
+import { site, telLink, mailLink } from '../site';
+
+const contact = content.contact;
+const c = site.contact;
 
 const details = [
-  {
-    label: 'Locatie',
-    lines: ['Rijksstraatweg 125', '3921 AD Elst (U)'],
-    href: 'https://maps.google.com/?q=Rijksstraatweg+125+Elst+Utrecht',
-    linkText: 'Op de kaart',
-  },
-  { label: 'Telefoon', lines: ['06-42059446'], href: 'tel:0642059446', linkText: 'Bel ons' },
-  {
-    label: 'E-mail',
-    lines: ['info@bodybymarcel.nl'],
-    href: 'mailto:info@bodybymarcel.nl',
-    linkText: 'Stuur een mail',
-  },
-];
-
-/* Zondag gesloten, gelijk aan het rooster en de proefdagkalender. */
-const openingHours = [
-  { day: 'Maandag t/m vrijdag', hours: '06:00 – 21:00' },
-  { day: 'Zaterdag', hours: '08:00 – 16:00' },
-  { day: 'Zondag', hours: 'Gesloten' },
+  { label: 'Locatie', lines: [c.straat, c.postcodePlaats], href: c.mapsLink, linkText: 'Op de kaart' },
+  { label: 'Telefoon', lines: [c.telefoon], href: telLink, linkText: 'Bel ons' },
+  { label: 'E-mail', lines: [c.email], href: mailLink, linkText: 'Stuur een mail' },
 ];
 
 export default function ContactSection() {
@@ -29,16 +19,11 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
           <div data-reveal>
-            <span className="eyebrow">Contact</span>
+            <span className="eyebrow">{contact.eyebrow}</span>
             <h2 className="display-lg mt-6 text-ink">
-              Kom een keer
-              <br />
-              kijken
+              <Regels tekst={contact.titel} />
             </h2>
-            <p className="mt-7 text-lg leading-relaxed text-ink-soft">
-              De studio staat aan de Rijksstraatweg in Elst, met gratis parkeren voor de deur. Bel
-              even of boek een proefdag, dan zorgen we dat er iemand voor je klaarstaat.
-            </p>
+            <p className="mt-7 text-lg leading-relaxed text-ink-soft">{contact.intro}</p>
 
             <dl className="mt-10 border-t border-hairline">
               {details.map((item) => (
@@ -72,12 +57,15 @@ export default function ContactSection() {
                   Open
                 </dt>
                 <dd className="space-y-1">
-                  {openingHours.map((row) => (
-                    <p key={row.day} className="flex justify-between gap-4 text-[0.9375rem] max-w-xs">
-                      <span className="text-ink-soft">{row.day}</span>
-                      <span className="mono text-ink">{row.hours}</span>
+                  {site.openingstijden.map((row) => (
+                    <p key={row.dagen} className="flex justify-between gap-4 text-[0.9375rem] max-w-xs">
+                      <span className="text-ink-soft">{row.dagen}</span>
+                      <span className="mono text-ink text-right whitespace-pre">{row.tijden}</span>
                     </p>
                   ))}
+                  {site.openingstijdenNotitie && (
+                    <p className="pt-1 text-sm text-stone max-w-xs">{site.openingstijdenNotitie}</p>
+                  )}
                 </dd>
               </div>
             </dl>
@@ -93,16 +81,7 @@ export default function ContactSection() {
           </div>
 
           <div className="aspect-[4/3] lg:aspect-[4/5] border border-hairline bg-mist" data-reveal>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.3597920090741!2d5.503261184825531!3d51.983427245326475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c651494090b197%3A0x1c69d179c91fc018!2sBody%20by%20Marcel!5e0!3m2!1snl!2snl!4v1774468241137!5m2!1snl!2snl"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Locatie van Body by Marcel op Google Maps"
-            />
+            <MapEmbed />
           </div>
         </div>
       </div>

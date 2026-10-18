@@ -1,27 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
-import { photo } from '../photos';
 import Photo from './Photo';
+import { Regels } from './Tekst';
+import content from '../content/home.json';
 
-interface Slide {
-  image: string;
-  /** Alleen voor schermlezers; er staat geen bijschrift in beeld. */
-  alt: string;
-}
-
-/* De foto's wisselen, de kop blijft staan. */
-const slides: Slide[] = [
-  { image: photo.kettlebellDaglicht, alt: 'Kettlebell squat in de studio' },
-  { image: photo.coaching, alt: 'Trainer begeleidt een klant tijdens een oefening' },
-  { image: photo.farmerswalk, alt: "Farmer's walk op het buitenterrein" },
-];
-
-const facts = [
-  { label: 'Groepsgrootte', value: 'Max. 8 personen' },
-  { label: 'Waar', value: 'Rijksstraatweg 125, Elst' },
-  { label: 'Bellen', value: '06-42059446' },
-];
+const hero = content.hero;
+/* De foto's wisselen, de kop blijft staan. Het alt-tekstje is alleen voor
+   schermlezers; er staat geen bijschrift in beeld. */
+const slides = hero.slides;
 
 interface Props {
   autoplay?: boolean;
@@ -79,28 +66,20 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
         {/* Tekstkolom */}
         <div className="flex items-center px-6 sm:px-10 lg:px-14 xl:px-20 py-20 lg:py-28">
           <div className="max-w-xl">
-            <span className="eyebrow">Elst · Utrecht</span>
+            <span className="eyebrow">{hero.eyebrow}</span>
 
             <h1 className="display-xl mt-8 text-ink">
-              Kracht, rust
-              <br />
-              en voeding
-              <br />
-              in balans.
+              <Regels tekst={hero.titel} />
             </h1>
 
-            <p className="mt-8 text-lg leading-relaxed text-ink-soft">
-              Body by Marcel is een kleine studio waar je bij naam bekend bent. Groepen van
-              maximaal acht, of één op één, met begeleiding die verder kijkt dan de training
-              alleen.
-            </p>
+            <p className="mt-8 text-lg leading-relaxed text-ink-soft">{hero.intro}</p>
 
             <div className="mt-10 flex flex-wrap gap-3">
               <Link to="/proefdag" className="btn btn-lime">
-                Plan je proefdag
+                {hero.knopProefdag}
               </Link>
               <Link to="/groepstrainingen" className="btn btn-outline">
-                Bekijk het rooster
+                {hero.knopRooster}
               </Link>
             </div>
           </div>
@@ -115,7 +94,7 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
           <div className="overflow-hidden h-full" ref={emblaRef}>
             <div className="flex h-full">
               {slides.map((slide, i) => (
-                <div key={slide.image} className="flex-[0_0_100%] min-w-0 relative">
+                <div key={slide.foto + i} className="flex-[0_0_100%] min-w-0 relative">
                   {/* Het eerste beeld is het grootste element boven de vouw en
                       bepaalt dus wanneer de pagina 'geladen' oogt.
 
@@ -124,7 +103,7 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
                       met loading="lazy" pas ophaalt als ze al langsschuiven.
                       Dan sta je naar een leeg vlak te kijken. */}
                   <Photo
-                    src={slide.image}
+                    src={slide.foto}
                     alt={slide.alt}
                     className="absolute inset-0"
                     sizes="(max-width: 1024px) 100vw, 55vw"
@@ -143,7 +122,7 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
             <div className="flex gap-1.5 max-w-[10rem]" role="tablist" aria-label="Beelden">
               {slides.map((slide, i) => (
                 <button
-                  key={slide.image}
+                  key={slide.foto + i}
                   onClick={() => scrollTo(i)}
                   role="tab"
                   aria-selected={i === selectedIndex}
@@ -163,12 +142,12 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
       <div className="bg-ink text-paper">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
           <dl className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ink-soft">
-            {facts.map((fact) => (
+            {hero.feiten.map((fact) => (
               <div key={fact.label} className="py-6 sm:py-7 sm:px-8 first:sm:pl-0 last:sm:pr-0">
                 <dt className="mono text-[0.625rem] uppercase tracking-[0.18em] text-paper/45">
                   {fact.label}
                 </dt>
-                <dd className="mt-1.5 text-[0.9375rem] font-medium">{fact.value}</dd>
+                <dd className="mt-1.5 text-[0.9375rem] font-medium">{fact.waarde}</dd>
               </div>
             ))}
           </dl>

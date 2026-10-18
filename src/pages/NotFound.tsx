@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { photo } from '../photos';
 import Photo from '../components/Photo';
+import { site, telLink, mailLink } from '../site';
 
 const destinations = [
   { label: 'Home', href: '/', description: 'Terug naar het begin' },
@@ -94,15 +95,15 @@ export default function NotFound() {
 
           <p className="mt-10 text-sm text-stone leading-relaxed">
             Kom je er niet uit? Bel{' '}
-            <a href="tel:0642059446" className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2">
-              06-42059446
+            <a href={telLink} className="mono text-moss underline underline-offset-4 decoration-1 hover:decoration-2">
+              {site.contact.telefoon}
             </a>{' '}
             of mail{' '}
             <a
-              href="mailto:info@bodybymarcel.nl"
+              href={mailLink}
               className="text-moss underline underline-offset-4 decoration-1 hover:decoration-2"
             >
-              info@bodybymarcel.nl
+              {site.contact.email}
             </a>
             .
           </p>

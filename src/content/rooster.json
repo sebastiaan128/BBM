@@ -1,0 +1,187 @@
+{
+  "hero": {
+    "eyebrow": "Rooster",
+    "titel": "Het weekrooster",
+    "intro": "Alle groepslessen op een rij. Inschrijven doe je in SportBit, waar je ook ziet hoeveel plekken er nog vrij zijn.",
+    "foto": "/fotos-bron/matten.jpg",
+    "fotoAlt": "De studio van Body by Marcel, klaar voor de volgende les"
+  },
+  "dagen": [
+    {
+      "dag": "Maandag",
+      "kort": "Ma",
+      "lessen": [
+        {
+          "naam": "Small Group Training",
+          "kort": "Small Group",
+          "categorie": "small-group",
+          "tijd": "07:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Circuit Training",
+          "kort": "Circuit",
+          "categorie": "circuit",
+          "tijd": "18:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Bootcamp",
+          "kort": "Bootcamp",
+          "categorie": "bootcamp",
+          "tijd": "19:30",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "Buiten Elst"
+        }
+      ]
+    },
+    {
+      "dag": "Dinsdag",
+      "kort": "Di",
+      "lessen": [
+        {
+          "naam": "Tabata",
+          "kort": "Tabata",
+          "categorie": "tabata",
+          "tijd": "06:30",
+          "duur": "45 min",
+          "niveau": "Gemiddeld tot gevorderd",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Small Group Training",
+          "kort": "Small Group",
+          "categorie": "small-group",
+          "tijd": "17:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        }
+      ]
+    },
+    {
+      "dag": "Woensdag",
+      "kort": "Wo",
+      "lessen": [
+        {
+          "naam": "Circuit Training",
+          "kort": "Circuit",
+          "categorie": "circuit",
+          "tijd": "07:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Kids Fitness",
+          "kort": "Kids Fitness",
+          "categorie": "kids",
+          "tijd": "16:00",
+          "duur": "45 min",
+          "niveau": "8 tot 16 jaar",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Bootcamp",
+          "kort": "Bootcamp",
+          "categorie": "bootcamp",
+          "tijd": "18:30",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "Buiten Elst"
+        }
+      ]
+    },
+    {
+      "dag": "Donderdag",
+      "kort": "Do",
+      "lessen": [
+        {
+          "naam": "Small Group Training",
+          "kort": "Small Group",
+          "categorie": "small-group",
+          "tijd": "06:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Tabata",
+          "kort": "Tabata",
+          "categorie": "tabata",
+          "tijd": "18:00",
+          "duur": "45 min",
+          "niveau": "Gemiddeld tot gevorderd",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        }
+      ]
+    },
+    {
+      "dag": "Vrijdag",
+      "kort": "Vr",
+      "lessen": [
+        {
+          "naam": "Circuit Training",
+          "kort": "Circuit",
+          "categorie": "circuit",
+          "tijd": "07:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        },
+        {
+          "naam": "Small Group Training",
+          "kort": "Small Group",
+          "categorie": "small-group",
+          "tijd": "17:30",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "BBM Elst"
+        }
+      ]
+    },
+    {
+      "dag": "Zaterdag",
+      "kort": "Za",
+      "lessen": [
+        {
+          "naam": "Bootcamp",
+          "kort": "Bootcamp",
+          "categorie": "bootcamp",
+          "tijd": "09:00",
+          "duur": "60 min",
+          "niveau": "Alle niveaus",
+          "trainer": "Marcel",
+          "locatie": "Buiten Elst"
+        },
+        {
+          "naam": "Kids Bootcamp",
+          "kort": "Kids Bootcamp",
+          "categorie": "kids",
+          "tijd": "10:30",
+          "duur": "45 min",
+          "niveau": "8 tot 16 jaar",
+          "trainer": "Marcel",
+          "locatie": "Buiten Elst"
+        }
+      ]
+    }
+  ]
+}

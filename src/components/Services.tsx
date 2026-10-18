@@ -1,99 +1,31 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { photo } from '../photos';
 import Photo from './Photo';
+import content from '../content/home.json';
 
-interface Service {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-  /** Benoemt waar je heen gaat: vier kaarten wijzen naar dezelfde pagina. */
-  linkLabel: string;
-}
-
-const services: Service[] = [
-  {
-    title: 'Cardio',
-    description: 'Loopbanden, stairmaster en fietsen, met een schema dat bij je conditie past.',
-    image: photo.cardioLoopband,
-    link: '/personal-training',
-    linkLabel: 'Naar personal training',
-  },
-  {
-    title: 'Krachttraining',
-    description: 'Opbouwen met vrije gewichten en machines, techniek eerst.',
-    image: photo.deadlift,
-    link: '/personal-training',
-    linkLabel: 'Naar personal training',
-  },
-  {
-    title: 'Small Group Training',
-    description: 'Acht mensen, één trainer. Groepsenergie zonder in te leveren op aandacht.',
-    image: photo.highFive,
-    link: '/groepstrainingen/small-group',
-    linkLabel: 'Naar small group',
-  },
-  {
-    title: 'Bootcamp',
-    description: 'Buiten trainen op het terrein achter de studio, weer of geen weer.',
-    image: photo.farmerswalk,
-    link: '/groepstrainingen/bootcamp',
-    linkLabel: 'Naar bootcamp',
-  },
-  {
-    title: 'Vrije gewichten',
-    description: 'Complete dumbbell- en schijvensectie voor functionele kracht.',
-    image: photo.dumbbellrek,
-    link: '/personal-training',
-    linkLabel: 'Naar personal training',
-  },
-  {
-    title: 'Kids Fitness & Bootcamp',
-    description: 'Bewegen leren op een manier die kinderen leuk blijven vinden.',
-    image: photo.lunge2,
-    link: '/groepstrainingen/kids',
-    linkLabel: 'Naar kids fitness',
-  },
-  {
-    title: 'Meten, wegen & schema',
-    description: 'Metingen op vaste momenten, zodat je vooruitgang zichtbaar wordt.',
-    image: photo.coaching,
-    link: '/personal-training',
-    linkLabel: 'Naar personal training',
-  },
-  {
-    title: 'Sauna & sportbar',
-    description: 'Even blijven hangen na je training. Herstel telt net zo hard mee.',
-    image: photo.koeling,
-    link: '/contact',
-    linkLabel: 'Naar contact',
-  },
-];
+const aanbod = content.aanbod;
 
 export default function Services() {
   return (
     <section id="services" className="py-20 md:py-28 bg-paper-dim border-y border-hairline">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="max-w-2xl mb-14" data-reveal>
-          <span className="eyebrow">Sportaanbod</span>
-          <h2 className="display-lg mt-6 text-ink">Wat je hier kunt doen</h2>
-          <p className="mt-4 text-ink-soft leading-relaxed">
-            Klik op een onderdeel voor de details, de tijden en wat het kost.
-          </p>
+          <span className="eyebrow">{aanbod.eyebrow}</span>
+          <h2 className="display-lg mt-6 text-ink">{aanbod.titel}</h2>
+          <p className="mt-4 text-ink-soft leading-relaxed">{aanbod.intro}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((service) => (
+          {aanbod.items.map((service) => (
             <Link
-              key={service.title}
+              key={service.titel}
               to={service.link}
               data-reveal
               className="card group flex flex-col overflow-hidden"
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <Photo
-                  src={service.image}
+                  src={service.foto}
                   alt=""
                   loading="lazy"
                   className="group-hover:scale-[1.03]"
@@ -102,15 +34,15 @@ export default function Services() {
 
               <div className="flex flex-col flex-1 p-5">
                 <h3 className="display-md text-ink underline decoration-transparent underline-offset-4 decoration-1 group-hover:decoration-moss group-hover:text-moss transition-colors duration-150 ease-smooth">
-                  {service.title}
+                  {service.titel}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone flex-1">
-                  {service.description}
+                  {service.tekst}
                 </p>
 
                 {/* Altijd zichtbaar, dus ook duidelijk zonder muis */}
                 <span className="mono inline-flex items-center gap-1.5 mt-4 text-[0.6875rem] uppercase tracking-[0.12em] text-moss">
-                  {service.linkLabel}
+                  {service.linkTekst}
                   <ArrowRight
                     size={13}
                     className="transition-transform duration-150 ease-smooth group-hover:translate-x-0.5"

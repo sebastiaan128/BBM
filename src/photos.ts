@@ -3,10 +3,12 @@
  * niet een pad: Photo.tsx zoekt in photoAssets op welke breedtes er van
  * bestaan en bouwt daar de srcset uit op.
  *
+ * Bijna alle foto's op de site staan inmiddels in src/content/ (en zijn via
+ * /admin te wisselen); deze lijst is er voor de paar plekken in de code zelf.
+ *
  * De bronbestanden staan in /fotos-bron, de uitgeleverde WebP-varianten in
- * /public/photos, en de onbewerkte originelen lokaal in /fotos-origineel
- * (niet in git). Nieuwe foto in /fotos-bron gezet? Draai daarna
- * ./scripts/optimaliseer-fotos.sh.
+ * /public/photos. Bij elke build maakt scripts/optimaliseer-fotos.mjs de
+ * varianten van nieuwe foto's aan.
  */
 
 export const photo = {
@@ -28,6 +30,12 @@ export const photo = {
   schouderdrukken: 'schouderdrukken',
   dumbbellPress: 'dumbbell-press',
   dumbbellDuo: 'dumbbell-duo',
+  profielMarvin: 'profiel-marvin',
+  winnaars2021: 'winnaars-2021',
+  winnaars2022: 'winnaars-2022',
+  winnaars2023: 'winnaars-2023',
+  winnaars2024: 'winnaars-2024',
+  winnaars2025: 'winnaars-2025',
   duoHalters: 'duo-halters',
   duoHalters2: 'duo-halters-2',
   bicepsBank: 'biceps-bank',
@@ -56,64 +64,4 @@ export const photo = {
   koeling: 'koeling',
   squatrek: 'squatrek',
   fietsen: 'fietsen',
-} as const;
-
-/** Fotoreeksen per trainingsvorm, voor de galerijen op de detailpagina's. */
-export const gallery = {
-  smallGroup: [
-    photo.duoMedicijnbal,
-    photo.kettlebellSquat,
-    photo.highFive,
-    photo.duoHalters,
-    photo.cardioDuo,
-    photo.studioHal,
-  ],
-  bootcamp: [
-    photo.farmerswalk,
-    photo.buitenSquat,
-    photo.buitenHalter,
-    photo.opdrukken,
-    photo.lunge,
-    photo.farmerswalk2,
-  ],
-  tabata: [
-    photo.opdrukken,
-    photo.opdrukken2,
-    photo.lunge,
-    photo.lunge2,
-    photo.dumbbellDuo,
-    photo.kettlebellZijkant,
-  ],
-  circuit: [
-    photo.kabelPull,
-    photo.kabelRow,
-    photo.beenpers,
-    photo.bicepsBank,
-    photo.dumbbellPress,
-    photo.squatrek,
-  ],
-  kids: [
-    photo.opdrukken2,
-    photo.lunge,
-    photo.matten,
-    photo.kettlebellSquat,
-    photo.opdrukken,
-    photo.studioHal,
-  ],
-  corporate: [
-    photo.duoHalters,
-    photo.duoHalters2,
-    photo.handdruk,
-    photo.coaching,
-    photo.studioHal,
-    photo.koeling,
-  ],
-  personalTraining: [
-    photo.coaching,
-    photo.emsVest,
-    photo.deadlift,
-    photo.roeienHalterschijf,
-    photo.bicepsClose,
-    photo.handdruk,
-  ],
 } as const;

@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "eyebrow": "Contact",
+    "titel": "Stel je vraag",
+    "intro": "Bel, mail of vul het formulier in. We reageren meestal dezelfde dag nog.",
+    "foto": "/fotos-bron/studio-hal.jpg",
+    "fotoAlt": "De krachthal van Body by Marcel in Elst"
+  },
+  "formulier": {
+    "titel": "Stuur een bericht",
+    "intro": "Vul in wat je wilt weten. Hoe concreter je vraag, hoe gerichter ons antwoord.",
+    "bevestiging": "We nemen binnen 24 uur contact met je op."
+  },
+  "kaartTitel": "Kom langs",
+  "faqTitel": "Veelgestelde vragen",
+  "faqs": [
+    {
+      "vraag": "Hoe snel krijg ik antwoord?",
+      "antwoord": "Binnen 24 uur, meestal dezelfde dag nog."
+    },
+    {
+      "vraag": "Kan ik langskomen zonder afspraak?",
+      "antwoord": "Bel even van tevoren voor een rondleiding, of boek meteen een proefdag."
+    },
+    {
+      "vraag": "Is er parkeergelegenheid?",
+      "antwoord": "Ja, bij de studio zijn parkeerplaatsen."
+    }
+  ],
+  "afsluiter": {
+    "titel": "Liever gewoon een keer meetrainen?",
+    "tekst": "De proefdag is gratis en verplicht je tot niets."
+  }
+}
