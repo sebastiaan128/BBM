@@ -34,9 +34,8 @@ export function fotoNaam(src: string) {
 
 /**
  * Een foto met de .photo-uitsnede, in WebP en op de breedte die bij het scherm
- * past. Zolang het beeld onderweg is staat er een sterk vergroot voorbeeldje
- * van 20px als achtergrond: je ziet de kleuren en de compositie al, en de foto
- * scherpt daar overheen aan in plaats van uit een grijs vlak te springen.
+ * past. Zolang het beeld onderweg is toont .photo een skeleton (een grijs vlak
+ * met een lichtgolf); is-loaded zet die stil zodra de foto er is.
  */
 export default function Photo({ src: bron, className = '', sizes, onLoad, onError, ...rest }: Props) {
   const ref = useRef<HTMLImageElement>(null);
@@ -45,7 +44,7 @@ export default function Photo({ src: bron, className = '', sizes, onLoad, onErro
   const asset = photoAssets[src];
 
   // Een beeld uit de cache is bij het mounten al compleet en vuurt geen
-  // load-event meer. Zonder deze check blijft het onscherp staan.
+  // load-event meer. Zonder deze check blijft het skeleton staan.
   useEffect(() => {
     if (ref.current?.complete) setLoaded(true);
   }, []);
@@ -67,13 +66,12 @@ export default function Photo({ src: bron, className = '', sizes, onLoad, onErro
       sizes={sizes ?? STANDAARD_SIZES}
       decoding="async"
       className={`photo ${loaded ? 'is-loaded' : ''} ${className}`.trim()}
-      style={loaded ? undefined : { backgroundImage: `url("${asset.blur}")` }}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
       }}
-      // Ook bij een kapotte bron doorlaten: liever het alt-teken dan een vak
-      // dat voorgoed onscherp blijft.
+      // Ook bij een kapotte bron doorlaten: liever het alt-teken dan een
+      // skeleton dat voorgoed blijft golven.
       onError={(e) => {
         setLoaded(true);
         onError?.(e);

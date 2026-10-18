@@ -1,6 +1,6 @@
-// Zet elke foto uit fotos-bron/ om naar WebP op vier schermbreedtes, plus een
-// piepklein voorbeeldje dat als onscherpe achtergrond dient zolang de echte
-// foto nog onderweg is. Schrijft src/photoAssets.ts, waar Photo.tsx uit leest.
+// Zet elke foto uit fotos-bron/ om naar WebP op vier schermbreedtes en
+// schrijft src/photoAssets.ts, waar Photo.tsx uit leest welke breedtes er
+// van elke foto bestaan.
 //
 // Draait vanzelf voor elke build (npm run build, ook op Netlify), zodat een
 // foto die via /admin is geüpload meteen op de site staat. Varianten die al
@@ -20,8 +20,6 @@ const PHOTOS_DIR = path.join(ROOT, 'public/photos');
 const MANIFEST = path.join(ROOT, 'src/photoAssets.ts');
 const BREEDTES = [480, 800, 1200, 1440];
 const KWALITEIT = 78;
-// Breder dan dit en de base64-tekst weegt meer dan wat hij bespaart.
-const LQIP_BREEDTE = 20;
 
 /** Moet gelijk lopen met fotoNaam() in src/components/Photo.tsx. */
 function fotoNaam(bestand) {
@@ -58,25 +56,19 @@ for (const bestand of bestanden) {
     await bron.clone().resize({ width: w }).webp({ quality: KWALITEIT }).toFile(uit);
   }
 
-  const lqip = await bron.clone().resize({ width: LQIP_BREEDTE }).webp({ quality: 40 }).toBuffer();
-  regels.push(
-    `  '${naam}': { widths: [${breedtes.join(',')}], blur: 'data:image/webp;base64,${lqip.toString('base64')}' },`,
-  );
+  regels.push(`  '${naam}': { widths: [${breedtes.join(',')}] },`);
 }
 
 await writeFile(
   MANIFEST,
   `/**
- * Welke breedtes er van elke foto bestaan, en een uitgesmeerd voorbeeldje
- * van ${LQIP_BREEDTE}px breed. Photo.tsx bouwt hier de srcset uit op en zet het
- * voorbeeldje als achtergrond, zodat je tijdens het laden de kleuren van de
- * foto ziet in plaats van een grijs vlak.
+ * Welke breedtes er van elke foto bestaan. Photo.tsx bouwt hier de srcset
+ * uit op.
  *
  * Gegenereerd door scripts/optimaliseer-fotos.mjs — niet met de hand aanpassen.
  */
 export interface PhotoAsset {
   widths: number[];
-  blur: string;
 }
 
 export const photoAssets: Record<string, PhotoAsset> = {

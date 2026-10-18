@@ -89,16 +89,15 @@ body {
   }
 
   /* Alles wat normaal binnenkomt staat hier meteen goed. Zonder deze regels
-     blijft de begintoestand hangen zodra de transitie wordt uitgezet. De
-     foto houdt wel zijn voorbeeldje als achtergrond: dat is geen beweging,
-     alleen iets te zien hebben zolang het beeld nog niet binnen is. */
+     blijft de begintoestand hangen zodra de transitie wordt uitgezet. Het
+     skeleton blijft als stil grijs vlak staan, zonder bewegende golf. */
   [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
   }
   .photo {
-    filter: none !important;
-    transform: none !important;
+    animation: none !important;
+    background-image: none !important;
   }
 }
 
@@ -332,35 +331,39 @@ textarea.field {
   object-fit: cover;
   object-position: center 32%;
 
-  /* Zolang de foto onderweg is staat het voorbeeldje van 20px hier als
-     achtergrond (gezet door Photo.tsx). Dezelfde uitsnede als de foto zelf,
-     zodat het beeld niet verspringt op het moment dat het scherp wordt. */
-  background-size: cover;
-  background-position: center 32%;
+  /* Skeleton: zolang de foto onderweg is, schuift er een lichte golf over
+     een grijs vlak, zodat je ziet dat er iets aankomt in plaats van een leeg
+     gat. De foto zelf dekt het vlak volledig af (object-fit: cover), dus
+     zodra hij binnen is, is het skeleton weg.
+
+     clip-path houdt een hover-zoom (`group-hover:scale-*`) binnen het
+     kader; de transitie op scale maakt die zoom zacht. */
   background-color: var(--color-mist);
-
-  /* Het scherpstellen. De onscherpte maakt van die twintig pixels een zachte
-     kleurvlek in plaats van een blokkenpatroon, en loopt daarna weg terwijl
-     de echte foto er al staat. Dat leest als een beeld dat aankomt, niet als
-     een vak dat omslaat.
-
-     clip-path houdt de onscherpte binnen het kader: zonder die regel waaiert
-     hij over de rand heen, en niet elke omlijsting snijdt af.
-
-     De transitie noemt ook scale, de eigenschap waar `group-hover:scale-*`
-     op uitkomt. Zo heeft een foto die inzoomt bij hover geen eigen
-     transitieklasse nodig: die zou transition-property overschrijven en het
-     scherpstellen weer uitzetten. */
-  filter: blur(14px);
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--color-paper) 70%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton 1.4s ease-in-out infinite;
   clip-path: inset(0);
-  transition: filter var(--dur-slow) var(--ease-smooth),
-    transform var(--dur-slow) var(--ease-smooth), scale var(--dur-slow) var(--ease-smooth);
+  transition: scale var(--dur-slow) var(--ease-smooth);
 }
 
 .photo.is-loaded {
-  filter: none;
-  transform: none;
+  animation: none;
   background-image: none;
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 125% 0;
+  }
+  to {
+    background-position: -125% 0;
+  }
 }
 
 /* ── Fotolijstje ──────────────────────────────────────────────────
