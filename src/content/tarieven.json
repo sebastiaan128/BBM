@@ -58,14 +58,14 @@
           "naam": "Strippenkaart 10 lessen",
           "prijs": "€220",
           "eenheid": "€22 per les",
-          "toelichting": "3 maanden geldig, je bespaart €30",
+          "toelichting": "1 jaar geldig, je bespaart €30",
           "meestGekozen": true
         },
         {
           "naam": "Strippenkaart 20 lessen",
           "prijs": "€400",
           "eenheid": "€20 per les",
-          "toelichting": "6 maanden geldig, je bespaart €100",
+          "toelichting": "1 jaar geldig, je bespaart €100",
           "meestGekozen": false
         }
       ]
@@ -179,7 +179,7 @@
     },
     {
       "titel": "Geldigheid",
-      "tekst": "Strippenkaart van 10 lessen is 3 maanden geldig, die van 20 lessen 6 maanden."
+      "tekst": "Strippenkaarten zijn een jaar geldig."
     },
     {
       "titel": "Afmelden",

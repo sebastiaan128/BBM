@@ -11,10 +11,22 @@
     "titel": "Sneller vooruit met\niemand naast je",
     "tekst": "We beginnen met een gesprek: wat wil je bereiken, wat heb je al geprobeerd, en hoeveel ruimte is er in je week. Daaruit volgt een plan dat je aankunt en volhoudt.\n\nAfvallen, sterker worden, opbouwen na een blessure of simpelweg fitter zijn. De aanpak verschilt, de aandacht niet.",
     "voordelen": [
-      { "titel": "Een plan voor jou", "tekst": "Opgebouwd rond je doel, je niveau en de tijd die je werkelijk hebt." },
-      { "titel": "Volledige aandacht", "tekst": "Geen wachten op een toestel, geen gedeelde aandacht. Het uur is van jou." },
-      { "titel": "Iemand die meekijkt", "tekst": "Je trainer ziet wanneer je vorm verslapt, en wanneer er meer in zit." },
-      { "titel": "Zichtbare voortgang", "tekst": "Vaste meetmomenten, zodat je weet of het werkt in plaats van het te hopen." }
+      {
+        "titel": "Een plan voor jou",
+        "tekst": "Opgebouwd rond je doel, je niveau en de tijd die je werkelijk hebt."
+      },
+      {
+        "titel": "Volledige aandacht",
+        "tekst": "Geen wachten op een toestel, geen gedeelde aandacht. Het uur is van jou."
+      },
+      {
+        "titel": "Iemand die meekijkt",
+        "tekst": "Je trainer ziet wanneer je vorm verslapt, en wanneer er meer in zit."
+      },
+      {
+        "titel": "Zichtbare voortgang",
+        "tekst": "Vaste meetmomenten, zodat je weet of het werkt in plaats van het te hopen."
+      }
     ],
     "foto": "/fotos-bron/ems-vest-2.jpg",
     "fotoAlt": "Krachttraining onder begeleiding"
@@ -27,42 +39,60 @@
         "naam": "Marcel",
         "functie": "Eigenaar & hoofdcoach",
         "bio": "Marcel is de oprichter van Body by Marcel en de hoofdcoach van het team. Wil je spiermassa opbouwen of op een gezonde manier afvallen, dan zet hij samen met jou een traject uit en houdt hij bij of het werkt.",
-        "focus": ["Spiergroei", "Afvaltrajecten"],
-        "foto": ""
-      },
-      {
-        "naam": "Marvin",
-        "functie": "Personal trainer",
-        "bio": "Marvin ziet wat anderen over het hoofd zien. Hij schaaft je techniek bij tot elke herhaling klopt, zodat je veilig traint en meer uit iedere oefening haalt.",
-        "focus": ["Techniek", "Details"],
-        "foto": "/fotos-bron/profiel-marvin.jpg"
-      },
-      {
-        "naam": "Wessel",
-        "functie": "Personal trainer",
-        "bio": "Wessel kijkt verder dan het uur in de sportschool. Samen zoek je naar kleine aanpassingen in je dagelijkse ritme die je ook volhoudt als het even druk is.",
-        "focus": ["Lifestyle-aanpassingen"],
-        "foto": ""
-      },
-      {
-        "naam": "Eva",
-        "functie": "Personal trainer",
-        "bio": "Eva richt zich op billen, benen en buik. Ze stelt een programma samen dat precies die spiergroepen sterker maakt, met oefeningen die je voelt waar het hoort.",
-        "focus": ["Billen", "Benen", "Buik"],
+        "focus": [
+          "Spiergroei",
+          "Afvaltrajecten"
+        ],
         "foto": ""
       },
       {
         "naam": "Bart",
         "functie": "Personal trainer",
         "bio": "Bart helpt je verder als je lichaam even niet meewerkt. Hij bouwt je training stap voor stap op, zodat je blijft trainen zonder je herstel in de weg te zitten.",
-        "focus": ["Herstel", "Trainen met blessures"],
+        "focus": [
+          "Herstel",
+          "Trainen met blessures"
+        ],
         "foto": ""
       },
       {
         "naam": "Cees",
         "functie": "Personal trainer",
         "bio": "Bij Cees staat plezier voorop. Hij helpt je spieren opbouwen met trainingen waar je naar uitkijkt, want wie het leuk vindt, blijft komen.",
-        "focus": ["Spieropbouw", "Plezier in fitness"],
+        "focus": [
+          "Spieropbouw",
+          "Plezier in fitness"
+        ],
+        "foto": ""
+      },
+      {
+        "naam": "Marvin",
+        "functie": "Personal trainer",
+        "bio": "Marvin ziet wat anderen over het hoofd zien. Hij schaaft je techniek bij tot elke herhaling klopt, zodat je veilig traint en meer uit iedere oefening haalt.",
+        "focus": [
+          "Techniek",
+          "Details"
+        ],
+        "foto": "/fotos-bron/profiel-marvin.jpg"
+      },
+      {
+        "naam": "Wessel",
+        "functie": "Personal trainer",
+        "bio": "Wessel kijkt verder dan het uur in de sportschool. Samen zoek je naar kleine aanpassingen in je dagelijkse ritme die je ook volhoudt als het even druk is.",
+        "focus": [
+          "Lifestyle-aanpassingen"
+        ],
+        "foto": ""
+      },
+      {
+        "naam": "Eva",
+        "functie": "Personal trainer",
+        "bio": "Eva richt zich op billen, benen en buik. Ze stelt een programma samen dat precies die spiergroepen sterker maakt, met oefeningen die je voelt waar het hoort.",
+        "focus": [
+          "Billen",
+          "Benen",
+          "Buik"
+        ],
         "foto": ""
       }
     ]

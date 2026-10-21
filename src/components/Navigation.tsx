@@ -58,7 +58,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-8">
         <div className="flex items-center justify-between h-[4.5rem]">
           <Link to="/" className="flex-shrink-0" aria-label="Body by Marcel, naar de homepage">
-            <Logo tone="ink" size="1.6rem" />
+            <Logo tone="ink" size="2.25rem" showTagline={false} />
           </Link>
 
           {/* Desktop */}

@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-[1.4fr_1fr_1fr] gap-12 mb-14">
           {/* Merk */}
           <div>
-            <Logo tone="light" size="2.25rem" className="!items-start" />
+            <Logo tone="light" size="2.75rem" className="!items-start" />
             <p className="mt-5 text-paper/60 text-sm leading-relaxed max-w-xs">{site.footerTekst}</p>
             <div className="flex gap-2 mt-6">
               {[
