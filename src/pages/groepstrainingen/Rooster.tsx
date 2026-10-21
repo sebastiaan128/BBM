@@ -90,7 +90,7 @@ export default function Rooster() {
         <>
       {/* Filter. Anders dan de sprongknoppen op /tarieven verbergt dit
           daadwerkelijk lessen, dus staat er expliciet bij wat het doet. */}
-      <div className="sticky top-[4.5rem] z-20 bg-paper-dim border-b border-hairline">
+      <div className="sticky top-[5.25rem] z-20 bg-paper-dim border-b border-hairline">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8 py-3.5 flex flex-wrap items-center gap-x-4 gap-y-2">
           <p className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone">
             Toon alleen

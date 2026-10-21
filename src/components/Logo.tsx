@@ -47,7 +47,7 @@ export default function Logo({
         {showTagline && (
           <span
             className={`${tagline} flex items-center gap-[0.5em] whitespace-nowrap mt-[0.5em]`}
-            style={{ fontSize: '0.26em' }}
+            style={{ fontSize: '0.3em' }}
           >
             <span className={`${rule} h-px w-[1.6em] flex-shrink-0`} />
             Fitness &amp; Personal Training
