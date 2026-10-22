@@ -42,51 +42,44 @@
       "regels": [
         {
           "naam": "Losse les",
-          "prijs": "€25",
+          "prijs": "€7,-",
           "eenheid": "per les",
           "toelichting": "Alle groepslessen",
           "meestGekozen": false
         },
         {
           "naam": "Strippenkaart 10 lessen",
-          "prijs": "€220",
-          "eenheid": "€22 per les",
-          "toelichting": "1 jaar geldig, je bespaart €30",
+          "prijs": "€60,-",
+          "eenheid": "€6 per les",
+          "toelichting": "1 jaar geldig, je bespaart €10,-",
           "meestGekozen": true
-        },
-        {
-          "naam": "Strippenkaart 20 lessen",
-          "prijs": "€400",
-          "eenheid": "€20 per les",
-          "toelichting": "1 jaar geldig, je bespaart €100",
-          "meestGekozen": false
         }
       ]
     },
     {
       "id": "combi",
-      "titel": "Combinaties",
+      "titel": "Abonnementen onbeperkt Fitness en Groepslessen",
       "intro": "Personal training naast je groepslessen, in één pakket.",
       "regels": [
         {
-          "naam": "Starter, 5 PT en 10 groepslessen",
-          "prijs": "€280",
-          "eenheid": "eenmalig",
-          "toelichting": "Je bespaart €30",
+          "naam": "Onbeperkt Fitness en groepslessen",
+          "prijs": "€36,-",
+          "eenheid": "per maand",
+          "toelichting": "Inclusief trainingsschema",
           "meestGekozen": false
         },
         {
-          "naam": "Performance, 10 PT en 20 groepslessen",
-          "prijs": "€750",
-          "eenheid": "eenmalig",
-          "toelichting": "Je bespaart €70",
+          "naam": "Onbeperkt Fitness en groepslessen + 1/2 uur PT per week",
+          "prijs": "€120,-",
+          "eenheid": "per maand",
+          "toelichting": "Je bespaart €36",
           "meestGekozen": true
         },
         {
-          "naam": "Premium, 20 PT en 20 groepslessen",
-          "prijs": "€1400",
-          "eenheid": "eenmalig",
-          "toelichting": "Je bespaart €140",
+          "naam": "Onbeperkt Fitness en groepslessen + 1 uur PT per week",
+          "prijs": "€210,-",
+          "eenheid": "per maand",
+          "toelichting": "Je bespaart €36",
           "meestGekozen": false
         }
       ]
@@ -97,45 +90,31 @@
       "intro": "Aangepaste tarieven voor jeugd, samen trainen en teams.",
       "regels": [
         {
-          "naam": "Kids fitness (8–16 jaar), losse les",
-          "prijs": "€18",
+          "naam": "Kids fitness (8–13 jaar), losse les",
+          "prijs": "€6,-",
           "eenheid": "per les",
           "toelichting": "Jeugdtarief",
           "meestGekozen": false
         },
         {
           "naam": "Kids fitness, 10 lessen",
-          "prijs": "€160",
+          "prijs": "€50,-",
           "eenheid": "€16 per les",
           "toelichting": "Je bespaart €20",
           "meestGekozen": false
         },
         {
           "naam": "Duo personal training, losse sessie",
-          "prijs": "€45",
-          "eenheid": "per persoon",
+          "prijs": "€52,50",
+          "eenheid": "per uur",
           "toelichting": "Samen trainen, samen betalen",
           "meestGekozen": false
         },
         {
-          "naam": "Duo personal training, 10 sessies",
-          "prijs": "€400",
-          "eenheid": "€40 per sessie p.p.",
-          "toelichting": "Je bespaart €50",
-          "meestGekozen": false
-        },
-        {
-          "naam": "Small group PT (3–4 personen), losse sessie",
-          "prijs": "€35",
-          "eenheid": "per persoon",
-          "toelichting": "Kleine groep, eigen schema",
-          "meestGekozen": false
-        },
-        {
-          "naam": "Small group PT, 10 sessies",
-          "prijs": "€320",
-          "eenheid": "€32 per sessie p.p.",
-          "toelichting": "Je bespaart €30",
+          "naam": "Duo personal training 1 uur per week inclusief onbeperkt Fitness",
+          "prijs": "€220",
+          "eenheid": "per maand",
+          "toelichting": "Je bespaart €62,-",
           "meestGekozen": false
         },
         {
