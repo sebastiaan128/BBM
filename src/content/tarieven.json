@@ -14,30 +14,23 @@
       "regels": [
         {
           "naam": "Losse sessie",
-          "prijs": "€65",
+          "prijs": "€52,50",
           "eenheid": "per sessie",
           "toelichting": "Flexibel en vrijblijvend",
           "meestGekozen": false
         },
         {
-          "naam": "5 sessies",
-          "prijs": "€315",
-          "eenheid": "€63 per sessie",
-          "toelichting": "Je bespaart €10",
-          "meestGekozen": false
-        },
-        {
           "naam": "10 sessies",
-          "prijs": "€600",
-          "eenheid": "€60 per sessie",
-          "toelichting": "Je bespaart €50",
+          "prijs": "€525,-",
+          "eenheid": "",
+          "toelichting": "Trainer naar keuze",
           "meestGekozen": true
         },
         {
-          "naam": "20 sessies",
-          "prijs": "€1140",
-          "eenheid": "€57 per sessie",
-          "toelichting": "Je bespaart €160",
+          "naam": "1 uur per week pt inclusief onbeperkt sporten",
+          "prijs": "€210,-",
+          "eenheid": "",
+          "toelichting": "Je bespaart €36,- per maand",
           "meestGekozen": false
         }
       ]
