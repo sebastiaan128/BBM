@@ -211,7 +211,7 @@
       {
         "naam": "Groepstraining",
         "ondertitel": "Bootcamp, tabata, zumba en calisthenics",
-        "prijs": "€25",
+        "prijs": "€7,-",
         "per": "per les",
         "punten": [
           "Maximaal 8 personen per groep",
@@ -226,7 +226,7 @@
       {
         "naam": "Personal training",
         "ondertitel": "Eén op één, zestig minuten",
-        "prijs": "€65",
+        "prijs": "€52,50",
         "per": "per sessie",
         "punten": [
           "Persoonlijk trainingsschema",
@@ -241,8 +241,8 @@
       {
         "naam": "Strippenkaart",
         "ondertitel": "Tien groepslessen naar keuze",
-        "prijs": "€220",
-        "per": "€22 per les",
+        "prijs": "€60,-",
+        "per": "€6,- per les",
         "punten": [
           "Geldig voor alle groepstrainingen",
           "Een jaar geldig",
