@@ -3,7 +3,6 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
-import WhatsAppKnop from './components/WhatsAppKnop';
 import useScrollReveal from './hooks/useScrollReveal';
 import useRoutePrefetch from './hooks/useRoutePrefetch';
 import seo from './content/seo.json';
@@ -51,7 +50,6 @@ export default function Root() {
       </main>
       <Footer />
       <CookieBanner />
-      <WhatsAppKnop />
     </div>
   );
 }
