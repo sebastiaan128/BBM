@@ -107,15 +107,15 @@
     "titel": "Wat het kost",
     "los": {
       "naam": "Losse sessie",
-      "prijs": "€65",
+      "prijs": "€65,-",
       "per": "per sessie van 60 minuten",
       "tekst": "Om te proberen, of als aanvulling naast je groepstrainingen."
     },
     "voordeel": {
       "label": "Voordeel",
       "naam": "Tien sessies",
-      "prijs": "€600",
-      "per": "€60 per sessie, je bespaart €50",
+      "prijs": "€600,-",
+      "per": "€60,- per sessie, je bespaart €50,-",
       "tekst": "Voor wie een doel heeft dat meer dan een paar weken vraagt."
     },
     "inbegrepenTitel": "Bij elk traject inbegrepen",

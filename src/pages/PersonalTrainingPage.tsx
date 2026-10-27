@@ -3,6 +3,7 @@ import PageHero from '../components/PageHero';
 import Photo from '../components/Photo';
 import { Alineas, Regels } from '../components/Tekst';
 import content from '../content/personal-training.json';
+import { prijsTekst } from '../prijs';
 
 const { hero, waarom, team, prijzen, afsluiter } = content;
 
@@ -118,8 +119,8 @@ export default function PersonalTrainingPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="card p-8">
               <h3 className="display-md text-ink">{prijzen.los.naam}</h3>
-              <p className="mono text-4xl text-ink mt-4">{prijzen.los.prijs}</p>
-              <p className="mono text-xs text-stone mt-1">{prijzen.los.per}</p>
+              <p className="mono text-4xl text-ink mt-4">{prijsTekst(prijzen.los.prijs)}</p>
+              <p className="mono text-xs text-stone mt-1">{prijsTekst(prijzen.los.per)}</p>
               <p className="mt-5 text-sm leading-relaxed text-stone">{prijzen.los.tekst}</p>
             </div>
 
@@ -128,8 +129,8 @@ export default function PersonalTrainingPage() {
                 {prijzen.voordeel.label}
               </span>
               <h3 className="display-md">{prijzen.voordeel.naam}</h3>
-              <p className="mono text-4xl mt-4">{prijzen.voordeel.prijs}</p>
-              <p className="mono text-xs text-paper/50 mt-1">{prijzen.voordeel.per}</p>
+              <p className="mono text-4xl mt-4">{prijsTekst(prijzen.voordeel.prijs)}</p>
+              <p className="mono text-xs text-paper/50 mt-1">{prijsTekst(prijzen.voordeel.per)}</p>
               <p className="mt-5 text-sm leading-relaxed text-paper/70">{prijzen.voordeel.tekst}</p>
             </div>
           </div>

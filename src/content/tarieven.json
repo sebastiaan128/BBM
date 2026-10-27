@@ -50,7 +50,7 @@
         {
           "naam": "Strippenkaart 10 lessen",
           "prijs": "€60,-",
-          "eenheid": "€6 per les",
+          "eenheid": "€6,- per les",
           "toelichting": "1 jaar geldig, je bespaart €10,-",
           "meestGekozen": true
         }
@@ -72,14 +72,14 @@
           "naam": "Onbeperkt Fitness en groepslessen + 1/2 uur PT per week",
           "prijs": "€120,-",
           "eenheid": "per maand",
-          "toelichting": "Je bespaart €36",
+          "toelichting": "Je bespaart €36,-",
           "meestGekozen": true
         },
         {
           "naam": "Onbeperkt Fitness en groepslessen + 1 uur PT per week",
           "prijs": "€210,-",
           "eenheid": "per maand",
-          "toelichting": "Je bespaart €36",
+          "toelichting": "Je bespaart €36,-",
           "meestGekozen": false
         }
       ]
@@ -99,8 +99,8 @@
         {
           "naam": "Kids fitness, 10 lessen",
           "prijs": "€50,-",
-          "eenheid": "€16 per les",
-          "toelichting": "Je bespaart €20",
+          "eenheid": "€16,- per les",
+          "toelichting": "Je bespaart €20,-",
           "meestGekozen": false
         },
         {
@@ -112,7 +112,7 @@
         },
         {
           "naam": "Duo personal training 1 uur per week inclusief onbeperkt Fitness",
-          "prijs": "€220",
+          "prijs": "€220,-",
           "eenheid": "per maand",
           "toelichting": "Je bespaart €62,-",
           "meestGekozen": false

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import content from '../content/home.json';
+import { prijsTekst } from '../prijs';
 
 const tarieven = content.tarieven;
 
@@ -31,12 +32,12 @@ export default function PricingSection() {
 
               <p className="mt-6 flex items-baseline gap-2">
                 <span className={`mono text-4xl ${plan.uitgelicht ? 'text-paper' : 'text-ink'}`}>
-                  {plan.prijs}
+                  {prijsTekst(plan.prijs)}
                 </span>
                 <span
                   className={`mono text-xs ${plan.uitgelicht ? 'text-paper/50' : 'text-stone'}`}
                 >
-                  {plan.per}
+                  {prijsTekst(plan.per)}
                 </span>
               </p>
 
@@ -54,7 +55,7 @@ export default function PricingSection() {
                         : 'border-hairline text-ink-soft'
                     }`}
                   >
-                    {feature}
+                    {prijsTekst(feature)}
                   </li>
                 ))}
               </ul>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowDown } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import content from '../content/tarieven.json';
+import { prijsTekst } from '../prijs';
 
 type PriceTable = (typeof content.tabellen)[number];
 
@@ -35,11 +36,11 @@ function PriceRows({ table }: { table: PriceTable }) {
                     </span>
                   )}
                 </span>
-                <span className="block mt-0.5 text-sm text-stone">{row.toelichting}</span>
+                <span className="block mt-0.5 text-sm text-stone">{prijsTekst(row.toelichting)}</span>
               </th>
               <td className="py-4 text-right">
-                <span className="mono text-lg text-ink whitespace-nowrap">{row.prijs}</span>
-                {row.eenheid && <span className="mono block text-[0.6875rem] text-stone mt-0.5">{row.eenheid}</span>}
+                <span className="mono text-lg text-ink whitespace-nowrap">{prijsTekst(row.prijs)}</span>
+                {row.eenheid && <span className="mono block text-[0.6875rem] text-stone mt-0.5">{prijsTekst(row.eenheid)}</span>}
               </td>
             </tr>
           ))}

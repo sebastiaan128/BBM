@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { prijsTekst } from '../prijs';
 
 /*
  * Tekst uit src/content/ (en dus uit /admin) komt binnen als platte tekst.
@@ -11,7 +12,7 @@ import { Fragment } from 'react';
 function Vet({ tekst }: { tekst: string }) {
   return (
     <>
-      {tekst.split(/(\*\*[^*]+\*\*)/).map((deel, i) =>
+      {prijsTekst(tekst).split(/(\*\*[^*]+\*\*)/).map((deel, i) =>
         deel.startsWith('**') && deel.endsWith('**') ? (
           <strong key={i} className="text-ink font-semibold">
             {deel.slice(2, -2)}
