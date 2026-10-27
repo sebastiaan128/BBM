@@ -1,11 +1,8 @@
-# Deze site is een single-page app: de routes bestaan alleen in de browser.
-# Zonder deze regel geeft de server een 404 zodra iemand /tarieven of
-# /groepstrainingen/bootcamp rechtstreeks opent of de pagina ververst.
+# Elke pagina heeft bij de build een eigen .html-bestand gekregen
+# (scripts/seo-paginas.mjs), dus /tarieven en /groepstrainingen/bootcamp
+# bestaan gewoon. De regels hieronder zijn alleen voor oude adressen en
+# voor alles wat niet bestaat.
 #
-# Werkt op Netlify en Cloudflare Pages. Andere hosting:
-#   Vercel  - regelt dit zelf voor Vite-projecten, geen actie nodig
-#   Apache  - .htaccess met FallbackResource /index.html
-#   nginx   - location / { try_files $uri $uri/ /index.html; }
 # Adressen van de vorige site (bodybymarcel.nl), zodat links en
 # zoekresultaten blijven werken. 301 = permanent verhuisd; Google neemt de
 # nieuwe plek dan over.
@@ -25,5 +22,8 @@
 /groepstrainingen/small-group                /groepstrainingen               301
 /groepstrainingen/circuit                    /groepstrainingen               301
 
-# Alle andere adressen: de app zelf.
-/*  /index.html  200
+# Alle andere adressen bestaan niet. Elke echte pagina heeft een eigen
+# .html-bestand (scripts/seo-paginas.mjs), en Netlify levert een bestaand
+# bestand vóór deze regel. Status 404 zodat Google zo'n adres niet opneemt;
+# de app in 404.html toont de NotFound-pagina.
+/*  /404.html  404

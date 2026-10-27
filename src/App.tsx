@@ -44,6 +44,42 @@ function PageLoader() {
   );
 }
 
+/**
+ * Alle pagina's, zonder router eromheen: de browser zet er een
+ * BrowserRouter omheen (App hieronder), de build een StaticRouter
+ * (entry-server.tsx) om elke pagina vooraf als HTML te schrijven.
+ */
+export function AppRoutes() {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route element={<Root />}>
+            <Route index element={<Home />} />
+            <Route path="proefdag" element={<Proefdag />} />
+            <Route path="personal-training" element={<PersonalTrainingPage />} />
+            <Route path="tarieven" element={<Tarieven />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="groepstrainingen" element={<GroepstrainingenOverview />} />
+            <Route path="groepstrainingen/bootcamp" element={<Bootcamp />} />
+            <Route path="groepstrainingen/tabata" element={<Tabata />} />
+            <Route path="groepstrainingen/kids" element={<Kids />} />
+            <Route path="groepstrainingen/corporate" element={<Corporate />} />
+            <Route path="groepstrainingen/zumba" element={<Zumba />} />
+            <Route path="groepstrainingen/calisthenics" element={<Calisthenics />} />
+            <Route path="groepstrainingen/rooster" element={<Rooster />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
+
+            {/* Alles wat niet bestaat, mét navigatie en footer eromheen */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+
 export default function App() {
   return (
     // v7_startTransition laat React de vorige pagina in beeld houden terwijl
@@ -51,32 +87,7 @@ export default function App() {
     // laadscherm. Samen met het vooruit ophalen van links is een navigatie
     // daardoor een directe wissel.
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <ErrorBoundary>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route element={<Root />}>
-              <Route index element={<Home />} />
-              <Route path="proefdag" element={<Proefdag />} />
-              <Route path="personal-training" element={<PersonalTrainingPage />} />
-              <Route path="tarieven" element={<Tarieven />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="groepstrainingen" element={<GroepstrainingenOverview />} />
-              <Route path="groepstrainingen/bootcamp" element={<Bootcamp />} />
-              <Route path="groepstrainingen/tabata" element={<Tabata />} />
-              <Route path="groepstrainingen/kids" element={<Kids />} />
-              <Route path="groepstrainingen/corporate" element={<Corporate />} />
-              <Route path="groepstrainingen/zumba" element={<Zumba />} />
-              <Route path="groepstrainingen/calisthenics" element={<Calisthenics />} />
-              <Route path="groepstrainingen/rooster" element={<Rooster />} />
-              <Route path="privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
-
-              {/* Alles wat niet bestaat, mét navigatie en footer eromheen */}
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </ErrorBoundary>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

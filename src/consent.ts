@@ -58,6 +58,11 @@ export function useConsent(): Consent {
       return () => listeners.delete(l);
     },
     () => current,
+    // Bij het vooraf renderen (en het overnemen van die HTML) bestaat er nog
+    // geen keuze om te lezen. 'denied' houdt de banner uit de HTML; direct
+    // daarna leest de browser de echte keuze en verschijnt hij alsnog.
+    // Met null zou iedereen die al gekozen heeft hem even zien knipperen.
+    () => 'denied',
   );
 }
 

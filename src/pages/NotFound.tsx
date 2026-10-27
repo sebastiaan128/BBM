@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { photo } from '../photos';
@@ -23,6 +24,16 @@ const destinations = [
 
 export default function NotFound() {
   const { pathname } = useLocation();
+
+  // Netlify geeft voor elk onbekend adres de app met status 200. Zonder
+  // noindex kan Google zo'n adres als gewone (lege) pagina opnemen.
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex';
+    document.head.appendChild(meta);
+    return () => meta.remove();
+  }, []);
 
   return (
     <div className="bg-paper">

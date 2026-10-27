@@ -7,7 +7,7 @@
     "dev": "node scripts/optimaliseer-fotos.mjs && vite",
     "fotos": "node scripts/optimaliseer-fotos.mjs",
     "prebuild": "node scripts/optimaliseer-fotos.mjs",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr",
     "preview": "vite preview",
     "postbuild": "node scripts/seo-paginas.mjs"
   },
