@@ -17,6 +17,7 @@ export const photoAssets: Record<string, PhotoAsset> = {
   'cardio-duo': { widths: [480,800,1200,1440] },
   'cardio-loopband': { widths: [480,800,1200,1440] },
   'coaching': { widths: [480,800,1200,1440] },
+  'coaching-marcel-cees': { widths: [480,800,1200,1440] },
   'deadlift': { widths: [480,800,1200,1440] },
   'dumbbell-duo': { widths: [480,800,1200,1440] },
   'dumbbell-press': { widths: [480,800,1200,1440] },

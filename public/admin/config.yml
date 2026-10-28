@@ -167,7 +167,8 @@ collections:
               - *titelMetEnters
               - { label: Introtekst, name: intro, widget: text }
               - { label: Tekst op de groene knop, name: knopProefdag, widget: string }
-              - { label: Tekst op de tweede knop, name: knopRooster, widget: string }
+              - { label: Tekst van het roosterlinkje onder de knoppen, name: knopRooster, widget: string }
+              - { label: Tekst op de tweede knop (lid worden via SportBit), name: knopLidWorden, widget: string }
               - label: Wisselende foto's
                 name: slides
                 widget: list

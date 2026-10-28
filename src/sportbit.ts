@@ -23,8 +23,8 @@ const BASE = 'https://bodybymarcel.sportbitapp.nl';
 export const sportbit = {
   /** Ledenportaal: inloggen om in te schrijven voor lessen. */
   inloggen: `${BASE}/cbm/account/inloggen/`,
-  /** Nieuw account aanmaken. */
-  aanmelden: `${BASE}/cbm/account/aanmelden/`,
+  /** Lid worden: de aanmelding begint met het kiezen van een abonnement. */
+  aanmelden: `${BASE}/web/nl/registreren/lidmaatschap`,
   /** Proefles inplannen zonder account. */
   proefles: `${BASE}/cbm/proeflesplanner/stap-1/`,
 } as const;

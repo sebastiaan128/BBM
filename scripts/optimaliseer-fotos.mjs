@@ -19,7 +19,7 @@ const BRON_DIR = path.join(ROOT, 'fotos-bron');
 const PHOTOS_DIR = path.join(ROOT, 'public/photos');
 const MANIFEST = path.join(ROOT, 'src/photoAssets.ts');
 const BREEDTES = [480, 800, 1200, 1440];
-const KWALITEIT = 78;
+const KWALITEIT = 90;
 
 /** Moet gelijk lopen met fotoNaam() in src/components/Photo.tsx. */
 function fotoNaam(bestand) {

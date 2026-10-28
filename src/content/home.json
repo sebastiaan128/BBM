@@ -4,7 +4,8 @@
     "titel": "Kracht, rust\nen voeding\nin balans.",
     "intro": "Body by Marcel is een kleinschalige sportschool waar je bij naam bekend bent. Groepen van maximaal acht, of één op één, met begeleiding die verder kijkt dan de training alleen.",
     "knopProefdag": "Plan je proefdag",
-    "knopRooster": "Bekijk het rooster",
+    "knopRooster": "Of bekijk eerst het rooster",
+    "knopLidWorden": "Word direct lid",
     "slides": [
       {
         "foto": "/fotos-bron/kettlebell-daglicht.jpg",
@@ -35,8 +36,8 @@
     ]
   },
   "over": {
-    "foto": "/fotos-bron/trainer-portret.jpg",
-    "fotoAlt": "Trainer in de krachthal van Body by Marcel",
+    "foto": "/fotos-bron/coaching-marcel-cees.jpg",
+    "fotoAlt": "Marcel begeleidt Cees bij dumbbell schouderdrukken",
     "eyebrow": "Over de sportschool",
     "titel": "Je bent hier\ngeen abonneenummer",
     "tekst": "Met een achtergrond in **Taekwon-do** en jarenlange ervaring in de fitnessindustrie weet ik hoeveel er van balans afhangt. Balans tussen kracht en rust, tussen intensiteit en herstel, tussen training en voeding.\n\nBij Body by Marcel draait alles om jou. Of je nu net begint, een specifiek doel voor ogen hebt of gewoon in vorm wilt blijven, je traint met een programma dat op jou is afgestemd, en met iemand die je vooruitgang bijhoudt.\n\nHet resultaat is een club waar hard werken samengaat met een warme sfeer, en waar iedereen zich thuis voelt.",
@@ -145,25 +146,25 @@
       },
       {
         "jaar": 2024,
-        "namen": "Jorik en Brigitte van Oosten",
+        "namen": "Jorik en Brigitte",
         "onderdelen": "Leg press 3×20, dumbbell schouderdrukken 3×10, lat pulldown 3×8, slee 1×15 en deadhang",
         "foto": "/fotos-bron/winnaars-2024.jpg"
       },
       {
         "jaar": 2023,
-        "namen": "Jorik Siereveld en Iryna Romaniuk",
+        "namen": "Jorik en Iryna",
         "onderdelen": "Hanging knee raise 2×10, supported T-bar row 3×15, chest press 3×10, box squat met dumbbell press 3×20 en deadlift zo vaak mogelijk",
         "foto": "/fotos-bron/winnaars-2023.jpg"
       },
       {
         "jaar": 2022,
-        "namen": "",
+        "namen": "Jorik en Rachel",
         "onderdelen": "Fitnesstoernooi: zittende cable fly 3×10, cable row 3×25, leg extension 3 minuten hold, deadlift 3×40 en plank",
         "foto": "/fotos-bron/winnaars-2022.jpg"
       },
       {
         "jaar": 2021,
-        "namen": "",
+        "namen": "Cees en Harry",
         "onderdelen": "Koppelchallenge: 1 km hardlopen, 100× kabelroeien, 100× bankdrukken, 50× bicep curls en 50× tricep extensions",
         "foto": "/fotos-bron/winnaars-2021.jpg"
       }

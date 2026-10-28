@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 import Photo from './Photo';
 import { Regels } from './Tekst';
 import content from '../content/home.json';
+import { sportbit } from '../sportbit';
 
 const hero = content.hero;
 /* De foto's wisselen, de kop blijft staan. Het alt-tekstje is alleen voor
@@ -78,10 +80,23 @@ export default function HeroCarousel({ autoplay = true, autoplayDelay = 6000 }: 
               <Link to="/proefdag" className="btn btn-lime">
                 {hero.knopProefdag}
               </Link>
-              <Link to="/groepstrainingen" className="btn btn-outline">
-                {hero.knopRooster}
-              </Link>
+              <a
+                href={sportbit.aanmelden}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+              >
+                {hero.knopLidWorden}
+                <ExternalLink size={15} aria-hidden="true" />
+              </a>
             </div>
+
+            <Link
+              to="/groepstrainingen"
+              className="mt-6 inline-block text-sm text-stone underline underline-offset-4 hover:text-ink transition-colors"
+            >
+              {hero.knopRooster}
+            </Link>
           </div>
         </div>
 
