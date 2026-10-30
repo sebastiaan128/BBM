@@ -144,11 +144,11 @@ collections:
               - { label: Nummer, name: nummer, widget: string, required: false }
               - { label: Begintekst van het bericht, name: bericht, widget: string, required: false }
           - { label: Tekst in de footer, name: footerTekst, widget: text }
-          - label: SportBit-roosterwidget (iframe-adres)
+          - label: SportBit-roosterwidget (rooster-ID)
             name: sportbitRoosterWidget
             widget: string
             required: false
-            hint: Ingevuld? Dan toont de roosterpagina het live rooster uit SportBit in plaats van het rooster hieronder.
+            hint: "Het getal in embed_rooster.init(…) uit de SportBit-insluitcode, nu 1. Ingevuld: de roosterpagina toont het live rooster uit SportBit. Leeg: het handmatige rooster (onder 'Rooster')."
 
   - name: home
     label: Homepage

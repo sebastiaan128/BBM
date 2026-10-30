@@ -64,6 +64,28 @@ const alleCategorieen: { id: TrainingCategory; label: string }[] = [
   { id: 'calisthenics', label: 'Calisthenics' },
 ];
 
+/** Kleurblokje per trainingsvorm, in de kleuren van de ATX-schijven. */
+export const categoryDotColors: Record<TrainingCategory, string> = {
+  all: 'bg-stone',
+  bootcamp: 'bg-plate-green',
+  tabata: 'bg-plate-red',
+  kids: 'bg-plate-white border border-hairline',
+  zumba: 'bg-moss',
+  calisthenics: 'bg-ink',
+};
+
+/**
+ * De trainingsvorm van een les in SportBit, herkend aan de naam. Het
+ * SportBit-rooster bevat ook PT-sessies en Open Fitness: die geven `null`
+ * en komen niet op de site. Kids staat voorop, want "Kids Bootcamp" bevat
+ * ook het woord bootcamp.
+ */
+export function categorieVoorTitel(titel: string): Exclude<TrainingCategory, 'all'> | null {
+  const naam = titel.toLowerCase();
+  const volgorde: Exclude<TrainingCategory, 'all'>[] = ['kids', 'bootcamp', 'tabata', 'zumba', 'calisthenics'];
+  return volgorde.find((id) => naam.includes(alleCategorieen.find((c) => c.id === id)!.label.toLowerCase())) ?? null;
+}
+
 /** Filterlabels op de roosterpagina: alleen soorten die nu in het rooster staan. */
 export const categories = alleCategorieen.filter(
   (c) => c.id === 'all' || schedule.some((d) => d.classes.some((cls) => cls.category === c.id)),

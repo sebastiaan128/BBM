@@ -1,25 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { X, ChevronRight, ExternalLink } from 'lucide-react';
 import PageHero from '../../components/PageHero';
 import roosterContent from '../../content/rooster.json';
-import { sportbit, roosterWidgetUrl } from '../../sportbit';
+import SportbitRooster from '../../components/SportbitRooster';
+import { sportbit, roosterWidgetId } from '../../sportbit';
+import { useDialog } from '../../hooks/useDialog';
 import {
   schedule,
   categories,
   todayIndex,
+  categoryDotColors,
   type ClassItem,
   type TrainingCategory,
 } from '../../rooster';
-
-const categoryDotColors: Record<TrainingCategory, string> = {
-  all: 'bg-stone',
-  bootcamp: 'bg-plate-green',
-  tabata: 'bg-plate-red',
-  kids: 'bg-plate-white border border-hairline',
-  zumba: 'bg-moss',
-  calisthenics: 'bg-ink',
-};
 
 export default function Rooster() {
   const [activeCategory, setActiveCategory] = useState<TrainingCategory>('all');
@@ -33,90 +27,12 @@ export default function Rooster() {
     classes: day.classes.filter((cls) => activeCategory === 'all' || cls.category === activeCategory),
   }));
 
-  // Escape sluit het lesdetail, zoals bij elk ander venster. Zolang het open
-  // staat scrollt het rooster erachter niet mee.
-  useEffect(() => {
-    if (!selectedClass) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedClass(null);
-    };
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [selectedClass]);
+  const sluitLes = useCallback(() => setSelectedClass(null), []);
+  useDialog(selectedClass !== null, sluitLes);
 
-  return (
-    <div className="bg-paper">
-      <PageHero
-        eyebrow={roosterContent.hero.eyebrow}
-        title={roosterContent.hero.titel}
-        intro={roosterContent.hero.intro}
-        image={roosterContent.hero.foto}
-        imageAlt={roosterContent.hero.fotoAlt}
-      >
-        <a
-          href={sportbit.inloggen}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-lime"
-        >
-          Inschrijven via SportBit
-          <ExternalLink size={15} aria-hidden="true" />
-        </a>
-        <Link to="/proefdag" className="btn btn-outline">
-          Gratis proefles
-        </Link>
-      </PageHero>
-
-      {/* Zodra het iframe-adres van de SportBit-roosterwidget bekend is
-          (zie src/sportbit.ts) vervangt het echte rooster het handmatige
-          overzicht hieronder. */}
-      {roosterWidgetUrl ? (
-        <section className="py-12 md:py-16">
-          <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8">
-            <iframe
-              src={roosterWidgetUrl}
-              title="Lesrooster van Body by Marcel"
-              className="w-full min-h-[45rem] border border-hairline"
-              loading="lazy"
-            />
-          </div>
-        </section>
-      ) : (
-        <>
-      {/* Filter. Anders dan de sprongknoppen op /tarieven verbergt dit
-          daadwerkelijk lessen, dus staat er expliciet bij wat het doet. */}
-      <div className="sticky top-[5.25rem] z-20 bg-paper-dim border-b border-hairline">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8 py-3.5 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <p className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone">
-            Toon alleen
-          </p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter op trainingsvorm">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                aria-pressed={activeCategory === cat.id}
-                className={`mono inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.12em] px-3 py-2 border transition-colors duration-150 ease-smooth ${
-                  activeCategory === cat.id
-                    ? 'border-ink bg-ink text-paper'
-                    : 'border-hairline text-stone hover:border-ink hover:text-ink'
-                }`}
-              >
-                {cat.id !== 'all' && (
-                  <span className={`w-2 h-2 ${categoryDotColors[cat.id]}`} aria-hidden="true" />
-                )}
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
+  // Het handmatige weekoverzicht uit src/content/rooster.json.
+  const handmatigRooster = (
+    <>
       {/* Rooster */}
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8 space-y-10">
@@ -203,7 +119,68 @@ export default function Rooster() {
           </p>
         </div>
       </section>
-        </>
+    </>
+  );
+
+  return (
+    <div className="bg-paper">
+      <PageHero
+        eyebrow={roosterContent.hero.eyebrow}
+        title={roosterContent.hero.titel}
+        intro={roosterContent.hero.intro}
+        image={roosterContent.hero.foto}
+        imageAlt={roosterContent.hero.fotoAlt}
+      >
+        <a
+          href={sportbit.inloggen}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-lime"
+        >
+          Inschrijven via SportBit
+          <ExternalLink size={15} aria-hidden="true" />
+        </a>
+        <Link to="/proefdag" className="btn btn-outline">
+          Gratis proefles
+        </Link>
+      </PageHero>
+
+      {/* Met een rooster-ID (zie src/sportbit.ts) toont de pagina het live
+          rooster uit SportBit; anders, of als dat niet laadt, het handmatige
+          overzicht. */}
+      {/* Filter. Anders dan de sprongknoppen op /tarieven verbergt dit
+          daadwerkelijk lessen, dus staat er expliciet bij wat het doet. */}
+      <div className="sticky top-[5.25rem] z-20 bg-paper-dim border-b border-hairline">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-8 py-3.5 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p className="mono text-[0.625rem] uppercase tracking-[0.16em] text-stone">
+            Toon alleen
+          </p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter op trainingsvorm">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                aria-pressed={activeCategory === cat.id}
+                className={`mono inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.12em] px-3 py-2 border transition-colors duration-150 ease-smooth ${
+                  activeCategory === cat.id
+                    ? 'border-ink bg-ink text-paper'
+                    : 'border-hairline text-stone hover:border-ink hover:text-ink'
+                }`}
+              >
+                {cat.id !== 'all' && (
+                  <span className={`w-2 h-2 ${categoryDotColors[cat.id]}`} aria-hidden="true" />
+                )}
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {roosterWidgetId ? (
+        <SportbitRooster roosterId={roosterWidgetId} categorie={activeCategory} fallback={handmatigRooster} />
+      ) : (
+        handmatigRooster
       )}
 
       {/* Afsluiter */}

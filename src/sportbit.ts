@@ -4,21 +4,17 @@ import { site } from './site';
  * Koppeling met SportBit, het systeem waarin de lessen en inschrijvingen
  * al worden beheerd (bodybymarcel.sportbitapp.nl).
  *
- * ── De roosterwidget aanzetten ────────────────────────────────────────
- * SportBit levert een roosterwidget: een insluitbaar rooster waarin
- * bezoekers de lestijden zien en zich direct inschrijven. Die code staat
- * niet publiek; vraag hem op in je SportBit-omgeving of bij hun support.
- *
- * Krijg je een IFRAME-adres, vul het in bij 'SportBit-roosterwidget' in
- * /admin (Algemeen), of in src/content/site.json. Het rooster op
- * /groepstrainingen/rooster schakelt dan vanzelf over van het handmatige
- * overzicht naar het echte, actuele rooster.
- *
- * Krijg je in plaats daarvan een <script>-fragment, laat het me weten:
- * dat vraagt een andere inbouw dan een iframe.
+ * ── De roosterwidget ──────────────────────────────────────────────────
+ * SportBit levert een insluitbaar rooster waarin bezoekers de lestijden
+ * zien en zich direct inschrijven. De site toont daaruit alleen de
+ * groepslessen, in eigen stijl (zie src/components/SportbitRooster.tsx).
+ * Welk rooster getoond wordt staat bij 'SportBit-roosterwidget' in /admin
+ * (Algemeen), of in src/content/site.json: het rooster-ID uit de
+ * insluitcode van SportBit. Leeg = het handmatige weekoverzicht.
  */
 
-const BASE = 'https://bodybymarcel.sportbitapp.nl';
+export const SPORTBIT_BASE = 'https://bodybymarcel.sportbitapp.nl';
+const BASE = SPORTBIT_BASE;
 
 export const sportbit = {
   /** Ledenportaal: inloggen om in te schrijven voor lessen. */
@@ -30,8 +26,8 @@ export const sportbit = {
 } as const;
 
 /**
- * Het iframe-adres van de SportBit-roosterwidget, uit de site-instellingen.
+ * Het rooster-ID van de SportBit-roosterwidget, uit de site-instellingen.
  * Zolang het leeg is, toont de site het handmatige weekoverzicht met de
  * melding dat het een indicatie is.
  */
-export const roosterWidgetUrl: string | null = site.sportbitRoosterWidget || null;
+export const roosterWidgetId: string | null = site.sportbitRoosterWidget.trim() || null;
