@@ -22,6 +22,8 @@ interface Les {
   start: string;
   eind: string;
   trainer: string;
+  /** Bezetting zoals SportBit hem meestuurt (bijv. "8/12"), als dat aanstaat. */
+  plekken: string;
   voorbij: boolean;
 }
 
@@ -76,6 +78,7 @@ function leesWeek(html: string): Week {
           start,
           eind,
           trainer: tekst(les.querySelector('.trainer')),
+          plekken: tekst(les.querySelector('.attendees')),
           voorbij: les.classList.contains('gepasseerd'),
         }];
       }),
@@ -167,6 +170,8 @@ export default function SportbitRooster({
   if (mislukt) return <>{fallback}</>;
 
   const vandaag = vandaagLabel();
+  // De bezetting toont SportBit alleen als dat in hun rooster-instellingen aanstaat.
+  const plekkenZichtbaar = (week?.dagen ?? []).some((dag) => dag.lessen.some((les) => les.plekken));
   // Zondag is de studio dicht: zonder lessen laten we hem weg.
   const dagen = (week?.dagen ?? [])
     .map((dag) => ({
@@ -272,6 +277,11 @@ export default function SportbitRooster({
                             <span className="text-sm text-stone sm:w-28 flex-shrink-0 capitalize">
                               {les.trainer}
                             </span>
+                            {plekkenZichtbaar && (
+                              <span className="mono text-xs text-stone sm:w-28 flex-shrink-0 whitespace-nowrap sm:text-right">
+                                {les.plekken && `${les.plekken} plekken`}
+                              </span>
+                            )}
 
                             <ChevronRight
                               size={16}
@@ -339,7 +349,9 @@ export default function SportbitRooster({
                     .filter(Boolean)
                     .join(' · '),
                 },
-                { label: 'Trainer', value: gekozen.les.trainer },
+                // SportBit schrijft trainersnamen soms met een kleine letter.
+                { label: 'Trainer', value: gekozen.les.trainer.replace(/^./, (c) => c.toUpperCase()) },
+                { label: 'Plekken', value: gekozen.les.plekken && `${gekozen.les.plekken} bezet` },
               ]
                 .filter((info) => info.value)
                 .map((info) => (
@@ -347,7 +359,7 @@ export default function SportbitRooster({
                     <dt className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-stone pt-0.5">
                       {info.label}
                     </dt>
-                    <dd className="text-[0.9375rem] text-ink capitalize">{info.value}</dd>
+                    <dd className="text-[0.9375rem] text-ink">{info.value}</dd>
                   </div>
                 ))}
             </dl>
@@ -357,7 +369,9 @@ export default function SportbitRooster({
             ) : (
               <>
                 <p className="mt-6 text-sm text-stone leading-relaxed">
-                  In SportBit zie je hoeveel plekken er nog vrij zijn en schrijf je je in.
+                  {gekozen.les.plekken
+                    ? 'Inschrijven doe je in SportBit.'
+                    : 'In SportBit zie je hoeveel plekken er nog vrij zijn en schrijf je je in.'}
                 </p>
                 <a
                   href={aanmeldLink ?? sportbit.inloggen}
